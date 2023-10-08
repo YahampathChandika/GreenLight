@@ -21,14 +21,18 @@ function VisualInspection() {
           <div className="progress" style={{height :'10px' , marginBottom:'15px'}}>
             <div className="progress-bar" role="progressbar" style={{ width: '10%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <p>Wind Shield</p>
+          <p style={{marginTop:'50px', marginBottom:'20px' , fontSize:'20px' , fontStyle:'bold' , color:'black'}}>Wind Shield</p>
         </div>
         <div className='inspaction-mid'>
         <Uploader action="//jsonplaceholder.typicode.com/posts/" draggable>
-          <div style={{ height: 150, width:300, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ height: 150, width:300, display: 'flex', alignItems: 'center', justifyContent: 'center' , backgroundColor:'#aaaaaa' }}>
             <CameraRetroIcon />
           </div>
         </Uploader>
+        <div className='inspaction-mid-butt' style={{marginBottom:'70px' , marginTop:'20px'}}>
+           <button type="button" class="btn btn-info" style={{width:'9.5%',color:'white'}}>Select Photo</button>
+           <button type="button" class="btn btn-secondary" style={{marginLeft:'10px',width:'9.5%'}} >Remove</button>
+        </div>
         </div>
         <div className='inspaction-bot' >
           <table class="table table-bordered" style={{border:'1px solid #03b103'}} >
@@ -79,7 +83,7 @@ function VisualInspection() {
                   <td>@fat</td>
                 </tr>
                 <tr>
-                  <td style={{padding:'14px'}}> <p>No evidence of major Damage</p> </td>
+                  <td style={{padding:'14px'}}> <p>No minaral diposit/ Acid rain damage</p> </td>
                   <td>Jacob</td>
                   <td>Thornton</td>
                   <td>@fat</td>
@@ -106,7 +110,6 @@ function VisualInspection() {
                   <td>@fat</td>
                   <td>@fat</td>
                 </tr>
-      
               </tbody>
             </table>
         </div>
