@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+
+  .navBar {
+    height: 70px;
+    width: 100%;
+    background-color:#0CA789;
+    display: flex;
+    justify-items: center; 
+    align-items: center;
+    font-size:30px;
+    font-weight: 900;
+    color: #ffffff;
+    padding-left: 40px;
+
+  }

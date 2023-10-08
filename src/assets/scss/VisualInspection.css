@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+  }
+
+.inspaction-main {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.inspaction-bot {
+    width: 50%;
+   
+}
+
+.box{
+    width: 35px;
+    height: 35px;
+    background-color: #8FD14F;
+    
+}
+
+.box-tb {
+    /* display: flex; */
+    justify-content: center;   
+    border-style: none;     
+}
+
+/* Style the label to make it bigger */
+.bigger-checkbox {
+    font-size: 16px; /* Adjust the font size to make it bigger */
+    padding: 12px 20px; /* Increase padding to make the label larger */
+  }
+  
+  /* Apply hover effect when hovering over the label */
+  .bigger-checkbox:hover {
+    background-color: #007bff; /* Change the background color on hover */
+    color: #fff; /* Change the text color on hover */
+  }
+  
