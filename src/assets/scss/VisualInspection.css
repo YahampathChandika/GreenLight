@@ -1,43 +1,140 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-  }
+/* VisualInspection.css */
 
-.inspaction-main {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 3%;
+/* Style for the main container */
+.vi-main-con {
+  font-family: Arial, sans-serif;
+  padding: 50px 100px;
+  padding-bottom: 50px !important;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
 }
 
-.inspaction-bot {
-    width: 60%;
-   
+.vi-content {
+  padding: 40px 50px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
-.box{
-    width: 35px;
-    height: 35px;
-    background-color: #8FD14F;
-    
+.progress {
+  margin-bottom: 50px;
 }
 
-.box-tb {
-    /* display: flex; */
-    justify-content: center;   
-    border-style: none;     
+.vi-content-top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-/* Style the label to make it bigger */
-.bigger-checkbox {
-    font-size: 16px; /* Adjust the font size to make it bigger */
-    padding: 12px 20px; /* Increase padding to make the label larger */
-  }
-  
-  /* Apply hover effect when hovering over the label */
-  .bigger-checkbox:hover {
-    background-color: #007bff; /* Change the background color on hover */
-    color: #fff; /* Change the text color on hover */
-  }
-  
+.vi-content-top p {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: black;
+  text-align: left;
+}
+
+.vi-content-top-img-con {
+  display: flex;
+  align-items: center;
+}
+
+.vi-content-top-btns {
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.vi-content-top-btns label {
+  width: 120px;
+  margin-right: 20px;
+}
+
+.vi-content-top-btns button {
+  width: 120px;
+}
+
+.vi-content-top-img img{
+  max-height: 200px  !important;
+  width: auto;
+}
+
+/* Style for the table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style for table headers */
+.table th {
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+/* Style for table rows */
+.table td {
+  padding: 8px;
+  text-align: center;
+}
+
+/* Style for the radio buttons */
+input[type="radio"] {
+  display: none;
+}
+
+/* Style for the labels and rating colors */
+label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-color {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+/* Colors for different rating options */
+.rating-color.good {
+  background-color: rgb(0, 128, 0, 0.5);
+}
+
+.rating-color.normal {
+  background-color: rgb(255, 255, 0 , 0.5);
+}
+
+.rating-color.bad {
+  background-color: rgb(255, 0, 0, 0.5);
+}
+
+.rating-color.na {
+  background-color: rgb(128, 128, 128, 0.5);
+}
+
+/* Style for selected radio buttons */
+input[type="radio"]:checked + .rating-color.rating-color {
+  border-style: solid 1px black; 
+}
+
+input[type="radio"]:checked + .rating-color.rating-color.good {
+  background-color: rgb(0, 128, 0);
+}
+
+input[type="radio"]:checked + .rating-color.rating-color.rating-color.rating-color.normal {
+  background-color: rgb(228, 228, 15);
+}
+
+input[type="radio"]:checked + .rating-color.rating-color.rating-color.bad {
+  background-color: rgb(255, 0, 0);
+}
+
+input[type="radio"]:checked + .rating-color.rating-color.rating-color.na {
+  background-color: rgb(128, 128, 128);
+}
+
+.next-btn {
+  margin-top: 50px;
+  width: 100px;
+}
