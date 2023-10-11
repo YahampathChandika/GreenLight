@@ -12,6 +12,7 @@ import RearBumper from '../vehicleDetails/RearBumper';
 import Spoiler from '../vehicleDetails/Spoiler';
 import RearGlass from '../vehicleDetails/RearGlass';
 
+
 function SidebarComp() {
   const [selectedMenuItemIndex, setSelectedMenuItemIndex] = useState(0);
 
@@ -70,6 +71,54 @@ function SidebarComp() {
         return <RearBumper />;
       case 'Spoiler':
         return <Spoiler />;
+      case 'frontFenderLHS':
+        return <FrontFenderLHS />;
+      case 'frontDoorPassengerLHS':
+        return <FrontDoorPassengerLHS />;
+      case 'rearDoorLHS':
+        return <RearDoorLHS />;
+      case 'quarterPanelLHS':
+        return <QuarterPanelLHS />;
+      case 'quarterPanelRHS':
+        return <QuarterPanelRHS />;
+      case 'rearDoorRHS':
+        return <RearDoorRHS />;
+      case 'frontDoorDriver':
+        return <FrontDoorDriver />;
+      case 'frontFenderRHS':
+        return <FrontFenderRHS />;
+      case 'vehicleRoof':
+        return <VehicleRoof />;
+      case 'wheelArchFrontLHS':
+        return <WheelArchFrontLHS />;
+      case 'engineCompartment':
+        return <EngineCompartment />;
+      case 'bootSpace':
+        return <BootSpace />;
+      case 'underCarriageView':
+        return <UnderCarriageView />;
+      case 'checkWithEngineStart':
+        return <CheckWithEngineStart />;
+      case 'interiorInspection':
+        return <InteriorInspection />;
+      case 'scanningReport':
+        return <ScanningReport />;
+      case 'mainDataMonitorHybrid':
+        return <MainDataMonitorHybrid />;
+      case 'warningIndicatorMain':
+        return <WarningIndicatorMain />;
+      case 'roadTest':
+        return <RoadTest />;
+      case 'coolingSystem':
+        return <CoolingSystem />;
+      case 'suspension':
+        return <Suspension />;
+      case 'startingDelay':
+        return <StartingDelay />;
+      case 'engineMissIdling':
+        return <EngineMissIdling />;
+      case 'documentsRecords':
+        return <DocumentsRecords />;
       default:
         return null;
     }
@@ -77,18 +126,39 @@ function SidebarComp() {
 
   return (
     <>
-      <div className="sidebar-container">
-        <Sidebar width="250px" transitionDuration={500}>
-          <Menu className="sidebar">
-            {menuItems.map((menuItem, index) => (
-              <MenuItem
-                key={menuItem}
-                className={selectedMenuItemIndex === index ? 'selected-menu-item' : ''}
-                onClick={() => handleMenuItemClick(index)}
-              >
-                {menuItem === 'hood' ? 'Hood / Bonat' : menuItem}
-              </MenuItem>
-            ))}
+      <div className="home-container">
+        <Sidebar width='250px' collapsedWidth="80px" transitionDuration={500} backgroundColor="#ffffff">
+          <Menu>
+            <MenuItem className={selectedMenuItem === 'windShield' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('windShield')}>
+              Wind Shield
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'hood' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('hood')}>
+              Hood / Bonat
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'grill' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('grill')}>
+              Grill
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'frontBumper' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('frontBumper')}>
+              Front Bumper
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'frontLightings' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('frontLightings')}>
+              Front Lightings
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'rearLightings' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearLightings')}>
+              Rear Lightings
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'rearGlass' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearGlass')}>
+              Rear Glass
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'tailGate' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('tailGate')}>
+              Tail Gate
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'rearBumper' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearBumper')}>
+              Rear Bumper
+            </MenuItem>
+            <MenuItem className={selectedMenuItem === 'spoiler' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('spoiler')}>
+              Spoiler
+            </MenuItem>
           </Menu>
           <div className="sidebar-btns">
             <button className="btn btn-primary sidebar-nextbtn" onClick={handlePreviousButtonClick}>Previous</button>
