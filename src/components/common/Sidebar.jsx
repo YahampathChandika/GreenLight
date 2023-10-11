@@ -12,36 +12,63 @@ import RearBumper from '../vehicleDetails/RearBumper';
 import Spoiler from '../vehicleDetails/Spoiler';
 import RearGlass from '../vehicleDetails/RearGlass';
 
-
 function SidebarComp() {
-  const [selectedMenuItem, setSelectedMenuItem] = useState('windShield'); // Default selection
+  const [selectedMenuItemIndex, setSelectedMenuItemIndex] = useState(0);
 
-  const handleMenuItemClick = (menuItem) => {
-    setSelectedMenuItem(menuItem);
+  const menuItems = [
+    'Wind Shield',
+    'Hood',
+    'Grill',
+    'Front Bumper',
+    'Front Lightings',
+    'Rear Lightings',
+    'Rear Glass',
+    'Tail Gate',
+    'Rear Bumper',
+    'Spoiler',
+  ];
+
+  const handleMenuItemClick = (menuItemIndex) => {
+    setSelectedMenuItemIndex(menuItemIndex);
   };
 
+  const handleNextButtonClick = () => {
+    // Increment the selectedMenuItemIndex, but make sure it stays within bounds
+    setSelectedMenuItemIndex((prevIndex) =>
+      prevIndex < menuItems.length - 1 ? prevIndex + 1 : prevIndex
+    );
+  };
+
+  const handlePreviousButtonClick = () => {
+    // Decrement the selectedMenuItemIndex, but make sure it stays within bounds
+    setSelectedMenuItemIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : prevIndex
+    );
+  };
 
   const renderComponent = () => {
+    const selectedMenuItem = menuItems[selectedMenuItemIndex];
+
     switch (selectedMenuItem) {
-      case 'windShield':
+      case 'Wind Shield':
         return <WindShield />;
-      case 'hood':
+      case 'Hood':
         return <Hood />;
-      case 'grill':
+      case 'Grill':
         return <Grill />;
-      case 'frontBumper':
+      case 'Front Bumper':
         return <FrontBumper />;
-      case 'frontLightings':
+      case 'Front Lightings':
         return <FrontLightings />;
-      case 'rearLightings':
+      case 'Rear Lightings':
         return <RearLightings />;
-      case 'rearGlass':
-        return <RearGlass/>;
-      case 'tailGate':
+      case 'Rear Glass':
+        return <RearGlass />;
+      case 'Tail Gate':
         return <TailGate />;
-      case 'rearBumper':
+      case 'Rear Bumper':
         return <RearBumper />;
-      case 'spoiler':
+      case 'Spoiler':
         return <Spoiler />;
       default:
         return null;
@@ -50,40 +77,23 @@ function SidebarComp() {
 
   return (
     <>
-      <div className="home-container">
-        <Sidebar width='250px' collapsedWidth="80px" transitionDuration={500} backgroundColor="#ffffff">
-          <Menu>
-            <MenuItem className={selectedMenuItem === 'windShield' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('windShield')}>
-              Wind Shield
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'hood' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('hood')}>
-              Hood / Bonat
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'grill' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('grill')}>
-              Grill
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'frontBumper' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('frontBumper')}>
-              Front Bumper
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'frontLightings' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('frontLightings')}>
-              Front Lightings
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'rearLightings' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearLightings')}>
-              Rear Lightings
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'rearGlass' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearGlass')}>
-              Rear Glass
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'tailGate' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('tailGate')}>
-              Tail Gate
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'rearBumper' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearBumper')}>
-              Rear Bumper
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'spoiler' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('spoiler')}>
-              Spoiler
-            </MenuItem>
+      <div className="sidebar-container">
+        <Sidebar width="250px" transitionDuration={500}>
+          <Menu className="sidebar">
+            {menuItems.map((menuItem, index) => (
+              <MenuItem
+                key={menuItem}
+                className={selectedMenuItemIndex === index ? 'selected-menu-item' : ''}
+                onClick={() => handleMenuItemClick(index)}
+              >
+                {menuItem === 'hood' ? 'Hood / Bonat' : menuItem}
+              </MenuItem>
+            ))}
           </Menu>
+          <div className="sidebar-btns">
+            <button className="btn btn-primary sidebar-nextbtn" onClick={handlePreviousButtonClick}>Previous</button>
+            <button className="btn btn-primary sidebar-prvbtn" onClick={handleNextButtonClick}>Next</button>
+          </div>
         </Sidebar>
         <div className="content-container">
           <div>{renderComponent()}</div>

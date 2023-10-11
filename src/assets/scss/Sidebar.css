@@ -1,4 +1,4 @@
-.home-container {
+.sidebar-container {
     display: flex;
     height: calc(100vh - 70px);
   }
@@ -7,18 +7,27 @@
     flex: 1;
     overflow-y: scroll;
   }
+
+  .sidebar {
+    min-height: 85vh;
+  }
   
   .selected-menu-item {
     font-weight: 700;
     background-color: aliceblue;
   }
 
-  .collapse-btn {
-     margin: 20px; 
-     position: relative; 
-     top: 0; 
-     right: 0;
-     background-color: #766EAC;
-     border-style: none;
+  .sidebar-btns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
+
+  .sidebar-nextbtn, .sidebar-prvbtn {
+    width: 90px;
+    height: 40px;
+  }
+
+
+
     
