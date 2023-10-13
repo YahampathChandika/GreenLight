@@ -1,24 +1,49 @@
-.home-container {
-    display: flex;
-    height: calc(100vh - 70px);
-  }
-  
-  .content-container {
-    flex: 1;
-    overflow-y: scroll;
-  }
-  
-  .selected-menu-item {
-    font-weight: 700;
-    background-color: aliceblue;
-  }
+.sidebar-container {
+  display: flex;
+  height: calc(100vh - 70px);
+}
 
-  .collapse-btn {
-     margin: 20px; 
-     position: relative; 
-     top: 0; 
-     right: 0;
-     background-color: #766EAC;
-     border-style: none;
-  }
-    
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  max-height: 85vh;
+font-family: 'AR One Sans', sans-serif;
+}
+
+.selected-menu-item {
+  font-weight: 700;
+  background-color: aliceblue;
+  font-size: 15px;
+}
+
+.notselected-menu-item {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar-btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 5vh;
+  margin-top: 10px;
+}
+
+.sidebar-btn {
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.1s;
+  color: black;
+}
+
+.sidebar-btn:hover {
+  transform: scale(1.2);
+}
+
+.content-container {
+  flex: 1;
+  overflow-y: scroll;
+}
