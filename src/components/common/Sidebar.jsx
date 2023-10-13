@@ -1,32 +1,83 @@
-import React, { useState } from 'react';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import '../../assets/scss/Sidebar.css';
-import WindShield from '../vehicleDetails/WindShield';
-import Hood from '../vehicleDetails/Hood';
-import Grill from '../vehicleDetails/Grill';
-import FrontBumper from '../vehicleDetails/FrontBumper';
-import FrontLightings from '../vehicleDetails/FrontLightings';
-import RearLightings from '../vehicleDetails/RearLightings';
-import TailGate from '../vehicleDetails/TailGate';
-import RearBumper from '../vehicleDetails/RearBumper';
-import Spoiler from '../vehicleDetails/Spoiler';
-import RearGlass from '../vehicleDetails/RearGlass';
-
+import React, { useState } from "react";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import "../../assets/scss/Sidebar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleRight,
+  faAngleLeft
+} from "@fortawesome/free-solid-svg-icons";
+import WindShield from "../vehicleDetails/WindShield";
+import Hood from "../vehicleDetails/Hood";
+import Grill from "../vehicleDetails/Grill";
+import FrontBumper from "../vehicleDetails/FrontBumper";
+import FrontLightings from "../vehicleDetails/FrontLightings";
+import RearLightings from "../vehicleDetails/RearLightings";
+import RearGlass from "../vehicleDetails/RearGlass";
+import TailGate from "../vehicleDetails/TailGate";
+import RearBumper from "../vehicleDetails/RearBumper";
+import Spoiler from "../vehicleDetails/Spoiler";
+import FrontFenderLHS from "../vehicleDetails/FrontFenderLHS";
+import FrontDoorPassengerLHS from "../vehicleDetails/FrontDoorPassengerLHS";
+import RearDoorLHS from "../vehicleDetails/RearDoorLHS";
+import QuarterPanelLHS from "../vehicleDetails/QuarterPanelLHS";
+import QuarterPanelRHS from "../vehicleDetails/QuarterPanelRHS";
+import RearDoorRHS from "../vehicleDetails/RearDoorRHS";
+import FrontDoorDriver from "../vehicleDetails/FrontDoorDriver";
+import FrontFenderRHS from "../vehicleDetails/FrontFenderRHS";
+import VehicleRoof from "../vehicleDetails/VehicleRoof";
+import WheelArchFrontLHS from "../vehicleDetails/WheelArchFrontLHS";
+import EngineCompartment from "../vehicleDetails/EngineCompartment";
+import BootSpace from "../vehicleDetails/BootSpace";
+import UnderCarriageView from "../vehicleDetails/UnderCarriageView";
+import CheckWithEngineStart from "../vehicleDetails/CheckWithEngineStart";
+import InteriorInspection from "../vehicleDetails/InteriorInspection";
+import ScanningReport from "../vehicleDetails/ScanningReport";
+import MainDataMonitorHybrid from "../vehicleDetails/MainDataMonitorHybrid";
+import WarningIndicatorMain from "../vehicleDetails/WarningIndicatorMain";
+import RoadTest from "../vehicleDetails/RoadTest";
+import CoolingSystem from "../vehicleDetails/CoolingSystem";
+import Suspension from "../vehicleDetails/Suspension";
+import StartingDelay from "../vehicleDetails/StartingDelay";
+import EngineMissIdling from "../vehicleDetails/EngineMissIdling";
+import DocumentsRecords from "../vehicleDetails/DocumentsRecords";
 
 function SidebarComp() {
   const [selectedMenuItemIndex, setSelectedMenuItemIndex] = useState(0);
 
   const menuItems = [
-    'Wind Shield',
-    'Hood',
-    'Grill',
-    'Front Bumper',
-    'Front Lightings',
-    'Rear Lightings',
-    'Rear Glass',
-    'Tail Gate',
-    'Rear Bumper',
-    'Spoiler',
+    "Wind Shield",
+    "Hood",
+    "Grill",
+    "Front Bumper",
+    "Front Lightings",
+    "Rear Lightings",
+    "Rear Glass",
+    "Tail Gate",
+    "Rear Bumper",
+    "Spoiler",
+    "Front Fender LHS",
+    "Front Door Passenger LHS",
+    "Rear Door LHS",
+    "Quarter Panel LHS",
+    "Quarter Panel RHS",
+    "Rear Door RHS",
+    "Front Door Driver",
+    "Front Fender RHS",
+    "Vehicle Roof",
+    "Wheel Arch Front LHS",
+    "Engine Compartment",
+    "Boot Space",
+    "Ceck With Engine Start",
+    "Interior Inspection",
+    "Scanning Report",
+    "Main Data Monitor Hybrid",
+    "Warning Indicator Main",
+    "Road Test",
+    "Cooling System",
+    "Suspension",
+    "Starting Delay",
+    "Engine Miss Idling",
+    "Documents Records",
   ];
 
   const handleMenuItemClick = (menuItemIndex) => {
@@ -51,73 +102,73 @@ function SidebarComp() {
     const selectedMenuItem = menuItems[selectedMenuItemIndex];
 
     switch (selectedMenuItem) {
-      case 'Wind Shield':
+      case "Wind Shield":
         return <WindShield />;
-      case 'Hood':
+      case "Hood":
         return <Hood />;
-      case 'Grill':
+      case "Grill":
         return <Grill />;
-      case 'Front Bumper':
+      case "Front Bumper":
         return <FrontBumper />;
-      case 'Front Lightings':
+      case "Front Lightings":
         return <FrontLightings />;
-      case 'Rear Lightings':
+      case "Rear Lightings":
         return <RearLightings />;
-      case 'Rear Glass':
+      case "Rear Glass":
         return <RearGlass />;
-      case 'Tail Gate':
+      case "Tail Gate":
         return <TailGate />;
-      case 'Rear Bumper':
+      case "Rear Bumper":
         return <RearBumper />;
-      case 'Spoiler':
+      case "Spoiler":
         return <Spoiler />;
-      case 'frontFenderLHS':
+      case "Front Fender LHS":
         return <FrontFenderLHS />;
-      case 'frontDoorPassengerLHS':
+      case "Front Door Passenger LHS":
         return <FrontDoorPassengerLHS />;
-      case 'rearDoorLHS':
+      case "Rear Door LHS":
         return <RearDoorLHS />;
-      case 'quarterPanelLHS':
+      case "Quarter Panel LHS":
         return <QuarterPanelLHS />;
-      case 'quarterPanelRHS':
+      case "Quarter Panel RHS":
         return <QuarterPanelRHS />;
-      case 'rearDoorRHS':
+      case "Rear Door RHS":
         return <RearDoorRHS />;
-      case 'frontDoorDriver':
+      case "Front Door Driver":
         return <FrontDoorDriver />;
-      case 'frontFenderRHS':
+      case "Front Fender RHS":
         return <FrontFenderRHS />;
-      case 'vehicleRoof':
+      case "Vehicle Roof":
         return <VehicleRoof />;
-      case 'wheelArchFrontLHS':
+      case "Wheel Arch Front LHS":
         return <WheelArchFrontLHS />;
-      case 'engineCompartment':
+      case "Engine Compartment":
         return <EngineCompartment />;
-      case 'bootSpace':
+      case "Boot Space":
         return <BootSpace />;
-      case 'underCarriageView':
+      case "Under Carriage View":
         return <UnderCarriageView />;
-      case 'checkWithEngineStart':
+      case "Ceck With Engine Start":
         return <CheckWithEngineStart />;
-      case 'interiorInspection':
+      case "Interior Inspection":
         return <InteriorInspection />;
-      case 'scanningReport':
+      case "Scanning Report":
         return <ScanningReport />;
-      case 'mainDataMonitorHybrid':
+      case "Main Data Monitor Hybrid":
         return <MainDataMonitorHybrid />;
-      case 'warningIndicatorMain':
+      case "Warning Indicator Main":
         return <WarningIndicatorMain />;
-      case 'roadTest':
+      case "Road Test":
         return <RoadTest />;
-      case 'coolingSystem':
+      case "Cooling System":
         return <CoolingSystem />;
-      case 'suspension':
+      case "Suspension":
         return <Suspension />;
-      case 'startingDelay':
+      case "Starting Delay":
         return <StartingDelay />;
-      case 'engineMissIdling':
+      case "Engine Miss Idling":
         return <EngineMissIdling />;
-      case 'documentsRecords':
+      case "Documents Records":
         return <DocumentsRecords />;
       default:
         return null;
@@ -126,45 +177,38 @@ function SidebarComp() {
 
   return (
     <>
-      <div className="home-container">
-        <Sidebar width='250px' collapsedWidth="80px" transitionDuration={500} backgroundColor="#ffffff">
-          <Menu>
-            <MenuItem className={selectedMenuItem === 'windShield' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('windShield')}>
-              Wind Shield
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'hood' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('hood')}>
-              Hood / Bonat
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'grill' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('grill')}>
-              Grill
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'frontBumper' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('frontBumper')}>
-              Front Bumper
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'frontLightings' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('frontLightings')}>
-              Front Lightings
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'rearLightings' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearLightings')}>
-              Rear Lightings
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'rearGlass' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearGlass')}>
-              Rear Glass
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'tailGate' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('tailGate')}>
-              Tail Gate
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'rearBumper' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('rearBumper')}>
-              Rear Bumper
-            </MenuItem>
-            <MenuItem className={selectedMenuItem === 'spoiler' ? 'selected-menu-item' : ''}  onClick={() => handleMenuItemClick('spoiler')}>
-              Spoiler
-            </MenuItem>
-          </Menu>
+      <div className="sidebar-container">
+        <div className="sidebar-content">
+          <Sidebar className="sidebar" width="250px" transitionDuration={500}>
+            <Menu>
+              {menuItems.map((menuItem, index) => (
+                <MenuItem
+                  key={menuItem}
+                  className={
+                    selectedMenuItemIndex === index
+                      ? "selected-menu-item"
+                      : "notselected-menu-item"
+                  }
+                  onClick={() => handleMenuItemClick(index)}
+                >
+                  {menuItem === "hood" ? "Hood / Bonat" : menuItem}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Sidebar>
           <div className="sidebar-btns">
-            <button className="btn btn-primary sidebar-nextbtn" onClick={handlePreviousButtonClick}>Previous</button>
-            <button className="btn btn-primary sidebar-prvbtn" onClick={handleNextButtonClick}>Next</button>
+            <FontAwesomeIcon
+              icon={faAngleLeft}
+              onClick={handlePreviousButtonClick}
+              className="sidebar-btn"
+            />
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              onClick={handleNextButtonClick}
+              className="sidebar-btn"
+            />
           </div>
-        </Sidebar>
+        </div>
         <div className="content-container">
           <div>{renderComponent()}</div>
         </div>

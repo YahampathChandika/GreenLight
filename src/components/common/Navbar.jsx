@@ -5,7 +5,7 @@ function Navbar() {
   return (
       <div className='navBar'>
             <p>Green Light</p>
-            <button type="button" className="btn btn-success print-btn">Print</button>
+            <button type="button" className="btn btn-dark print-btn">Print</button>
       </div>
   )
 }
