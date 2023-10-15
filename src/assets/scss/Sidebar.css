@@ -1,0 +1,49 @@
+.sidebar-container {
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  max-height: 85vh;
+font-family: 'AR One Sans', sans-serif;
+}
+
+.selected-menu-item {
+  font-weight: 700;
+  background-color: aliceblue;
+  font-size: 15px;
+}
+
+.notselected-menu-item {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar-btns {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 5vh;
+  margin-top: 10px;
+}
+
+.sidebar-btn {
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.1s;
+  color: black;
+}
+
+.sidebar-btn:hover {
+  transform: scale(1.2);
+}
+
+.content-container {
+  flex: 1;
+  overflow-y: scroll;
+}

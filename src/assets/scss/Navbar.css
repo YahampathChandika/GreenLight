@@ -8,13 +8,26 @@
   .navBar {
     height: 70px;
     width: 100%;
-    background-color:#0CA789;
+    background-color:#00c167;
     display: flex;
     justify-items: center; 
     align-items: center;
     font-size:30px;
     font-weight: 900;
-    color: #ffffff;
+    color: #000000;
     padding-left: 40px;
+    font-family: 'Poppins', sans-serif;
+  }
 
+  .navBar p {
+    font-size: 2.2rem;
+    width: 50vw;
+    margin-left: 1%;
+  }
+
+  .print-btn {
+    margin-left: 35%;
+    margin-right: 5%;
+    width: 120px;
+    font-size: 1.2rem;
   }
