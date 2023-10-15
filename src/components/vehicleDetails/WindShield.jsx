@@ -68,6 +68,7 @@ function BootSpace() {
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Wind Shield</p>
+            
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -140,9 +141,6 @@ function BootSpace() {
             </table>
           </div>
         </div>
-        <button type="button" className="btn btn-primary next-btn">
-          Next
-        </button>
       </div>
     </div>
   );

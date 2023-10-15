@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Navbar from '../common/Navbar'
+import Paginations from '../common/Paginations'
 import '../../assets/scss/CustomerDetails.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+
+
 
 function CustomerDetails() {
+  const [selectedFiles, setSelectedFiles] = useState([null, null, null, null, null]);
+  const labels = [
+    'Mileage',
+    'Frame No',
+    'Certificate of Registration',
+    'Engine No',
+  ];
+
+  const handleFileInputChange = (e, index) => {
+    const file = e.target.files[0];
+    const updatedSelectedFiles = [...selectedFiles];
+    updatedSelectedFiles[index] = file;
+    setSelectedFiles(updatedSelectedFiles);
+  };
+
+  const openFileUploader = (index) => {
+    // Trigger a click on the hidden file input when the FontAwesome icon is clicked.
+    document.getElementById(`fileInput${index}`).click();
+  };
+
+
       
   return (
     <div>
@@ -141,30 +169,37 @@ function CustomerDetails() {
           </div>
         </div>
       </div>
-        <div className='details-bot'>
-          <div className='details-bot-left'>
-            <div class="mb-3" className='details-img-input'>
-              <label for="formFile" class="form-label" > <h6> Milage </h6></label>
-              <input class="form-control form-control-lg" type="file" id="formFile" />
+      <div className='details-bot'>
+          {[0, 1, 2, 3].map((index) => (
+            <div className='details-bot-left' key={index}>
+              <div className='details-input-image'>
+                <label>{labels[index]}</label>
+                <input
+                  type="file"
+                  id={`fileInput${index}`}
+                  accept=".jpg, .png, .pdf"
+                  onChange={(e) => handleFileInputChange(e, index)}
+                  style={{ display: 'none' }}
+                />
+                <input type="text" name='name' id='name' />
+                <span
+                  className={`image-icon-${index + 1}`}
+                  onClick={() => openFileUploader(index)}
+                >
+                  <FontAwesomeIcon icon={faImage} />
+                </span>
+                {selectedFiles[index] && (
+                  <p>Selected File: {selectedFiles[index].name}</p>
+                )}
+              </div>
             </div>
-            <div class="mb-3" className='details-img-input'>
-              <label for="formFile" class="form-label"><h6>Certificate of Registration</h6></label>
-              <input class="form-control form-control-lg" type="file" id="formFile"/>
-            </div>
-          </div>
-         <div className='details-bot-right'>
-           <div class="mb-3" className='details-img-input'>
-              <label for="formFile" class="form-label"><h6> Frame No </h6></label>
-              <input class="form-control form-control-lg" type="file" id="formFile"/>
-          </div>
-          <div class="mb-3" className='details-img-input'>
-              <label for="formFile" class="form-label"><h6>Engine No and Model</h6></label>
-              <input class="form-control form-control-lg" type="file" id="formFile"/>
-            </div>
-          </div>
-      </div>
-      <div className='details-button'>
+          ))}
+        </div>
+      {/* <div className='details-button'>
          <button type="button" class="btn btn-primary">Next</button>
+      </div> */}
+      <div style={{ width: '100%', marginBottom:'50px' , display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+         <Paginations />
       </div>
       </div>
     </div>
