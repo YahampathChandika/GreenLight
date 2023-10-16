@@ -48,9 +48,9 @@ function RearGlass() {
 
   return (
     <div className='vi-main-con'>
-        <div className="progress">
+        {/* <div className="progress">
           <div className="progress-bar" role="progressbar" style={{ width: '10%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        </div> */}
         <div className='vi-content'>
           <div className='vi-content-top'>
             <p>Rear Glass</p>

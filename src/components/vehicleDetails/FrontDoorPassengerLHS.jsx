@@ -57,9 +57,9 @@ function FrontDoorPassengerLHS() {
   return (
     <div className='vi-main-con'>
       <div className='vi-main-content'>
-        <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ width: '20%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        {/* <div className="progress">
+          <div className="progress-bar" role="progressbar" style={{ width: '20%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> */}
+        {/* </div> */}
         <div className='vi-content'>
           <div className='vi-content-top'>
             <p>Front Door Passenger L/H/S</p>
@@ -115,7 +115,7 @@ function FrontDoorPassengerLHS() {
             </table>
           </div>
         </div>
-        <button type="button" className="btn btn-primary next-btn">Next</button>
+        {/* <button type="button" className="btn btn-primary next-btn">Next</button> */}
       </div>
     </div>
   );
