@@ -30,6 +30,7 @@
 .details-input {
     display: flex;
     flex-direction: column;
+
 }
 .details-input input{
     width: 90%;
@@ -42,6 +43,10 @@
     border: 0.5px solid rgb(211, 211, 211);
 }
 
+.details-input label {
+    display: flex;
+    justify-content: left;
+}
 
 .details-top-left{
     width: 50%; 
@@ -77,23 +82,60 @@
 }
 
 .details-bot-left {
-    width: 50%;
-    
+    width: 50%;    
 }
 
 .details-bot-right{
     width: 50%;
 }
 
-.details-img-input input{
+.details-input-image{
+    display: flex;
+    flex-direction: column;
+}
+.details-input-image input{
     width: 90%;
-    height: 40px;
-    padding-left: 10px;
+    height: 50px;
+    padding-left: 70px;
     margin-bottom: 30px;
     border-radius: 5px;
     border-style: none;
     border: 0.5px solid rgb(211, 211, 211);
+    margin-top: 5px;
 }
+
+.image-icon-1{
+    position: absolute;
+    left: 10%;
+    bottom: 3.8%;
+    font-size: 54px;
+    cursor: pointer;
+}
+
+.image-icon-2 {
+    position: absolute;
+    left: 31.3%;
+    bottom: 3.8%;
+    font-size: 54px;
+    cursor: pointer;
+}
+
+.image-icon-3 {
+    position: absolute;
+    left: 52.56%;
+    bottom: 3.8%;
+    font-size: 54px;
+    cursor: pointer;
+}
+
+.image-icon-4 {
+    position: absolute;
+    left: 73.8%;
+    bottom: 3.8%;
+    font-size: 54px;
+    cursor: pointer;
+}
+
 
 .details-button {
     width: 100%;

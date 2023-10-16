@@ -37,12 +37,13 @@
 
 .vi-content-top-img-con {
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .vi-content-top-btns {
   margin-right: 40px;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .vi-content-top-btns label {
@@ -54,9 +55,27 @@
   width: 120px;
 }
 
-.vi-content-top-img img{
-  max-height: 200px  !important;
-  width: auto;
+.vi-content-top-img {
+  display: grid; /* Use CSS Grid for the image grid */
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-gap: 10px; /* Gap between grid items */
+  /* max-height: 400px;
+  overflow: scroll; */
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vi-content-top-img img {
+  max-width: 100%;
+}
+
+.vi-content-top-img button {
+  width: 200px;
+  margin-top: 10px;
 }
 
 /* Style for the table */
