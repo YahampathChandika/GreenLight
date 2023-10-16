@@ -42,21 +42,21 @@ function BootSpace() {
   };
 
   // Sample data for your table
-   const data = [
-     { id: 1, attribute: "Original spare wheel" },
-     { id: 2, attribute: "Under board and carpet" },
-     { id: 3, attribute: "Tool kit and sack" },
-     { id: 4, attribute: "Luggage light" },
-     { id: 5, attribute: "Air compressure and tyre repair kit" },
-     { id: 6, attribute: "No damage on spare wheel" },
-     { id: 7, attribute: "Compartment and glue joints" },
-     { id: 8, attribute: "Uphosteries" },
-   ];
+  const data = [
+    { id: 1, attribute: "Original spare wheel" },
+    { id: 2, attribute: "Under board and carpet" },
+    { id: 3, attribute: "Tool kit and sack" },
+    { id: 4, attribute: "Luggage light" },
+    { id: 5, attribute: "Air compressure and tyre repair kit" },
+    { id: 6, attribute: "No damage on spare wheel" },
+    { id: 7, attribute: "Compartment and glue joints" },
+    { id: 8, attribute: "Uphosteries" },
+  ];
 
   return (
     <div className="vi-main-con">
       <div className="vi-main-content">
-        <div className="progress">
+        {/* <div className="progress">
           <div
             className="progress-bar"
             role="progressbar"
@@ -65,7 +65,7 @@ function BootSpace() {
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
-        </div>
+        </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Boot Space</p>

@@ -3,6 +3,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import "../../assets/scss/Navbar.css";
 import PDF from "../../pages/Pdf";
+import logo from "../../assets/images/greenlight logo.png";
 
 function Navbar() {
   const pdfRef = useRef(null);
@@ -24,7 +25,7 @@ function Navbar() {
         Math.min(pdfWidth / imageWidth, pdfHeight / imageHeight) * 1.5;
       const imgX = (pdfWidth - imageWidth * ratio) / 2;
       const imgY = 20;
-            pdf.addImage(imageData, "PNG", 0, 0, contentWidth, contentHeight);
+      pdf.addImage(imageData, "PNG", 0, 0, contentWidth, contentHeight);
 
       pdf.save("test.pdf");
     });
@@ -32,7 +33,8 @@ function Navbar() {
 
   return (
     <div className="navBar">
-      <p>Green Ligat</p>
+      <img src={logo} alt="Green Light Logo" className="logo" />
+      <p>Green Light</p>
       <button
         type="button"
         className="btn btn-dark print-btn"

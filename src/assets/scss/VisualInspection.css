@@ -93,7 +93,7 @@
 /* Style for table rows */
 .table td {
   padding: 8px;
-  text-align: center;
+  text-align: left;
 }
 
 /* Style for the radio buttons */

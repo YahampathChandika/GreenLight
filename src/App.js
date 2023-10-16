@@ -7,6 +7,7 @@ import Grill from './components/vehicleDetails/Grill';
 
 // import Navbar from './components/common/Navbar'
 import CustomerDetails from './components/customersDetails/CustomerDetails';
+import PDF from './pages/Pdf';
 // import VisualInspection from './components/vehicleDetails/VisualInspection'
 function App() {
   return (
@@ -14,9 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="customerDetails" element={<CustomerDetails />} />
-        <Route path="/windShield" element={<WindShield />} />
-        <Route path="/hood" element={<Hood />} />
-        <Route path="/grill" element={<Grill />} />
+        <Route path="/pdf" element={<PDF />} />
       </Routes>
     </Router>
     // <div className="App">

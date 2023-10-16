@@ -38,7 +38,7 @@ function MainDataMonitorHybrid() {
   return (
     <div className="vi-main-con">
       <div className="vi-main-content">
-        <div className="progress">
+        {/* <div className="progress">
           <div
             className="progress-bar"
             role="progressbar"
@@ -47,7 +47,7 @@ function MainDataMonitorHybrid() {
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
-        </div>
+        </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
             <p> Main Data Monitor Hybrid </p>
