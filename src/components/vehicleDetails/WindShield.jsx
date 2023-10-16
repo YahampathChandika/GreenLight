@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
 
-function BootSpace() {
+function WindShield({ updatePdfData }) {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
     { label: "Bad", color: "red" },
     { label: "NA", color: "gray" },
   ];
+
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("attributeRatings");
+    if (savedRatings) {
+      setAttributeRatings(JSON.parse(savedRatings));
+    }
+  }, []);
 
   // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
@@ -18,7 +25,14 @@ function BootSpace() {
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
-    setAttributeRatings({ ...attributeRatings, [attribute]: rating });
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    updatePdfData("windShieldData", updatedRatings);
+
+    // Save the updated ratings to localStorage
+    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -32,6 +46,9 @@ function BootSpace() {
     }
 
     setFiles([...files, ...fileURLs]);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
@@ -42,20 +59,20 @@ function BootSpace() {
   };
 
   // Sample data for your table
- const data = [
-   { id: 1, attribute: "Original" },
-   { id: 2, attribute: "No evidence of major damage" },
-   { id: 3, attribute: "No scratches" },
-   { id: 4, attribute: "No mineral deposit / Acid rain damage" },
-   { id: 5, attribute: "Wiper blade" },
-   { id: 6, attribute: "Wiper spindles" },
-   { id: 7, attribute: "Wiper arms" },
- ];
+  const data = [
+    { id: 1, attribute: "Original" },
+    { id: 2, attribute: "No evidence of major damage" },
+    { id: 3, attribute: "No scratches" },
+    { id: 4, attribute: "No mineral deposit / Acid rain damage" },
+    { id: 5, attribute: "Wiper blade" },
+    { id: 6, attribute: "Wiper spindles" },
+    { id: 7, attribute: "Wiper arms" },
+  ];
 
   return (
     <div className="vi-main-con">
       <div className="vi-main-content">
-        <div className="progress">
+        {/* <div className="progress">
           <div
             className="progress-bar"
             role="progressbar"
@@ -64,11 +81,11 @@ function BootSpace() {
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
-        </div>
+        </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Wind Shield</p>
-            
+
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -146,4 +163,4 @@ function BootSpace() {
   );
 }
 
-export default BootSpace;
+export default WindShield;
