@@ -22,12 +22,12 @@
 .navBar p {
   font-size: 2.2rem;
   width: 50vw;
-  margin-left: 1%;
 }
 
 .logo {
-  width: 150px; 
-  height: auto;
+  width: auto; 
+  height: 70px;
+  margin-right: 15px;
 }
 
 /* Other styles for your navbar */
