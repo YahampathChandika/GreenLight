@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
 
-function WindShield({ updatePdfData }) {
+function WindShield() {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
@@ -24,16 +24,13 @@ function WindShield({ updatePdfData }) {
   const [files, setFiles] = useState([]);
 
   // Function to handle changes in attribute ratings
-  const handleRatingChange = (attribute, rating) => {
-    const updatedRatings = { ...attributeRatings, [attribute]: rating };
-    setAttributeRatings(updatedRatings);
+   const handleRatingChange = (attribute, rating) => {
+     const updatedRatings = { ...attributeRatings, [attribute]: rating };
+     setAttributeRatings(updatedRatings);
 
-    // Call the updatePdfData function to update the data in the PDF component
-    updatePdfData("windShieldData", updatedRatings);
-
-    // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
-  };
+     // Save the updated ratings to localStorage
+     localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+   };
 
   // Function to handle file selection
   const handleFileChange = (e) => {
@@ -46,9 +43,6 @@ function WindShield({ updatePdfData }) {
     }
 
     setFiles([...files, ...fileURLs]);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
@@ -131,7 +125,7 @@ function WindShield({ updatePdfData }) {
                 {data.map((item) => (
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <td style={{paddingLeft: '50px', width: '35%'}}>{item.attribute}</td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
                         <label className="select-lbl">

@@ -8,13 +8,13 @@
 .navBar {
   height: 70px;
   width: 100%;
-  background-color: #86A67C;
+  background-color: #ccd2cb;
   display: flex;
   justify-items: center;
   align-items: center;
   font-size: 30px;
   font-weight: 900;
-  color: #830424;
+  color: #000000;
   padding-left: 40px;
   font-family: "Poppins", sans-serif;
 }

@@ -114,7 +114,9 @@ function BootSpace() {
                 {data.map((item) => (
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <td style={{ paddingLeft: "50px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
                         <label className="select-lbl">

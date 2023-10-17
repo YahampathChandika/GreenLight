@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../assets/scss/VisualInspection.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../assets/scss/VisualInspection.css";
 
 function RearDoorRHS() {
   const ratingOptions = [
-    { label: 'Good', color: 'green' },
-    { label: 'Normal', color: 'yellow' },
-    { label: 'Bad', color: 'red' },
-    { label: 'NA', color: 'gray' },
+    { label: "Good", color: "green" },
+    { label: "Normal", color: "yellow" },
+    { label: "Bad", color: "red" },
+    { label: "NA", color: "gray" },
   ];
 
   // Create a state to keep track of the selected rating for each attribute
@@ -21,88 +21,110 @@ function RearDoorRHS() {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-  
+
     if (selectedFile) {
       const objectURL = URL.createObjectURL(selectedFile);
       setFile(objectURL);
     } else {
-      console.error('No file selected.');
+      console.error("No file selected.");
     }
   };
-  
 
   const handleDeleteImage = () => {
     setFile(null); // Clear the uploaded image
   };
 
-  
   // Sample data for your table
   const data = [
-    { id: 1, attribute: 'Elignment' },
-    { id: 2, attribute: 'No evidence of major damage' },
-    { id: 3, attribute: 'No re paint' },
-    { id: 4, attribute: 'Existing paint condition' },
-    { id: 5, attribute: 'No scratches' },
-    { id: 6, attribute: 'No corrosion' },
-    { id: 7, attribute: 'Trim molding / Crome lines' },
-    { id: 8, attribute: 'Window Glass' },
-    { id: 9, attribute: 'Weatherstrip' },
-    { id: 10, attribute: 'Handle / Lock' },
-    { id: 11, attribute: 'Rubber seeling strips' },
-    { id: 12, attribute: 'Upholstery' },
-    { id: 13, attribute: 'Hingers' },
-    { id: 14, attribute: 'B pillar' },
-    { id: 15, attribute: 'C pillar' },
+    { id: 1, attribute: "Elignment" },
+    { id: 2, attribute: "No evidence of major damage" },
+    { id: 3, attribute: "No re paint" },
+    { id: 4, attribute: "Existing paint condition" },
+    { id: 5, attribute: "No scratches" },
+    { id: 6, attribute: "No corrosion" },
+    { id: 7, attribute: "Trim molding / Crome lines" },
+    { id: 8, attribute: "Window Glass" },
+    { id: 9, attribute: "Weatherstrip" },
+    { id: 10, attribute: "Handle / Lock" },
+    { id: 11, attribute: "Rubber seeling strips" },
+    { id: 12, attribute: "Upholstery" },
+    { id: 13, attribute: "Hingers" },
+    { id: 14, attribute: "B pillar" },
+    { id: 15, attribute: "C pillar" },
   ];
 
   return (
-    <div className='vi-main-con'>
-      <div className='vi-main-content'>
+    <div className="vi-main-con">
+      <div className="vi-main-content">
         <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ width: '20%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: "20%" }}
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
         </div>
-        <div className='vi-content'>
-          <div className='vi-content-top'>
+        <div className="vi-content">
+          <div className="vi-content-top">
             <p>Rear Door R/H/S</p>
-            <div className='vi-content-top-img-con'>
-              <div className='vi-content-top-btns'>
+            <div className="vi-content-top-img-con">
+              <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload File
-                  <input type="file" accept="image/jpeg, image/png, image/gif" onChange={handleFileChange} style={{ display: 'none' }} />
+                  <input
+                    type="file"
+                    accept="image/jpeg, image/png, image/gif"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }}
+                  />
                 </label>
-                <button type="button" onClick={handleDeleteImage} className="btn btn-danger">Delete</button>
+                <button
+                  type="button"
+                  onClick={handleDeleteImage}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
               </div>
-              <div className='vi-content-top-img'>
+              <div className="vi-content-top-img">
                 {file && <img src={file} alt="Uploaded" />}
               </div>
             </div>
           </div>
-          <div className='vi-content-bot'>
-            <table className='table table-hover'>
+          <div className="vi-content-bot">
+            <table className="table table-hover">
               <thead>
                 <tr>
-                  <th scope='col'>#</th>
-                  <th scope='col'>Attribute Name</th>
-                  <th scope='col'>Good</th>
-                  <th scope='col'>Normal</th>
-                  <th scope='col'>Bad</th>
-                  <th scope='col'>N/A</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Attribute Name</th>
+                  <th scope="col">Good</th>
+                  <th scope="col">Normal</th>
+                  <th scope="col">Bad</th>
+                  <th scope="col">N/A</th>
                 </tr>
               </thead>
               <tbody>
                 {data.map((item) => (
                   <tr key={item.id}>
-                    <th scope='row'>{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <th scope="row">{item.id}</th>
+                    <td style={{ paddingLeft: "50px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
-                        <label className='select-lbl'>
+                        <label className="select-lbl">
                           <input
-                            type='radio'
+                            type="radio"
                             name={`rating-${item.id}-${item.attribute}`}
                             value={option.label}
-                            checked={attributeRatings[item.attribute] === option.label}
-                            onChange={() => handleRatingChange(item.attribute, option.label)}
+                            checked={
+                              attributeRatings[item.attribute] === option.label
+                            }
+                            onChange={() =>
+                              handleRatingChange(item.attribute, option.label)
+                            }
                           />
                           <span
                             className={`rating-color ${option.label.toLowerCase()}`}
@@ -116,7 +138,9 @@ function RearDoorRHS() {
             </table>
           </div>
         </div>
-        <button type="button" className="btn btn-primary next-btn">Next</button>
+        <button type="button" className="btn btn-primary next-btn">
+          Next
+        </button>
       </div>
     </div>
   );

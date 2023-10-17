@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../assets/scss/VisualInspection.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../assets/scss/VisualInspection.css";
 
 function RoadTest() {
   const ratingOptions = [
-    { label: 'Good', color: 'green' },
-    { label: 'Normal', color: 'yellow' },
-    { label: 'Bad', color: 'red' },
-    { label: 'NA', color: 'gray' },
+    { label: "Good", color: "green" },
+    { label: "Normal", color: "yellow" },
+    { label: "Bad", color: "red" },
+    { label: "NA", color: "gray" },
   ];
 
   // Create a state to keep track of the selected rating for each attribute
@@ -21,38 +21,36 @@ function RoadTest() {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-  
+
     if (selectedFile) {
       const objectURL = URL.createObjectURL(selectedFile);
       setFile(objectURL);
     } else {
-      console.error('No file selected.');
+      console.error("No file selected.");
     }
   };
-  
 
   const handleDeleteImage = () => {
     setFile(null); // Clear the uploaded image
   };
 
-  
   // Sample data for your table
   const data = [
-    { id: 1, attribute: 'O D O meter' },
-    { id: 2, attribute: 'RPM Meter' },
-    { id: 3, attribute: 'Steering wheel position' },
-    { id: 4, attribute: 'Wheel allignment / Side pulling' },
-    { id: 5, attribute: 'Brake efficency' },
-    { id: 6, attribute: 'No CV joint noise' },
-    { id: 7, attribute: 'Vehicle pickup' },
-    { id: 8, attribute: 'Clutch function' },
-    { id: 9, attribute: 'Auto gear shifting' },
-    { id: 10, attribute: 'No wheel bearing or gear noise' },
-    { id: 11, attribute: '4WD operation' },
-    { id: 12, attribute: 'Power steering function' },
-    { id: 13, attribute: 'No suspension noises' },
-    { id: 14, attribute: 'Radiator fan on 97°C to 80°C' },
-    { id: 15, attribute: 'Wheel speed sensor data' },
+    { id: 1, attribute: "O D O meter" },
+    { id: 2, attribute: "RPM Meter" },
+    { id: 3, attribute: "Steering wheel position" },
+    { id: 4, attribute: "Wheel allignment / Side pulling" },
+    { id: 5, attribute: "Brake efficency" },
+    { id: 6, attribute: "No CV joint noise" },
+    { id: 7, attribute: "Vehicle pickup" },
+    { id: 8, attribute: "Clutch function" },
+    { id: 9, attribute: "Auto gear shifting" },
+    { id: 10, attribute: "No wheel bearing or gear noise" },
+    { id: 11, attribute: "4WD operation" },
+    { id: 12, attribute: "Power steering function" },
+    { id: 13, attribute: "No suspension noises" },
+    { id: 14, attribute: "Radiator fan on 97°C to 80°C" },
+    { id: 15, attribute: "Wheel speed sensor data" },
   ];
 
   return (
@@ -111,7 +109,9 @@ function RoadTest() {
                 {data.map((item) => (
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <td style={{ paddingLeft: "50px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
                         <label className="select-lbl">
