@@ -106,9 +106,9 @@ function RearGlass() {
             </table>
           </div>
         </div>
-        <Link to="/hood" className="btn btn-primary next-btn">
-          Next
-        </Link>
+        {/* <Link to="/hood" className="btn btn-primary next-btn"> */}
+          {/* Next
+        </Link> */}
     </div>
   );
 }
