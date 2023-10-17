@@ -8,15 +8,16 @@
 .navBar {
   height: 70px;
   width: 100%;
-  background-color: #ccd2cb;
+  background-color: #7abc4b;
   display: flex;
   justify-items: center;
   align-items: center;
   font-size: 30px;
   font-weight: 900;
-  color: #000000;
+  color: #1e4106;
   padding-left: 40px;
   font-family: "Poppins", sans-serif;
+  /* border-bottom: 1px solid rgb(0, 0, 0, 0.5); */
 }
 
 .navBar p {

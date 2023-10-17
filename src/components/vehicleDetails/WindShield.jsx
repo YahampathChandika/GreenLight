@@ -24,9 +24,12 @@ function WindShield() {
   const [files, setFiles] = useState([]);
 
   // Function to handle changes in attribute ratings
-   const handleRatingChange = (attribute, rating) => {
-     const updatedRatings = { ...attributeRatings, [attribute]: rating };
-     setAttributeRatings(updatedRatings);
+  const handleRatingChange = (attribute, rating) => {
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("windShieldData", updatedRatings);
 
      // Save the updated ratings to localStorage
      localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
@@ -43,6 +46,9 @@ function WindShield() {
     }
 
     setFiles([...files, ...fileURLs]);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
