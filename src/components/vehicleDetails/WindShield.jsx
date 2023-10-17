@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
 
-function WindShield({ updatePdfData }) {
+function WindShield() {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
@@ -29,7 +29,7 @@ function WindShield({ updatePdfData }) {
     setAttributeRatings(updatedRatings);
 
     // Call the updatePdfData function to update the data in the PDF component
-    updatePdfData("windShieldData", updatedRatings);
+    // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
     localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
@@ -48,7 +48,7 @@ function WindShield({ updatePdfData }) {
     setFiles([...files, ...fileURLs]);
 
     // Call the updatePdfData function to update the data in the PDF component
-    updatePdfData("fileURLs", [...files, ...fileURLs]);
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image

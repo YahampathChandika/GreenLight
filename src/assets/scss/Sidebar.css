@@ -6,16 +6,18 @@
 .sidebar-content {
   display: flex;
   flex-direction: column;
+
 }
 
 .sidebar {
   max-height: 85vh;
 font-family: 'AR One Sans', sans-serif;
+    background-color: #AFCCA9;
 }
 
 .selected-menu-item {
   font-weight: 700;
-  background-color: aliceblue;
+  background-color: #c8ca47;
   font-size: 15px;
 }
 
