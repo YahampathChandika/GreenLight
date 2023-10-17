@@ -133,6 +133,68 @@ function RearGlass() {
       <Link to="/hood" className="btn btn-primary next-btn">
         Next
       </Link>
+    <div className='vi-main-con'>
+        {/* <div className="progress">
+          <div className="progress-bar" role="progressbar" style={{ width: '10%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> */}
+        <div className='vi-content'>
+          <div className='vi-content-top'>
+            <p>Rear Glass</p>
+            <div className='vi-content-top-img-con'>
+              <div className='vi-content-top-btns'>
+                <label className="btn btn-secondary">
+                  Upload File
+                  <input type="file" accept="image/jpeg, image/png, image/gif" onChange={handleFileChange} style={{ display: 'none' }} />
+                </label>
+                <button type="button" onClick={handleDeleteImage} className="btn btn-danger">Delete</button>
+              </div>
+              <div className='vi-content-top-img'>
+                {file && <img src={file} alt="Uploaded" />}
+              </div>
+            </div>
+          </div>
+          <div className='vi-content-bot'>
+            <table className='table table-hover'>
+              <thead>
+                <tr>
+                  <th scope='col'>#</th>
+                  <th scope='col'>Attribute Name</th>
+                  <th scope='col'>Good</th>
+                  <th scope='col'>Normal</th>
+                  <th scope='col'>Bad</th>
+                  <th scope='col'>N/A</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item) => (
+                  <tr key={item.id}>
+                    <th scope='row'>{item.id}</th>
+                    <td>{item.attribute}</td>
+                    {ratingOptions.map((option) => (
+                      <td key={option.label}>
+                        <label className='select-lbl'>
+                          <input
+                            type='radio'
+                            name={`rating-${item.id}-${item.attribute}`}
+                            value={option.label}
+                            checked={attributeRatings[item.attribute] === option.label}
+                            onChange={() => handleRatingChange(item.attribute, option.label)}
+                          />
+                          <span
+                            className={`rating-color ${option.label.toLowerCase()}`}
+                          ></span>
+                        </label>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <Link to="/hood" className="btn btn-primary next-btn">
+          Next
+        </Link>
     </div>
   );
 }

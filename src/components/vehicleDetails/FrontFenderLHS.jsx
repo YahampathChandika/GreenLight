@@ -129,9 +129,7 @@ function FrontFenderLHS() {
             </table>
           </div>
         </div>
-        <button type="button" className="btn btn-primary next-btn">
-          Next
-        </button>
+        {/* <button type="button" className="btn btn-primary next-btn">Next</button> */}
       </div>
     </div>
   );
