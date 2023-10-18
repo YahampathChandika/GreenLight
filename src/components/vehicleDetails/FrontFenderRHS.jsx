@@ -66,12 +66,12 @@ function FrontFenderRHS() {
     { id: 4, attribute: "Exsiting paint condition" },
     { id: 5, attribute: "No scratches" },
     { id: 6, attribute: "No corrosion" },
-    { id: 1, attribute: "Elignment" },
-    { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No re-paint" },
-    { id: 4, attribute: "Exsiting paint condition" },
-    { id: 5, attribute: "No scratches" },
-    { id: 6, attribute: "No corrosion" },
+    { id: 7, attribute: "Elignment" },
+    { id: 8, attribute: "No evidence of major damage" },
+    { id: 9, attribute: "No re-paint" },
+    { id: 10, attribute: "Exsiting paint condition" },
+    { id: 11, attribute: "No scratches" },
+    { id: 12, attribute: "No corrosion" },
   ];
 
   return (

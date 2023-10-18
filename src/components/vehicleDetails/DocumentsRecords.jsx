@@ -68,14 +68,14 @@ function DocumentsRecords() {
     { id: 6, attribute: "License uprate" },
     { id: 7, attribute: "Original C.R" },
     { id: 8, attribute: "Delisher letter" },
-    { id: 1, attribute: "Owners manual" },
-    { id: 2, attribute: "Emission test reports" },
-    { id: 3, attribute: "Vehicle repair history and maintenance" },
-    { id: 4, attribute: "Scheduled" },
-    { id: 5, attribute: "Insurance uprate and company" },
-    { id: 6, attribute: "License uprate" },
-    { id: 7, attribute: "Original C.R" },
-    { id: 8, attribute: "Delisher letter" },
+    { id: 9, attribute: "Owners manual" },
+    { id: 10, attribute: "Emission test reports" },
+    { id: 11, attribute: "Vehicle repair history and maintenance" },
+    { id: 12, attribute: "Scheduled" },
+    { id: 13, attribute: "Insurance uprate and company" },
+    { id: 14, attribute: "License uprate" },
+    { id: 15, attribute: "Original C.R" },
+    { id: 16, attribute: "Delisher letter" },
   ];
 
   return (

@@ -31,9 +31,9 @@ function WindShield() {
     // Call the updatePdfData function to update the data in the PDF component
     // updatePdfData("windShieldData", updatedRatings);
 
-     // Save the updated ratings to localStorage
-     localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
-   };
+    // Save the updated ratings to localStorage
+    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+  };
 
   // Function to handle file selection
   const handleFileChange = (e) => {

@@ -4,58 +4,122 @@ import "../assets/scss/VisualInspection.css";
 import Boot from "../components/vehicleDetails/BootSpace";
 import Roof from "../components/vehicleDetails/CheckWithEngineStart";
 import WindShield from "../components/vehicleDetails/WindShield";
+import Hood from "../components/vehicleDetails/Hood";
+import Grill from "../components/vehicleDetails/Grill";
+import FrontBumper from "../components/vehicleDetails/FrontBumper";
+import FrontLightings from "../components/vehicleDetails/FrontLightings";
+import RearLightings from "../components/vehicleDetails/RearLightings";
+import RearGlass from "../components/vehicleDetails/RearGlass";
+import TailGate from "../components/vehicleDetails/TailGate";
+import RearBumper from "../components/vehicleDetails/RearBumper";
+import Spoiler from "../components/vehicleDetails/Spoiler";
+import FrontFenderLHS from "../components/vehicleDetails/FrontFenderLHS";
+import FrontDoorPassengerLHS from "../components/vehicleDetails/FrontDoorPassengerLHS";
+import RearDoorLHS from "../components/vehicleDetails/RearDoorLHS";
+import QuarterPanelLHS from "../components/vehicleDetails/QuarterPanelLHS";
+import QuarterPanelRHS from "../components/vehicleDetails/QuarterPanelRHS";
+import RearDoorRHS from "../components/vehicleDetails/RearDoorRHS";
+import FrontDoorDriver from "../components/vehicleDetails/FrontDoorDriver";
+import FrontFenderRHS from "../components/vehicleDetails/FrontFenderRHS";
+import VehicleRoof from "../components/vehicleDetails/VehicleRoof";
+import WheelArchFrontLHS from "../components/vehicleDetails/WheelArchFrontLHS";
+import EngineCompartment from "../components/vehicleDetails/EngineCompartment";
+import BootSpace from "../components/vehicleDetails/BootSpace";
+import UnderCarriageView from "../components/vehicleDetails/UnderCarriageView";
+import CheckWithEngineStart from "../components/vehicleDetails/CheckWithEngineStart";
+import InteriorInspection from "../components/vehicleDetails/InteriorInspection";
+import ScanningReport from "../components/vehicleDetails/ScanningReport";
+import MainDataMonitorHybrid from "../components/vehicleDetails/MainDataMonitorHybrid";
+import WarningIndicatorMain from "../components/vehicleDetails/WarningIndicatorMain";
+import RoadTest from "../components/vehicleDetails/RoadTest";
+import CoolingSystem from "../components/vehicleDetails/CoolingSystem";
+import Suspension from "../components/vehicleDetails/Suspension";
+import StartingDelay from "../components/vehicleDetails/StartingDelay";
+import EngineMissIdling from "../components/vehicleDetails/EngineMissIdling";
+import DocumentsRecords from "../components/vehicleDetails/DocumentsRecords";
 
 function PDF() {
   // Define state to store user selections and file URLs
-  const [pdfData, setPdfData] = useState({
-    windShieldData: {},
-    bootData: {},
-    roofData: {},
-    fileURLs: [],
-  });
+  // const [pdfData, setPdfData] = useState({
+  //   windShieldData: {},
+  //   bootData: {},
+  //   roofData: {},
+  //   fileURLs: [],
+  // });
 
   // Function to update the PDF data
-  const updatePdfData = (component, data) => {
-    setPdfData((prevData) => ({
-      ...prevData,
-      [component]: data,
-    }));
-  };
+  // const updatePdfData = (component, data) => {
+  //   setPdfData((prevData) => ({
+  //     ...prevData,
+  //     [component]: data,
+  //   }));
+  // };
 
-  useEffect(() => {
-    // Load data from local storage when the component mounts
-    const storedWindShieldData = localStorage.getItem("windshield");
-    const storedBootData = localStorage.getItem("bootData");
-    const storedRoofData = localStorage.getItem("roofData");
-    console.log("bk", storedWindShieldData);
-    if (storedWindShieldData) {
-      setPdfData((prevData) => ({
-        ...prevData,
-        windShieldData: JSON.parse(storedWindShieldData),
-      }));
-    }
+  // useEffect(() => {
+  //   // Load data from local storage when the component mounts
+  //   const storedWindShieldData = localStorage.getItem("windshield");
+  //   const storedBootData = localStorage.getItem("bootData");
+  //   const storedRoofData = localStorage.getItem("roofData");
+  //   console.log("bk", storedWindShieldData);
+  //   if (storedWindShieldData) {
+  //     setPdfData((prevData) => ({
+  //       ...prevData,
+  //       windShieldData: JSON.parse(storedWindShieldData),
+  //     }));
+  //   }
 
-    if (storedBootData) {
-      setPdfData((prevData) => ({
-        ...prevData,
-        bootData: JSON.parse(storedBootData),
-      }));
-    }
+  //   if (storedBootData) {
+  //     setPdfData((prevData) => ({
+  //       ...prevData,
+  //       bootData: JSON.parse(storedBootData),
+  //     }));
+  //   }
 
-    if (storedRoofData) {
-      setPdfData((prevData) => ({
-        ...prevData,
-        roofData: JSON.parse(storedRoofData),
-      }));
-    }
-  }, []); // The empty dependency array ensures this effect runs only once when the component mounts
+  //   if (storedRoofData) {
+  //     setPdfData((prevData) => ({
+  //       ...prevData,
+  //       roofData: JSON.parse(storedRoofData),
+  //     }));
+  //   }
+  // }, []); // The empty dependency array ensures this effect runs only once when the component mounts
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Report</h1>
-      <WindShield updatePdfData={updatePdfData} />
-      <Boot />
-      <Roof />
+      <WindShield />
+      <Hood/>
+      <Grill/>
+      <FrontBumper/>
+      <FrontLightings/>
+      <RearLightings/>
+      <RearGlass/>
+      <TailGate/>
+      <RearBumper/>
+      <Spoiler/>
+      <FrontFenderLHS/>
+      <FrontDoorPassengerLHS/>
+      <RearDoorLHS/>
+      <QuarterPanelLHS/>
+      <QuarterPanelRHS/>
+      <RearDoorRHS/>
+      <FrontDoorDriver/>
+      <FrontFenderRHS/>
+      <VehicleRoof/>
+      <WheelArchFrontLHS/>
+      <EngineCompartment/>
+      <BootSpace/>
+      <UnderCarriageView/>
+      <CheckWithEngineStart/>
+      <InteriorInspection/>
+      <ScanningReport/>
+      <MainDataMonitorHybrid/>
+      <WarningIndicatorMain/>
+      <RoadTest/>
+      <CoolingSystem/>
+      <Suspension/>
+      <StartingDelay/>
+      <EngineMissIdling/>
+      <DocumentsRecords/>
     </>
   );
 }

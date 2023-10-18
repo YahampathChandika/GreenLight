@@ -67,13 +67,13 @@ function QuarterPanelLHS() {
     { id: 5, attribute: "No scratches" },
     { id: 6, attribute: "No corrosion" },
     { id: 7, attribute: "Quarter Glass" },
-    { id: 1, attribute: "Elignment" },
-    { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No re paint" },
-    { id: 4, attribute: "Existing paint condition" },
-    { id: 5, attribute: "No scratches" },
-    { id: 6, attribute: "No corrosion" },
-    { id: 7, attribute: "Quarter Glass" },
+    { id: 8, attribute: "Elignment" },
+    { id: 9, attribute: "No evidence of major damage" },
+    { id: 10, attribute: "No re paint" },
+    { id: 11, attribute: "Existing paint condition" },
+    { id: 12, attribute: "No scratches" },
+    { id: 13, attribute: "No corrosion" },
+    { id: 14, attribute: "Quarter Glass" },
   ];
 
   return (

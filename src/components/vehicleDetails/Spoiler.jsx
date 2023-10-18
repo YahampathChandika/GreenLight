@@ -67,13 +67,13 @@ function Spoiler() {
     { id: 5, attribute: "No scratches" },
     { id: 6, attribute: "No corrosion" },
     { id: 7, attribute: "Brake light" },
-    { id: 1, attribute: "Elignment" },
-    { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No re paint" },
-    { id: 4, attribute: "Existing point condition" },
-    { id: 5, attribute: "No scratches" },
-    { id: 6, attribute: "No corrosion" },
-    { id: 7, attribute: "Brake light" },
+    { id: 8, attribute: "Elignment" },
+    { id: 9, attribute: "No evidence of major damage" },
+    { id: 10, attribute: "No re paint" },
+    { id: 11, attribute: "Existing point condition" },
+    { id: 12, attribute: "No scratches" },
+    { id: 13, attribute: "No corrosion" },
+    { id: 14, attribute: "Brake light" },
   ];
 
   return (

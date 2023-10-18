@@ -67,13 +67,13 @@ function RearGlass() {
     { id: 5, attribute: "Wiper blade" },
     { id: 6, attribute: "Wiper spindles" },
     { id: 7, attribute: "Wiper arms" },
-    { id: 1, attribute: "Original" },
-    { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No scratches" },
-    { id: 4, attribute: "No mineral deposit / Acid rain damage" },
-    { id: 5, attribute: "Wiper blade" },
-    { id: 6, attribute: "Wiper spindles" },
-    { id: 7, attribute: "Wiper arms" },
+    { id: 8, attribute: "Original" },
+    { id: 9, attribute: "No evidence of major damage" },
+    { id: 10, attribute: "No scratches" },
+    { id: 11, attribute: "No mineral deposit / Acid rain damage" },
+    { id: 12, attribute: "Wiper blade" },
+    { id: 13, attribute: "Wiper spindles" },
+    { id: 14, attribute: "Wiper arms" },
   ];
 
   return (

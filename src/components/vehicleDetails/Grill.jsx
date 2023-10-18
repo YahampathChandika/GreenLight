@@ -66,11 +66,11 @@ function Grill() {
     { id: 3, attribute: "No re paint" },
     { id: 4, attribute: "Existing point condition" },
     { id: 5, attribute: "Logo" },
-    { id: 1, attribute: "Elignment" },
-    { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No re paint" },
-    { id: 4, attribute: "Existing point condition" },
-    { id: 5, attribute: "Logo" },
+    { id: 6, attribute: "Elignment" },
+    { id: 7, attribute: "No evidence of major damage" },
+    { id: 8, attribute: "No re paint" },
+    { id: 9, attribute: "Existing point condition" },
+    { id: 10, attribute: "Logo" },
   ];
 
   return (

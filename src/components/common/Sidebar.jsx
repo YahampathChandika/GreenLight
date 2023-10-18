@@ -64,7 +64,7 @@ function SidebarComp() {
     "Wheel Arch Front LHS",
     "Engine Compartment",
     "Boot Space",
-    "Ceck With Engine Start",
+    "Check With Engine Start",
     "Interior Inspection",
     "Scanning Report",
     "Main Data Monitor Hybrid",
