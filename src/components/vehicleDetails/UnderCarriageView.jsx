@@ -10,31 +10,53 @@ function UnderCarriageView() {
     { label: "NA", color: "gray" },
   ];
 
-  // Create a state to keep track of the selected rating for each attribute
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("attributeRatings");
+    if (savedRatings) {
+      setAttributeRatings(JSON.parse(savedRatings));
+    }
+  }, []);
+
+  // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-  const [files, setFiles] = useState();
+
+  // Create a state to store the selected image files and their URLs
+  const [files, setFiles] = useState([]);
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
-    setAttributeRatings({ ...attributeRatings, [attribute]: rating });
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("windShieldData", updatedRatings);
+
+    // Save the updated ratings to localStorage
+    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
   };
 
+  // Function to handle file selection
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
+    const selectedFiles = e.target.files;
+    const fileURLs = [];
 
-    if (selectedFile) {
-      const objectURL = URL.createObjectURL(selectedFile);
-      setFiles(objectURL);
-    } else {
-      console.error("No file selected.");
-      console.error("No file selected.");
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const objectURL = URL.createObjectURL(selectedFiles[i]);
+      fileURLs.push(objectURL);
     }
+
+    setFiles([...files, ...fileURLs]);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
-  const handleDeleteImage = () => {
-    setFiles(null); // Clear the uploaded image
+  // Function to delete a specific image
+  const handleDeleteImage = (index) => {
+    const updatedFiles = [...files];
+    updatedFiles.splice(index, 1);
+    setFiles(updatedFiles);
   };
-
   // Sample data for your table
   const data = [
     { id: 1, attribute: "No engine oil leak" },
