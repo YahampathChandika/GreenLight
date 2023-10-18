@@ -67,13 +67,17 @@ function RearGlass() {
     { id: 5, attribute: "Wiper blade" },
     { id: 6, attribute: "Wiper spindles" },
     { id: 7, attribute: "Wiper arms" },
+    { id: 1, attribute: "Original" },
+    { id: 2, attribute: "No evidence of major damage" },
+    { id: 3, attribute: "No scratches" },
+    { id: 4, attribute: "No mineral deposit / Acid rain damage" },
+    { id: 5, attribute: "Wiper blade" },
+    { id: 6, attribute: "Wiper spindles" },
+    { id: 7, attribute: "Wiper arms" },
   ];
 
   return (
     <div className="vi-main-con">
-      {/* <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ width: '10%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div> */}
       <div className="vi-content">
         <div className="vi-content-top">
           <p>Rear Glass</p>
@@ -151,9 +155,10 @@ function RearGlass() {
           </table>
         </div>
       </div>
-      {/* <Link to="/hood" className="btn btn-primary next-btn"> */}
-      {/* Next
-        </Link> */}
+      {/* Uncomment the Link component if you want to navigate to another page */}
+      <Link to="/hood" className="btn btn-primary next-btn">
+        Next
+      </Link>
     </div>
   );
 }

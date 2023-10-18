@@ -12,7 +12,7 @@ function UnderCarriageView() {
 
   // Create a state to keep track of the selected rating for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-  const [file, setFile] = useState();
+  const [files, setFiles] = useState();
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
@@ -24,18 +24,30 @@ function UnderCarriageView() {
 
     if (selectedFile) {
       const objectURL = URL.createObjectURL(selectedFile);
-      setFile(objectURL);
+      setFiles(objectURL);
     } else {
+      console.error("No file selected.");
       console.error("No file selected.");
     }
   };
 
   const handleDeleteImage = () => {
-    setFile(null); // Clear the uploaded image
+    setFiles(null); // Clear the uploaded image
   };
 
   // Sample data for your table
   const data = [
+    { id: 1, attribute: "No engine oil leak" },
+    { id: 2, attribute: "No gear oil leak (Manual / ATF)" },
+    { id: 3, attribute: "No power steering oil leak" },
+    { id: 4, attribute: "No coolent leak" },
+    { id: 5, attribute: "No break oil leak" },
+    { id: 6, attribute: "No C.V boot damage" },
+    { id: 7, attribute: "No rack boot damage" },
+    { id: 8, attribute: "No exhouse leak / Cylinder mount damage" },
+    { id: 9, attribute: "No evidence of chassis damage" },
+    { id: 10, attribute: "Engine under guard" },
+    { id: 11, attribute: "Break pad and disc" },
     { id: 1, attribute: "No engine oil leak" },
     { id: 2, attribute: "No gear oil leak (Manual / ATF)" },
     { id: 3, attribute: "No power steering oil leak" },
@@ -57,77 +69,92 @@ function UnderCarriageView() {
         </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Under Carriage View</p>
+            <p>Check with Engine Start</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
-                <label className="btn btn-secondary">
-                  Upload File
-                  <input
-                    type="file"
-                    accept="image/jpeg, image/png, image/gif"
-                    onChange={handleFileChange}
-                    style={{ display: "none" }}
-                  />
-                </label>
-                <button
-                  type="button"
-                  onClick={handleDeleteImage}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
+                <div className="vi-content-top-img-con">
+                  <div className="vi-content-top-btns">
+                    <label className="btn btn-secondary">
+                      Upload Files
+                      <input
+                        type="file"
+                        accept="image/jpeg, image/png, image/gif"
+                        multiple
+                        onChange={handleFileChange}
+                        style={{ display: "none" }}
+                      />
+                    </label>
+                  </div>
+                  <div className="vi-content-top-img">
+                    {files.map((file, index) => (
+                      <div key={index} className="image-container">
+                        <img src={file} alt="Uploaded" />
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteImage(index)}
+                          className="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div className="vi-content-top-img">
-                {file && <img src={file} alt="Uploaded" />}
+              <div className="vi-content-bot">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Attribute Name</th>
+                      <th scope="col">Good</th>
+                      <th scope="col">Normal</th>
+                      <th scope="col">N/R</th>
+                      <th scope="col">N/A</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((item) => (
+                      <tr key={item.id}>
+                        <th scope="row">{item.id}</th>
+                        <td style={{ paddingLeft: "40px", width: "35%" }}>
+                          {item.attribute}
+                        </td>
+                        {ratingOptions.map((option) => (
+                          <td key={option.label}>
+                            <label className="select-lbl">
+                              <input
+                                type="radio"
+                                name={`rating-${item.id}-${item.attribute}`}
+                                value={option.label}
+                                checked={
+                                  attributeRatings[item.attribute] ===
+                                  option.label
+                                }
+                                onChange={() =>
+                                  handleRatingChange(
+                                    item.attribute,
+                                    option.label
+                                  )
+                                }
+                              />
+                              <span
+                                className={`rating-color ${option.label.toLowerCase()}`}
+                              ></span>
+                            </label>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-          <div className="vi-content-bot">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Attribute Name</th>
-                  <th scope="col">Good</th>
-                  <th scope="col">Normal</th>
-                  <th scope="col">N/R</th>
-                  <th scope="col">N/A</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item) => (
-                  <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
-                    <td style={{ paddingLeft: "40px", width: "35%" }}>
-                      {item.attribute}
-                    </td>
-                    {ratingOptions.map((option) => (
-                      <td key={option.label}>
-                        <label className="select-lbl">
-                          <input
-                            type="radio"
-                            name={`rating-${item.id}-${item.attribute}`}
-                            value={option.label}
-                            checked={
-                              attributeRatings[item.attribute] === option.label
-                            }
-                            onChange={() =>
-                              handleRatingChange(item.attribute, option.label)
-                            }
-                          />
-                          <span
-                            className={`rating-color ${option.label.toLowerCase()}`}
-                          ></span>
-                        </label>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {/* <button type="button" className="btn btn-primary next-btn">
+          Next
+        </button> */}
           </div>
         </div>
-        {/* <button type="button" className="btn btn-primary next-btn">Next</button> */}
       </div>
     </div>
   );

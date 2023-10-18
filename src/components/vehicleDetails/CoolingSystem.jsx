@@ -77,6 +77,23 @@ function CoolingSystem() {
     { id: 15, attribute: "Oil cooler" },
     { id: 16, attribute: "Cylinder head gasket" },
     { id: 17, attribute: "Temperature sensor" },
+    { id: 1, attribute: "Radiator complete" },
+    { id: 2, attribute: "Radiator cap / Pressure cap" },
+    { id: 3, attribute: "Radiator fan electric" },
+    { id: 4, attribute: "Radiator fan belt drive" },
+    { id: 5, attribute: "Fan guard and fan motor" },
+    { id: 6, attribute: "Expansion tank" },
+    { id: 7, attribute: "Upper hose" },
+    { id: 8, attribute: "Lower hose" },
+    { id: 9, attribute: "Bypass hose" },
+    { id: 10, attribute: "Fan belt" },
+    { id: 11, attribute: "Water pump" },
+    { id: 12, attribute: "Thermostal value" },
+    { id: 13, attribute: "Coolent" },
+    { id: 14, attribute: "Water jacket" },
+    { id: 15, attribute: "Oil cooler" },
+    { id: 16, attribute: "Cylinder head gasket" },
+    { id: 17, attribute: "Temperature sensor" },
   ];
 
   return (
@@ -87,85 +104,96 @@ function CoolingSystem() {
         {/* </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Cooling System</p>
+            <p>Check with Engine Start</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
-                <label className="btn btn-secondary">
-                  Upload Files
-                  <input
-                    type="file"
-                    accept="image/jpeg, image/png, image/gif"
-                    multiple
-                    onChange={handleFileChange}
-                    style={{ display: "none" }}
-                  />
-                </label>
-              </div>
-              <div className="vi-content-top-img">
-                {files.map((file, index) => (
-                  <div key={index} className="image-container">
-                    <img src={file} alt="Uploaded" />
-                    <button
-                      type="button"
-                      onClick={() => handleDeleteImage(index)}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
+                <div className="vi-content-top-img-con">
+                  <div className="vi-content-top-btns">
+                    <label className="btn btn-secondary">
+                      Upload Files
+                      <input
+                        type="file"
+                        accept="image/jpeg, image/png, image/gif"
+                        multiple
+                        onChange={handleFileChange}
+                        style={{ display: "none" }}
+                      />
+                    </label>
                   </div>
-                ))}
+                  <div className="vi-content-top-img">
+                    {files.map((file, index) => (
+                      <div key={index} className="image-container">
+                        <img src={file} alt="Uploaded" />
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteImage(index)}
+                          className="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="vi-content-bot">
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Attribute Name</th>
+                      <th scope="col">Good</th>
+                      <th scope="col">Normal</th>
+                      <th scope="col">N/R</th>
+                      <th scope="col">N/A</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((item) => (
+                      <tr key={item.id}>
+                        <th scope="row">{item.id}</th>
+                        <td style={{ paddingLeft: "40px", width: "35%" }}>
+                          {item.attribute}
+                        </td>
+                        {ratingOptions.map((option) => (
+                          <td key={option.label}>
+                            <label className="select-lbl">
+                              <input
+                                type="radio"
+                                name={`rating-${item.id}-${item.attribute}`}
+                                value={option.label}
+                                checked={
+                                  attributeRatings[item.attribute] ===
+                                  option.label
+                                }
+                                onChange={() =>
+                                  handleRatingChange(
+                                    item.attribute,
+                                    option.label
+                                  )
+                                }
+                              />
+                              <span
+                                className={`rating-color ${option.label.toLowerCase()}`}
+                              ></span>
+                            </label>
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-          <div className="vi-content-bot">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Attribute Name</th>
-                  <th scope="col">Good</th>
-                  <th scope="col">Normal</th>
-                  <th scope="col">N/R</th>
-                  <th scope="col">N/A</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item) => (
-                  <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
-                    <td style={{ paddingLeft: "40px", width: "35%" }}>
-                      {item.attribute}
-                    </td>
-                    {ratingOptions.map((option) => (
-                      <td key={option.label}>
-                        <label className="select-lbl">
-                          <input
-                            type="radio"
-                            name={`rating-${item.id}-${item.attribute}`}
-                            value={option.label}
-                            checked={
-                              attributeRatings[item.attribute] === option.label
-                            }
-                            onChange={() =>
-                              handleRatingChange(item.attribute, option.label)
-                            }
-                          />
-                          <span
-                            className={`rating-color ${option.label.toLowerCase()}`}
-                          ></span>
-                        </label>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {/* <button type="button" className="btn btn-primary next-btn">
+          Next
+        </button> */}
           </div>
         </div>
-        {/* <button type="button" className="btn btn-primary next-btn">Next</button> */}
       </div>
     </div>
   );
 }
+
 
 export default CoolingSystem;

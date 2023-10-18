@@ -75,6 +75,21 @@ function RoadTest() {
     { id: 13, attribute: "No suspension noises" },
     { id: 14, attribute: "Radiator fan on 97°C to 80°C" },
     { id: 15, attribute: "Wheel speed sensor data" },
+    { id: 1, attribute: "O D O meter" },
+    { id: 2, attribute: "RPM Meter" },
+    { id: 3, attribute: "Steering wheel position" },
+    { id: 4, attribute: "Wheel allignment / Side pulling" },
+    { id: 5, attribute: "Brake efficency" },
+    { id: 6, attribute: "No CV joint noise" },
+    { id: 7, attribute: "Vehicle pickup" },
+    { id: 8, attribute: "Clutch function" },
+    { id: 9, attribute: "Auto gear shifting" },
+    { id: 10, attribute: "No wheel bearing or gear noise" },
+    { id: 11, attribute: "4WD operation" },
+    { id: 12, attribute: "Power steering function" },
+    { id: 13, attribute: "No suspension noises" },
+    { id: 14, attribute: "Radiator fan on 97°C to 80°C" },
+    { id: 15, attribute: "Wheel speed sensor data" },
   ];
 
   return (
