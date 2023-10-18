@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
 
@@ -6,9 +6,16 @@ function BootSpace() {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
-    { label: "Bad", color: "red" },
+    { label: "NR", color: "red" },
     { label: "NA", color: "gray" },
   ];
+
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("attributeRatings");
+    if (savedRatings) {
+      setAttributeRatings(JSON.parse(savedRatings));
+    }
+  }, []);
 
   // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
@@ -18,7 +25,14 @@ function BootSpace() {
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
-    setAttributeRatings({ ...attributeRatings, [attribute]: rating });
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("windShieldData", updatedRatings);
+
+    // Save the updated ratings to localStorage
+    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -32,6 +46,9 @@ function BootSpace() {
     }
 
     setFiles([...files, ...fileURLs]);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
@@ -106,7 +123,7 @@ function BootSpace() {
                   <th scope="col">Attribute Name</th>
                   <th scope="col">Good</th>
                   <th scope="col">Normal</th>
-                  <th scope="col">Bad</th>
+                  <th scope="col">N/R</th>
                   <th scope="col">N/A</th>
                 </tr>
               </thead>
@@ -114,7 +131,9 @@ function BootSpace() {
                 {data.map((item) => (
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <td style={{ paddingLeft: "40px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
                         <label className="select-lbl">

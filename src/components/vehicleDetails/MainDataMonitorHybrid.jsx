@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
 import "../../assets/scss/MainDateMonittorHybrid.css";
@@ -7,32 +7,56 @@ function MainDataMonitorHybrid() {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
-    { label: "Bad", color: "red" },
+    { label: "NR", color: "red" },
     { label: "NA", color: "gray" },
   ];
 
-  // Create a state to keep track of the selected rating for each attribute
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("attributeRatings");
+    if (savedRatings) {
+      setAttributeRatings(JSON.parse(savedRatings));
+    }
+  }, []);
+
+  // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-  const [file, setFile] = useState();
+
+  // Create a state to store the selected image files and their URLs
+  const [files, setFiles] = useState([]);
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
-    setAttributeRatings({ ...attributeRatings, [attribute]: rating });
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("windShieldData", updatedRatings);
+
+    // Save the updated ratings to localStorage
+    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
   };
 
+  // Function to handle file selection
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
+    const selectedFiles = e.target.files;
+    const fileURLs = [];
 
-    if (selectedFile) {
-      const objectURL = URL.createObjectURL(selectedFile);
-      setFile(objectURL);
-    } else {
-      console.error("No file selected.");
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const objectURL = URL.createObjectURL(selectedFiles[i]);
+      fileURLs.push(objectURL);
     }
+
+    setFiles([...files, ...fileURLs]);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
-  const handleDeleteImage = () => {
-    setFile(null); // Clear the uploaded image
+  // Function to delete a specific image
+  const handleDeleteImage = (index) => {
+    const updatedFiles = [...files];
+    updatedFiles.splice(index, 1);
+    setFiles(updatedFiles);
   };
 
   return (
@@ -54,24 +78,29 @@ function MainDataMonitorHybrid() {
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
-                  Upload File
+                  Upload Files
                   <input
                     type="file"
                     accept="image/jpeg, image/png, image/gif"
+                    multiple
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                   />
                 </label>
-                <button
-                  type="button"
-                  onClick={handleDeleteImage}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
               </div>
               <div className="vi-content-top-img">
-                {file && <img src={file} alt="Uploaded" />}
+                {files.map((file, index) => (
+                  <div key={index} className="image-container">
+                    <img src={file} alt="Uploaded" />
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteImage(index)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

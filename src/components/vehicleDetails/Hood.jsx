@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../common/Navbar";
 import "../../assets/scss/VisualInspection.css";
@@ -7,20 +7,36 @@ function Hood() {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
-    { label: "Bad", color: "red" },
+    { label: "NR", color: "red" },
     { label: "NA", color: "gray" },
   ];
 
-  // Create a state to keep track of the selected rating for each attribute
-  const [attributeRatings, setAttributeRatings] = useState({});
-  const [file, setFile] = useState();
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("attributeRatings");
+    if (savedRatings) {
+      setAttributeRatings(JSON.parse(savedRatings));
+    }
+  }, []);
 
-    const [files, setFiles] = useState([]);
+  // Create a state to keep track of the selected ratings for each attribute
+  const [attributeRatings, setAttributeRatings] = useState({});
+
+  // Create a state to store the selected image files and their URLs
+  const [files, setFiles] = useState([]);
+
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
-    setAttributeRatings({ ...attributeRatings, [attribute]: rating });
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("windShieldData", updatedRatings);
+
+    // Save the updated ratings to localStorage
+    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
   };
 
+  // Function to handle file selection
   const handleFileChange = (e) => {
     const selectedFiles = e.target.files;
     const fileURLs = [];
@@ -31,6 +47,9 @@ function Hood() {
     }
 
     setFiles([...files, ...fileURLs]);
+
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
@@ -105,7 +124,7 @@ function Hood() {
                   <th scope="col">Attribute Name</th>
                   <th scope="col">Good</th>
                   <th scope="col">Normal</th>
-                  <th scope="col">Bad</th>
+                  <th scope="col">N/R</th>
                   <th scope="col">N/A</th>
                 </tr>
               </thead>
@@ -113,7 +132,9 @@ function Hood() {
                 {data.map((item) => (
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <td style={{ paddingLeft: "40px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
                         <label className="select-lbl">

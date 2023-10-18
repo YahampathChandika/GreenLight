@@ -6,7 +6,7 @@ function WindShield() {
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
-    { label: "Bad", color: "red" },
+    { label: "NR", color: "red" },
     { label: "NA", color: "gray" },
   ];
 
@@ -123,7 +123,7 @@ function WindShield() {
                   <th scope="col">Attribute Name</th>
                   <th scope="col">Good</th>
                   <th scope="col">Normal</th>
-                  <th scope="col">Bad</th>
+                  <th scope="col">N/R</th>
                   <th scope="col">N/A</th>
                 </tr>
               </thead>
@@ -131,7 +131,9 @@ function WindShield() {
                 {data.map((item) => (
                   <tr key={item.id}>
                     <th scope="row">{item.id}</th>
-                    <td>{item.attribute}</td>
+                    <td style={{ paddingLeft: "40px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
                     {ratingOptions.map((option) => (
                       <td key={option.label}>
                         <label className="select-lbl">

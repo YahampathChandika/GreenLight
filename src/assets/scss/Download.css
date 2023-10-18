@@ -1,0 +1,59 @@
+/* Updated styles for DownloadPage component */
+
+.download-page {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/download.jpg");
+  background-position: 0% 100%;
+  background-size: cover;
+  filter: blur(10px); 
+  z-index: -1; 
+}
+
+.download-page-con {
+  width: 30%;
+  height: 30%;
+  background-color: rgba(255, 255, 255);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-page-con h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: rgb(0, 0, 0);
+  font-family: "Open Sans", sans-serif;
+}
+
+.download-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  margin-top: 20px;
+}
+
+.download-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

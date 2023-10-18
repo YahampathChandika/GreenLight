@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "../../assets/scss/Sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleRight,
-  faAngleLeft
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import WindShield from "../vehicleDetails/WindShield";
 import Hood from "../vehicleDetails/Hood";
 import Grill from "../vehicleDetails/Grill";

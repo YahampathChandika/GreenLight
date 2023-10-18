@@ -8,13 +8,13 @@
 .navBar {
   height: 70px;
   width: 100%;
-  background-color: #7abc4b;
+  background-color: #063c37;
   display: flex;
   justify-items: center;
   align-items: center;
   font-size: 30px;
   font-weight: 900;
-  color: #1e4106;
+  color: #accfa5;
   padding-left: 40px;
   font-family: "Poppins", sans-serif;
   /* border-bottom: 1px solid rgb(0, 0, 0, 0.5); */
@@ -34,7 +34,12 @@
 /* Other styles for your navbar */
 
 .print-btn {
-  margin-left: 35%;
-  width: 120px;
-  font-size: 1.2rem;
+  margin-left: 33.7%;
+}
+
+.pro-btn {
+  width: 130px;
+  height: 45px;
+  font-size: 1.1rem;
+  font-weight: 900;
 }

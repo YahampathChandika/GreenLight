@@ -6,14 +6,14 @@
   padding: 50px 100px;
   padding-bottom: 50px !important;
   text-align: center;
-  background-color: #bbe1b3;
+  background-color: #9ec696;
   min-height: 100vh;
 }
 
 .vi-content {
   padding: 40px 50px;
-  border-radius: 20px;
-  background-color: #ECF9F2;
+  border-radius: 15px;
+  background-color: #ecf9f2;
 }
 
 .progress {
@@ -32,7 +32,7 @@
   font-weight: 600;
   color: black;
   text-align: left;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .vi-content-top-img-con {
@@ -87,13 +87,20 @@
 /* Style for table headers */
 .table th {
   text-align: center;
-  background-color: #f2f2f2;
+  background-color: #dfe8e2;
+  font-size: 15px;
+  font-family: "Merriweather Sans", sans-serif;
 }
 
 /* Style for table rows */
 .table td {
   padding: 8px;
   text-align: left;
+  background-color: #f2f2f2;
+  font-family: "DM Sans", sans-serif;
+  font-family: "Exo 2", sans-serif;
+  font-size: 16px;
+  padding-top: 9px;
 }
 
 /* Style for the radio buttons */
@@ -118,14 +125,15 @@ label {
 
 /* Colors for different rating options */
 .rating-color.good {
-  background-color: rgb(0, 128, 0, 0.5);
+  
+  background-color: rgb(0, 128, 0);
 }
 
 .rating-color.normal {
-  background-color: rgb(255, 255, 0 , 0.5);
+  background-color: rgb(136, 140, 9);
 }
 
-.rating-color.bad {
+.rating-color.nr {
   background-color: rgb(255, 0, 0, 0.5);
 }
 
@@ -135,18 +143,19 @@ label {
 
 /* Style for selected radio buttons */
 input[type="radio"]:checked + .rating-color.rating-color {
-  border-style: solid 1px black; 
+  border-style: solid 1px black;
 }
 
 input[type="radio"]:checked + .rating-color.rating-color.good {
-  background-color: rgb(0, 128, 0);
+  background-color: rgb(20, 192, 20);
 }
 
-input[type="radio"]:checked + .rating-color.rating-color.rating-color.rating-color.normal {
+input[type="radio"]:checked
+  + .rating-color.rating-color.rating-color.rating-color.normal {
   background-color: rgb(228, 228, 15);
 }
 
-input[type="radio"]:checked + .rating-color.rating-color.rating-color.bad {
+input[type="radio"]:checked + .rating-color.rating-color.rating-color.nr {
   background-color: rgb(255, 0, 0);
 }
 
