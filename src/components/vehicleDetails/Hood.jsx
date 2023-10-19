@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbar from "../common/Navbar";
 import "../../assets/scss/VisualInspection.css";
 
@@ -12,7 +14,7 @@ function Hood() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("Hood");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -33,7 +35,7 @@ function Hood() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("Hood", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -66,7 +68,7 @@ function Hood() {
     { id: 3, attribute: "No re paint" },
     { id: 4, attribute: "Existing point condition" },
     { id: 5, attribute: "No scratches" },
-    { id: 6, attribute: "No corosoin" },
+    { id: 6, attribute: "No corossion" },
     { id: 7, attribute: "Hood prop rod / Gas struts" },
   ];
 
@@ -86,7 +88,6 @@ function Hood() {
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Hood / Bonet</p>
-
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -149,9 +150,16 @@ function Hood() {
                               handleRatingChange(item.attribute, option.label)
                             }
                           />
-                          <span
-                            className={`rating-color ${option.label.toLowerCase()}`}
-                          ></span>
+                          <div
+                            className={`rating-label ${option.label.toLowerCase()}`}
+                          >
+                            {attributeRatings[item.attribute] ===
+                            option.label ? (
+                              <FontAwesomeIcon icon={faXmark} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
                         </label>
                       </td>
                     ))}

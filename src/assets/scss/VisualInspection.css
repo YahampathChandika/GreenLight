@@ -167,3 +167,42 @@ input[type="radio"]:checked + .rating-color.rating-color.rating-color.na {
   margin-top: 50px;
   width: 100px;
 }
+
+
+
+
+
+
+
+
+
+/* Add this CSS to your stylesheet */
+.rating-label {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+/* Style for different rating options */
+.rating-label.good {
+  background-color: rgb(22, 195, 22);
+}
+
+.rating-label.normal {
+  background-color: rgb(218, 215, 35);
+}
+
+.rating-label.nr {
+  background-color: rgb(255, 0, 0);
+}
+
+.rating-label.na {
+  background-color: rgb(128, 128, 128);
+}

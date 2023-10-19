@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
 function WheelArchRearLHS() {
@@ -11,7 +13,7 @@ function WheelArchRearLHS() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("WheelArchRearLHS");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -32,7 +34,7 @@ function WheelArchRearLHS() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("WheelArchRearLHS", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -72,18 +74,6 @@ function WheelArchRearLHS() {
     { id: 10, attribute: "Tyre match with correct size" },
     { id: 11, attribute: "Wheel match with correct size" },
     { id: 12, attribute: "Side weare (Uneven weare)" },
-    { id: 13, attribute: "Corrosion" },
-    { id: 14, attribute: "Wheel fender" },
-    { id: 15, attribute: "Rubber bleading" },
-    { id: 16, attribute: "Alloy wheel rim" },
-    { id: 17, attribute: "Standard rim" },
-    { id: 18, attribute: "Tyre pressure" },
-    { id: 19, attribute: "Tyre damage" },
-    { id: 20, attribute: "Tyre thread depth" },
-    { id: 21, attribute: "Manifacture depth" },
-    { id: 22, attribute: "Tyre match with correct size" },
-    { id: 23, attribute: "Wheel match with correct size" },
-    { id: 24, attribute: "Side weare (Uneven weare)" },
   ];
 
   return (
@@ -94,7 +84,7 @@ function WheelArchRearLHS() {
         </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Check with Engine Start</p>
+            <p>Wheel Arch Rear L/H/S</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <div className="vi-content-top-img-con">

@@ -30,6 +30,7 @@
 .notselected-menu-item {
   font-size: 15px;
   font-weight: 600;
+  color: rgb(75, 73, 73);
 }
 
 .sidebar-btns {
@@ -38,14 +39,14 @@
   align-items: center;
   min-height: 5vh;
   height: 100%;
-  background-color: rgb(175, 204, 169, 0.5);
+  background-color: rgb(175, 204, 169, 0.58);
 }
 
 .sidebar-btn {
   font-size: 30px;
   cursor: pointer;
   transition: all 0.1s;
-  color: black;
+  color: rgb(75, 73, 73);
 }
 
 .sidebar-btn:hover {

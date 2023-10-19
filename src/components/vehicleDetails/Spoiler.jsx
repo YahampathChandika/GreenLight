@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
 function Spoiler() {
@@ -11,7 +13,7 @@ function Spoiler() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("Spoiler");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -32,7 +34,7 @@ function Spoiler() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("Spoiler", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -67,13 +69,6 @@ function Spoiler() {
     { id: 5, attribute: "No scratches" },
     { id: 6, attribute: "No corrosion" },
     { id: 7, attribute: "Brake light" },
-    { id: 8, attribute: "Elignment" },
-    { id: 9, attribute: "No evidence of major damage" },
-    { id: 10, attribute: "No re paint" },
-    { id: 11, attribute: "Existing point condition" },
-    { id: 12, attribute: "No scratches" },
-    { id: 13, attribute: "No corrosion" },
-    { id: 14, attribute: "Brake light" },
   ];
 
   return (
@@ -84,90 +79,86 @@ function Spoiler() {
         </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Check with Engine Start</p>
+            <p>Spoiler</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
-                <div className="vi-content-top-img-con">
-                  <div className="vi-content-top-btns">
-                    <label className="btn btn-secondary">
-                      Upload Files
-                      <input
-                        type="file"
-                        accept="image/jpeg, image/png, image/gif"
-                        multiple
-                        onChange={handleFileChange}
-                        style={{ display: "none" }}
-                      />
-                    </label>
-                  </div>
-                  <div className="vi-content-top-img">
-                    {files.map((file, index) => (
-                      <div key={index} className="image-container">
-                        <img src={file} alt="Uploaded" />
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteImage(index)}
-                          className="btn btn-danger"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <label className="btn btn-secondary">
+                  Upload Files
+                  <input
+                    type="file"
+                    accept="image/jpeg, image/png, image/gif"
+                    multiple
+                    onChange={handleFileChange}
+                    style={{ display: "none" }}
+                  />
+                </label>
               </div>
-              <div className="vi-content-bot">
-                <table className="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Attribute Name</th>
-                      <th scope="col">Good</th>
-                      <th scope="col">Normal</th>
-                      <th scope="col">N/R</th>
-                      <th scope="col">N/A</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((item) => (
-                      <tr key={item.id}>
-                        <th scope="row">{item.id}</th>
-                        <td style={{ paddingLeft: "40px", width: "35%" }}>
-                          {item.attribute}
-                        </td>
-                        {ratingOptions.map((option) => (
-                          <td key={option.label}>
-                            <label className="select-lbl">
-                              <input
-                                type="radio"
-                                name={`rating-${item.id}-${item.attribute}`}
-                                value={option.label}
-                                checked={
-                                  attributeRatings[item.attribute] ===
-                                  option.label
-                                }
-                                onChange={() =>
-                                  handleRatingChange(
-                                    item.attribute,
-                                    option.label
-                                  )
-                                }
-                              />
-                              <span
-                                className={`rating-color ${option.label.toLowerCase()}`}
-                              ></span>
-                            </label>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+              <div className="vi-content-top-img">
+                {files.map((file, index) => (
+                  <div key={index} className="image-container">
+                    <img src={file} alt="Uploaded" />
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteImage(index)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
-            {/* <button type="button" className="btn btn-primary next-btn">
-          Next
-        </button> */}
+          </div>
+          <div className="vi-content-bot">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Attribute Name</th>
+                  <th scope="col">Good</th>
+                  <th scope="col">Normal</th>
+                  <th scope="col">N/R</th>
+                  <th scope="col">N/A</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item) => (
+                  <tr key={item.id}>
+                    <th scope="row">{item.id}</th>
+                    <td style={{ paddingLeft: "40px", width: "35%" }}>
+                      {item.attribute}
+                    </td>
+                    {ratingOptions.map((option) => (
+                      <td key={option.label}>
+                        <label className="select-lbl">
+                          <input
+                            type="radio"
+                            name={`rating-${item.id}-${item.attribute}`}
+                            value={option.label}
+                            checked={
+                              attributeRatings[item.attribute] === option.label
+                            }
+                            onChange={() =>
+                              handleRatingChange(item.attribute, option.label)
+                            }
+                          />
+                          <div
+                            className={`rating-label ${option.label.toLowerCase()}`}
+                          >
+                            {attributeRatings[item.attribute] ===
+                            option.label ? (
+                              <FontAwesomeIcon icon={faXmark} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </label>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

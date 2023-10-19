@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
 function WheelArchRearRHS() {
@@ -10,30 +12,54 @@ function WheelArchRearRHS() {
     { label: "NA", color: "gray" },
   ];
 
-  // Create a state to keep track of the selected rating for each attribute
-  const [attributeRatings, setAttributeRatings] = useState({});
-  const [file, setFile] = useState();
+ useEffect(() => {
+   const savedRatings = localStorage.getItem("WheelArchRearRHS");
+   if (savedRatings) {
+     setAttributeRatings(JSON.parse(savedRatings));
+   }
+ }, []);
 
-  // Function to handle changes in attribute ratings
-  const handleRatingChange = (attribute, rating) => {
-    setAttributeRatings({ ...attributeRatings, [attribute]: rating });
-  };
+ // Create a state to keep track of the selected ratings for each attribute
+ const [attributeRatings, setAttributeRatings] = useState({});
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
+ // Create a state to store the selected image files and their URLs
+ const [files, setFiles] = useState([]);
 
-    if (selectedFile) {
-      const objectURL = URL.createObjectURL(selectedFile);
-      setFile(objectURL);
-    } else {
-      console.error("No file selected.");
-      console.error("No file selected.");
-    }
-  };
+ // Function to handle changes in attribute ratings
+ const handleRatingChange = (attribute, rating) => {
+   const updatedRatings = { ...attributeRatings, [attribute]: rating };
+   setAttributeRatings(updatedRatings);
 
-  const handleDeleteImage = () => {
-    setFile(null); // Clear the uploaded image
-  };
+   // Call the updatePdfData function to update the data in the PDF component
+   // updatePdfData("windShieldData", updatedRatings);
+
+   // Save the updated ratings to localStorage
+   localStorage.setItem("WheelArchRearRHS", JSON.stringify(updatedRatings));
+ };
+
+ // Function to handle file selection
+ const handleFileChange = (e) => {
+   const selectedFiles = e.target.files;
+   const fileURLs = [];
+
+   for (let i = 0; i < selectedFiles.length; i++) {
+     const objectURL = URL.createObjectURL(selectedFiles[i]);
+     fileURLs.push(objectURL);
+   }
+
+   setFiles([...files, ...fileURLs]);
+
+   // Call the updatePdfData function to update the data in the PDF component
+   // updatePdfData("fileURLs", [...files, ...fileURLs]);
+ };
+
+ // Function to delete a specific image
+ const handleDeleteImage = (index) => {
+   const updatedFiles = [...files];
+   updatedFiles.splice(index, 1);
+   setFiles(updatedFiles);
+ };
+
 
   // Sample data for your table
   const data = [
@@ -49,18 +75,6 @@ function WheelArchRearRHS() {
     { id: 10, attribute: "Tyre match with correct size" },
     { id: 11, attribute: "Wheel match with correct size" },
     { id: 12, attribute: "Side weare (Uneven weare)" },
-    { id: 13, attribute: "Corrosion" },
-    { id: 14, attribute: "Wheel fender" },
-    { id: 15, attribute: "Rubber bleading" },
-    { id: 16, attribute: "Alloy wheel rim" },
-    { id: 17, attribute: "Standard rim" },
-    { id: 18, attribute: "Tyre pressure" },
-    { id: 19, attribute: "Tyre damage" },
-    { id: 20, attribute: "Tyre thread depth" },
-    { id: 21, attribute: "Manifacture depth" },
-    { id: 22, attribute: "Tyre match with correct size" },
-    { id: 23, attribute: "Wheel match with correct size" },
-    { id: 24, attribute: "Side weare (Uneven weare)" },
   ];
 
   return (
@@ -71,7 +85,7 @@ function WheelArchRearRHS() {
         </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Check with Engine Start</p>
+            <p>Wheel Arch Rear R/H/S</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <div className="vi-content-top-img-con">

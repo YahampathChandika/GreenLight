@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 import "../../assets/scss/MainDateMonittorHybrid.css";
 
@@ -12,7 +14,7 @@ function MainDataMonitorHybrid() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("MainDataMonitorHybrid");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -33,7 +35,10 @@ function MainDataMonitorHybrid() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem(
+      "MainDataMonitorHybrid",
+      JSON.stringify(updatedRatings)
+    );
   };
 
   // Function to handle file selection

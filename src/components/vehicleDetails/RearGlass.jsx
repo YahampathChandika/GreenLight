@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 import { Link } from "react-router-dom";
 
@@ -12,7 +14,7 @@ function RearGlass() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("RearGlass");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -33,7 +35,7 @@ function RearGlass() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("RearGlass", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -67,13 +69,6 @@ function RearGlass() {
     { id: 5, attribute: "Wiper blade" },
     { id: 6, attribute: "Wiper spindles" },
     { id: 7, attribute: "Wiper arms" },
-    { id: 8, attribute: "Original" },
-    { id: 9, attribute: "No evidence of major damage" },
-    { id: 10, attribute: "No scratches" },
-    { id: 11, attribute: "No mineral deposit / Acid rain damage" },
-    { id: 12, attribute: "Wiper blade" },
-    { id: 13, attribute: "Wiper spindles" },
-    { id: 14, attribute: "Wiper arms" },
   ];
 
   return (
@@ -143,9 +138,15 @@ function RearGlass() {
                             handleRatingChange(item.attribute, option.label)
                           }
                         />
-                        <span
-                          className={`rating-color ${option.label.toLowerCase()}`}
-                        ></span>
+                        <div
+                          className={`rating-label ${option.label.toLowerCase()}`}
+                        >
+                          {attributeRatings[item.attribute] === option.label ? (
+                            <FontAwesomeIcon icon={faXmark} />
+                          ) : (
+                            ""
+                          )}
+                        </div>
                       </label>
                     </td>
                   ))}

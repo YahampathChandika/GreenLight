@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
 function BootSpace() {
@@ -11,7 +13,7 @@ function BootSpace() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("BootSpace");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -32,7 +34,7 @@ function BootSpace() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("BootSpace", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -148,9 +150,16 @@ function BootSpace() {
                               handleRatingChange(item.attribute, option.label)
                             }
                           />
-                          <span
-                            className={`rating-color ${option.label.toLowerCase()}`}
-                          ></span>
+                          <div
+                            className={`rating-label ${option.label.toLowerCase()}`}
+                          >
+                            {attributeRatings[item.attribute] ===
+                            option.label ? (
+                              <FontAwesomeIcon icon={faXmark} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
                         </label>
                       </td>
                     ))}

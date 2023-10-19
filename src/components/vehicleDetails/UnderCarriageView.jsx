@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
 function UnderCarriageView() {
@@ -11,7 +13,7 @@ function UnderCarriageView() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("UnderCarriageView");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -32,7 +34,7 @@ function UnderCarriageView() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("UnderCarriageView", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -70,17 +72,6 @@ function UnderCarriageView() {
     { id: 9, attribute: "No evidence of chassis damage" },
     { id: 10, attribute: "Engine under guard" },
     { id: 11, attribute: "Break pad and disc" },
-    { id: 12, attribute: "No engine oil leak" },
-    { id: 13, attribute: "No gear oil leak (Manual / ATF)" },
-    { id: 14, attribute: "No power steering oil leak" },
-    { id: 15, attribute: "No coolent leak" },
-    { id: 16, attribute: "No break oil leak" },
-    { id: 17, attribute: "No C.V boot damage" },
-    { id: 18, attribute: "No rack boot damage" },
-    { id: 19, attribute: "No exhouse leak / Cylinder mount damage" },
-    { id: 20, attribute: "No evidence of chassis damage" },
-    { id: 21, attribute: "Engine under guard" },
-    { id: 22, attribute: "Break pad and disc" },
   ];
 
   return (
@@ -91,7 +82,7 @@ function UnderCarriageView() {
         </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Check with Engine Start</p>
+            <p>Under Carriage View</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <div className="vi-content-top-img-con">

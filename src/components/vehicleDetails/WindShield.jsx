@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 function WindShield() {
   const ratingOptions = [
@@ -11,7 +14,7 @@ function WindShield() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("WindShield");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -148,9 +151,16 @@ function WindShield() {
                               handleRatingChange(item.attribute, option.label)
                             }
                           />
-                          <span
-                            className={`rating-color ${option.label.toLowerCase()}`}
-                          ></span>
+                          <div
+                            className={`rating-label ${option.label.toLowerCase()}`}
+                          >
+                            {attributeRatings[item.attribute] ===
+                            option.label ? (
+                              <FontAwesomeIcon icon={faXmark} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
                         </label>
                       </td>
                     ))}

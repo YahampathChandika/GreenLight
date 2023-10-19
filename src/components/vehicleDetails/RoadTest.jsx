@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
 function RoadTest() {
@@ -11,7 +13,7 @@ function RoadTest() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("attributeRatings");
+    const savedRatings = localStorage.getItem("RoadTest");
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
@@ -32,7 +34,7 @@ function RoadTest() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("attributeRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("RoadTest", JSON.stringify(updatedRatings));
   };
 
   // Function to handle file selection
@@ -75,21 +77,6 @@ function RoadTest() {
     { id: 13, attribute: "No suspension noises" },
     { id: 14, attribute: "Radiator fan on 97°C to 80°C" },
     { id: 15, attribute: "Wheel speed sensor data" },
-    { id: 16, attribute: "O D O meter" },
-    { id: 17, attribute: "RPM Meter" },
-    { id: 18, attribute: "Steering wheel position" },
-    { id: 19, attribute: "Wheel allignment / Side pulling" },
-    { id: 20, attribute: "Brake efficency" },
-    { id: 21, attribute: "No CV joint noise" },
-    { id: 22, attribute: "Vehicle pickup" },
-    { id: 23, attribute: "Clutch function" },
-    { id: 24, attribute: "Auto gear shifting" },
-    { id: 25, attribute: "No wheel bearing or gear noise" },
-    { id: 26, attribute: "4WD operation" },
-    { id: 27, attribute: "Power steering function" },
-    { id: 28, attribute: "No suspension noises" },
-    { id: 29, attribute: "Radiator fan on 97°C to 80°C" },
-    { id: 30, attribute: "Wheel speed sensor data" },
   ];
 
   return (
@@ -170,9 +157,16 @@ function RoadTest() {
                               handleRatingChange(item.attribute, option.label)
                             }
                           />
-                          <span
-                            className={`rating-color ${option.label.toLowerCase()}`}
-                          ></span>
+                          <div
+                            className={`rating-label ${option.label.toLowerCase()}`}
+                          >
+                            {attributeRatings[item.attribute] ===
+                            option.label ? (
+                              <FontAwesomeIcon icon={faXmark} />
+                            ) : (
+                              ""
+                            )}
+                          </div>
                         </label>
                       </td>
                     ))}

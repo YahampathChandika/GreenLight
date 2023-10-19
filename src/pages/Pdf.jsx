@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/scss/VisualInspection.css";
 import Boot from "../components/vehicleDetails/BootSpace";
 import Roof from "../components/vehicleDetails/CheckWithEngineStart";
@@ -87,39 +89,39 @@ function PDF() {
     <>
       <h1 style={{ textAlign: "center" }}>Report</h1>
       <WindShield />
-      <Hood/>
-      <Grill/>
-      <FrontBumper/>
-      <FrontLightings/>
-      <RearLightings/>
-      <RearGlass/>
-      <TailGate/>
-      <RearBumper/>
-      <Spoiler/>
-      <FrontFenderLHS/>
-      <FrontDoorPassengerLHS/>
-      <RearDoorLHS/>
-      <QuarterPanelLHS/>
-      <QuarterPanelRHS/>
-      <RearDoorRHS/>
-      <FrontDoorDriver/>
-      <FrontFenderRHS/>
-      <VehicleRoof/>
-      <WheelArchFrontLHS/>
-      <EngineCompartment/>
-      <BootSpace/>
-      <UnderCarriageView/>
-      <CheckWithEngineStart/>
-      <InteriorInspection/>
-      <ScanningReport/>
-      <MainDataMonitorHybrid/>
-      <WarningIndicatorMain/>
-      <RoadTest/>
-      <CoolingSystem/>
-      <Suspension/>
-      <StartingDelay/>
-      <EngineMissIdling/>
-      <DocumentsRecords/>
+      <Hood />
+      <Grill />
+      <FrontBumper />
+      <FrontLightings />
+      <RearLightings />
+      <RearGlass />
+      <TailGate />
+      <RearBumper />
+      <Spoiler />
+      <FrontFenderLHS />
+      <FrontDoorPassengerLHS />
+      <RearDoorLHS />
+      <QuarterPanelLHS />
+      <QuarterPanelRHS />
+      <RearDoorRHS />
+      <FrontDoorDriver />
+      <FrontFenderRHS />
+      <VehicleRoof />
+      <WheelArchFrontLHS />
+      <EngineCompartment />
+      <BootSpace />
+      <UnderCarriageView />
+      <CheckWithEngineStart />
+      <InteriorInspection />
+      <ScanningReport />
+      <MainDataMonitorHybrid />
+      <WarningIndicatorMain />
+      <RoadTest />
+      <CoolingSystem />
+      <Suspension />
+      <StartingDelay />
+      <EngineMissIdling />
+      <DocumentsRecords />
     </>
   );
 }
