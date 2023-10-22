@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import "../../assets/scss/Download.css";
+import "../assets/scss/Download.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import PDF from "../../pages/Pdf";
+import PDF from "./Pdf";
 
 const Download = () => {
   const pdfRef = useRef(null);
