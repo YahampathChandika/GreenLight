@@ -4,7 +4,6 @@ import "../../assets/scss/VisualInspection.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 function WindShield() {
   const ratingOptions = [
     { label: "Good", color: "green" },
