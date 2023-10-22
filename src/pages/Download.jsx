@@ -1,53 +1,83 @@
-import React, { useRef } from "react";
+import React, { useState, useCallback, useRef } from "react";
+import ReactToPrint from "react-to-print";
+import { Bars } from "react-loader-spinner";
+import "rsuite/esm/Overlay/Position";
 import "../assets/scss/Download.css";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import "../assets/scss/VisualInspection.css";
 import PDF from "./Pdf";
 
-const Download = () => {
-  const pdfRef = useRef(null);
+export const Download = () => {
+  const componentRef = useRef(null);
 
-  const handleGeneratePDF = async () => {
-    const pdfRefElement = pdfRef.current;
-    const contentHeight = pdfRefElement.scrollHeight;
-    const contentWidth = pdfRefElement.scrollWidth;
-    const pdf = new jsPDF("p", "mm", [contentWidth, contentHeight], true);
+  const [loading, setLoading] = useState(false);
 
-    // Use html2canvas to capture the content of pdfRef as an image
-    html2canvas(pdfRefElement).then((canvas) => {
-      const imageData = canvas.toDataURL("image/png");
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imageWidth = canvas.width;
-      const imageHeight = canvas.height;
-      const ratio =
-        Math.min(pdfWidth / imageWidth, pdfHeight / imageHeight) * 1.5;
-      const imgX = (pdfWidth - imageWidth * ratio) / 2;
-      const imgY = 20;
-      pdf.addImage(imageData, "PNG", 0, 0, contentWidth, contentHeight);
+  const handleAfterPrint = useCallback(() => {
+    console.log("`onAfterPrint` called");
+  }, []);
 
-      pdf.save("test.pdf");
+  const handleBeforePrint = useCallback(() => {
+    console.log("`onBeforePrint` called");
+  }, []);
+
+  const handleOnBeforeGetContent = useCallback(() => {
+    console.log("`onBeforeGetContent` called");
+    setLoading(true);
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setLoading(false);
+        resolve();
+      }, 2000);
     });
-  };
+  }, [setLoading]);
+
+  const reactToPrintContent = useCallback(() => {
+    return componentRef.current;
+  }, [componentRef.current]);
+
+  const reactToPrintTrigger = useCallback(() => {
+    return (
+      <div className="download-page">
+        <div className="background-image" />
+        <div className="download-page-con">
+          {loading ? (
+            <Bars
+              height="80"
+              width="80"
+              color="#046ae7"
+              ariaLabel="bars-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          ) : (
+            <>
+              <h1>Ready to Download...</h1>
+              <button className="btn btn-primary download-button">
+                Download
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }, [loading]);
 
   return (
-    <div className="download-page">
-      <div className="background-image" />{" "}
-      {/* New element for the background image */}
-      <div className="download-page-con">
-        <h1>Click to Download...</h1>
-        <button
-          onClick={handleGeneratePDF}
-          className="btn btn-primary download-button"
-        >
-          Download
-        </button>
-      </div>
-      <div style={{ position: "absolute", left: "-9999px" }} ref={pdfRef}>
+    <div>
+      <ReactToPrint
+        content={reactToPrintContent}
+        documentTitle="Final Report"
+        onAfterPrint={handleAfterPrint}
+        onBeforeGetContent={handleOnBeforeGetContent}
+        onBeforePrint={handleBeforePrint}
+        removeAfterPrint
+        trigger={reactToPrintTrigger}
+      />
+      <div ref={componentRef}>
         <PDF />
       </div>
     </div>
   );
 };
-
 export default Download;

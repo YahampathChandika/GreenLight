@@ -8,6 +8,9 @@
   text-align: center;
   background-color: #9ec696;
   min-height: 100vh;
+  /* page-break-before: auto; */
+  /* page-break-before: always; */
+  /* break-before: always; */
 }
 
 .vi-content {
@@ -167,14 +170,6 @@ input[type="radio"]:checked + .rating-color.rating-color.rating-color.na {
   margin-top: 50px;
   width: 100px;
 }
-
-
-
-
-
-
-
-
 
 /* Add this CSS to your stylesheet */
 .rating-label {

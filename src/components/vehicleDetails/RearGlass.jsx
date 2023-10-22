@@ -157,9 +157,9 @@ function RearGlass() {
         </div>
       </div>
       {/* Uncomment the Link component if you want to navigate to another page */}
-      <Link to="/hood" className="btn btn-primary next-btn">
+      {/* <Link to="/hood" className="btn btn-primary next-btn">
         Next
-      </Link>
+      </Link> */}
     </div>
   );
 }
