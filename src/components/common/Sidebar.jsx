@@ -145,7 +145,7 @@ function SidebarComp() {
         return <BootSpace />;
       case "Under Carriage View":
         return <UnderCarriageView />;
-      case "Ceck With Engine Start":
+      case "Check With Engine Start":
         return <CheckWithEngineStart />;
       case "Interior Inspection":
         return <InteriorInspection />;

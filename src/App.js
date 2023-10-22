@@ -8,7 +8,7 @@ import Grill from "./components/vehicleDetails/Grill";
 // import Navbar from './components/common/Navbar'
 import CustomerDetails from "./components/customersDetails/CustomerDetails";
 import PDF from "./pages/Pdf";
-import Download from "./components/customersDetails/Download";
+import Download from "./pages/Download";
 // import VisualInspection from './components/vehicleDetails/VisualInspection'
 function App() {
   return (

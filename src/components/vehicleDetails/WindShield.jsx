@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../assets/scss/VisualInspection.css";
 
 function WindShield() {
+  const styles = StyleSheet.create({
+    page: {
+      flexDirection: "row",
+      backgroundColor: "#E4E4E4",
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1,
+    },
+    text: {
+      fontSize: 12,
+      textAlign: "left",
+    },
+  });
+
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
@@ -70,6 +87,10 @@ function WindShield() {
   ];
 
   return (
+    <Document>
+    <Page size="A4" style={styles.page}>
+    <View style={styles.section}>
+
     <div className="vi-main-con">
       <div className="vi-main-content">
         {/* <div className="progress">
@@ -162,6 +183,9 @@ function WindShield() {
         </div>
       </div>
     </div>
+    </View>
+    </Page>
+  </Document>
   );
 }
 
