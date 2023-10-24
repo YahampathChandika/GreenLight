@@ -35,6 +35,7 @@ import Suspension from "../components/vehicleDetails/Suspension";
 import StartingDelay from "../components/vehicleDetails/StartingDelay";
 import EngineMissIdling from "../components/vehicleDetails/EngineMissIdling";
 import DocumentsRecords from "../components/vehicleDetails/DocumentsRecords";
+import CustomerDetails from "../components/customersDetails/CustomerDetails";
 
 const PDF = forwardRef((props, ref) => {
   return (
@@ -51,6 +52,7 @@ const PDF = forwardRef((props, ref) => {
         >
           Final Report
         </h1>
+        <CustomerDetails/>
         <WindShield />
         <Hood />
         <Grill />

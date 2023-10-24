@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../common/Navbar";
-import Paginations from "../common/Paginations";
 import "../../assets/scss/CustomerDetails.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
@@ -41,21 +39,21 @@ function CustomerDetails() {
           <div className="details-top-left">
             <div className="details-input">
               <label>Name</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" />
             </div>
             <div className="details-input">
               <label>Phone No</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="phone" />
             </div>
           </div>
           <div className="details-top-right">
             <div className="details-input">
               <label>Email</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="email" />
             </div>
             <div className="details-input">
               <label>Inspection Location</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="address" />
             </div>
           </div>
         </div>
@@ -65,47 +63,47 @@ function CustomerDetails() {
             <div className="details-mid-con-left">
               <div className="details-input">
                 <label>Vehicle No.</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Make</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Transmission</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Transmission</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
             </div>
             <div className="details-mid-con-mid">
               <div className="details-input">
                 <label>Manufacture Year</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Model</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Milage</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
             </div>
             <div className="details-mid-con-right">
               <div className="details-input">
                 <label>Registration Year</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Fuel Type</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
               <div className="details-input">
                 <label>Fuel Type</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" />
               </div>
             </div>
           </div>
@@ -122,7 +120,7 @@ function CustomerDetails() {
                   onChange={(e) => handleFileInputChange(e, index)}
                   style={{ display: "none" }}
                 />
-                <input type="text" name="name" id="name" />
+                <input type="text" />
                 <span
                   className={`image-icon-${index + 1}`}
                   onClick={() => openFileUploader(index)}
