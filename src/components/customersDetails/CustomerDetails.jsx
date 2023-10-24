@@ -7,14 +7,13 @@ function CustomerDetails() {
   const [frameNoFiles, setFrameNoFiles] = useState([]);
   const [registrationFiles, setRegistrationFiles] = useState([]);
   const [engineFiles, setEngineFiles] = useState([]);
+  const [files, setFiles] = useState([]);
 
   useEffect(() => {
     // Load images from local storage on component mount
     const storedMileageFiles = JSON.parse(localStorage.getItem("mileageFiles"));
     const storedFrameNoFiles = JSON.parse(localStorage.getItem("frameNoFiles"));
-    const storedRegistrationFiles = JSON.parse(
-      localStorage.getItem("registrationFiles")
-    );
+    const storedRegistrationFiles = JSON.parse( localStorage.getItem("registrationFiles"));
     const storedEngineFiles = JSON.parse(localStorage.getItem("engineFiles"));
 
     if (storedMileageFiles) {
@@ -34,16 +33,6 @@ function CustomerDetails() {
     }
   }, []);
 
-  const saveToLocalStorage = () => {
-    // Save images to local storage
-    localStorage.setItem("mileageFiles", JSON.stringify(mileageFiles));
-    localStorage.setItem("frameNoFiles", JSON.stringify(frameNoFiles));
-    localStorage.setItem(
-      "registrationFiles",
-      JSON.stringify(registrationFiles)
-    );
-    localStorage.setItem("engineFiles", JSON.stringify(engineFiles));
-  };
 
   const handleFileChange = (e, field) => {
     const selectedFiles = e.target.files;
@@ -55,40 +44,47 @@ function CustomerDetails() {
     }
 
     if (field === "mileage") {
-      setMileageFiles([...mileageFiles, ...fileURLs]);
+      const updatedMileageFiles = [...mileageFiles, ...fileURLs];
+      localStorage.setItem("mileageFiles", JSON.stringify(updatedMileageFiles));
+      setMileageFiles(updatedMileageFiles);
     } else if (field === "frameNo") {
-      setFrameNoFiles([...frameNoFiles, ...fileURLs]);
+      const updatedFrameNoFiles = [...frameNoFiles, ...fileURLs];
+      localStorage.setItem("frameNoFiles", JSON.stringify(updatedFrameNoFiles));
+      setFrameNoFiles(updatedFrameNoFiles);
     } else if (field === "registration") {
-      setRegistrationFiles([...registrationFiles, ...fileURLs]);
+      const updatedRegistrationFiles = [...registrationFiles, ...fileURLs];
+      localStorage.setItem("registrationFiles", JSON.stringify(updatedRegistrationFiles));
+      setRegistrationFiles(updatedRegistrationFiles);
     } else if (field === "engine") {
-      setEngineFiles([...engineFiles, ...fileURLs]);
+      const updatedEngineFiles = [...engineFiles, ...fileURLs];
+      localStorage.setItem("engineFiles", JSON.stringify(updatedEngineFiles));
+      setEngineFiles(updatedEngineFiles);
     }
   };
 
   const handleDeleteImage = (index, field) => {
     if (field === "mileage") {
-      const updatedFiles = [...mileageFiles];
-      updatedFiles.splice(index, 1);
-      setMileageFiles(updatedFiles);
+      const updatedMileageFiles = [...mileageFiles];
+      updatedMileageFiles.splice(index, 1);
+      setMileageFiles(updatedMileageFiles);
+      localStorage.setItem("mileageFiles", JSON.stringify(updatedMileageFiles));
     } else if (field === "frameNo") {
-      const updatedFiles = [...frameNoFiles];
-      updatedFiles.splice(index, 1);
-      setFrameNoFiles(updatedFiles);
+      const updatedFrameNoFiles = [...frameNoFiles];
+      updatedFrameNoFiles.splice(index, 1);
+      setFrameNoFiles(updatedFrameNoFiles);
+      localStorage.setItem("frameNoFiles", JSON.stringify(updatedFrameNoFiles));
     } else if (field === "registration") {
-      const updatedFiles = [...registrationFiles];
-      updatedFiles.splice(index, 1);
-      setRegistrationFiles(updatedFiles);
+      const updatedRegistrationFiles = [...registrationFiles];
+      updatedRegistrationFiles.splice(index, 1);
+      setRegistrationFiles(updatedRegistrationFiles);
+      localStorage.setItem("registrationFiles", JSON.stringify(updatedRegistrationFiles));
     } else if (field === "engine") {
-      const updatedFiles = [...engineFiles];
-      updatedFiles.splice(index, 1);
-      setEngineFiles(updatedFiles);
+      const updatedEngineFiles = [...engineFiles];
+      updatedEngineFiles.splice(index, 1);
+      setEngineFiles(updatedEngineFiles);
+      localStorage.setItem("engineFiles", JSON.stringify(updatedEngineFiles));
     }
   };
-
-  useEffect(() => {
-    // Save images to local storage whenever they change
-    saveToLocalStorage();
-  }, [mileageFiles, frameNoFiles, registrationFiles, engineFiles]);
 
   return (
     <div>
