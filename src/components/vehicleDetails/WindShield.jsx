@@ -14,7 +14,8 @@ function WindShield() {
 
   useEffect(() => {
     const savedRatings = localStorage.getItem("WindShieldRatings");
-    const savedImages = JSON.parse(localStorage.getItem("WindShieldImages")) || [];
+    const savedImages =
+      JSON.parse(localStorage.getItem("WindShieldImages")) || [];
 
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
@@ -75,7 +76,7 @@ function WindShield() {
             <p>Wind Shield</p>
 
             <div className="vi-content-top-img-con">
-              <div className="vi-content-top-btns">
+              {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload Files
                   <input
@@ -86,7 +87,7 @@ function WindShield() {
                     style={{ display: "none" }}
                   />
                 </label>
-              </div>
+              </div> */}
               <div className="vi-content-top-img">
                 {files.map((file, index) => (
                   <div key={index} className="image-container">

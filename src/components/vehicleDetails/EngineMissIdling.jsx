@@ -84,12 +84,12 @@ function EngineMissIdling() {
       <div className="vi-main-content">
         {/* {/* <div className="progress">
           <div className="progress-bar" role="progressbar" style={{ width: '20%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> */}
-        {/* </div> */} */
+        {/* </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Engine Missidling</p>
             <div className="vi-content-top-img-con">
-              <div className="vi-content-top-btns">
+              {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload Files
                   <input
@@ -100,7 +100,7 @@ function EngineMissIdling() {
                     style={{ display: "none" }}
                   />
                 </label>
-              </div>
+              </div> */}
               <div className="vi-content-top-img">
                 {files.map((file, index) => (
                   <div key={index} className="image-container">

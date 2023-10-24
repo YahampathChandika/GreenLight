@@ -102,7 +102,7 @@ function EngineCompartment() {
           <div className="vi-content-top">
             <p>Engine Compartment</p>
             <div className="vi-content-top-img-con">
-              <div className="vi-content-top-btns">
+              {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload Files
                   <input
@@ -113,7 +113,7 @@ function EngineCompartment() {
                     style={{ display: "none" }}
                   />
                 </label>
-              </div>
+              </div> */}
               <div className="vi-content-top-img">
                 {files.map((file, index) => (
                   <div key={index} className="image-container">

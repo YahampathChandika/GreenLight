@@ -5,8 +5,7 @@ import "../../assets/scss/MainDateMonittorHybrid.css";
 import { useForm, Controller } from "react-hook-form";
 
 function MainDataMonitorHybrid() {
-  
-  const { register, handleSubmit, control, setValue  } = useForm();
+  const { register, handleSubmit, control, setValue } = useForm();
 
   const onSubmit = (data) => {
     // Handle form submission, `data` contains the form field values
@@ -31,7 +30,6 @@ function MainDataMonitorHybrid() {
   }, [setValue]);
   // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
-
 
   // Function to handle file selection
   const handleFileChange = (e) => {
@@ -70,7 +68,7 @@ function MainDataMonitorHybrid() {
           <div className="vi-content-top">
             <p> Main Data Monitor Hybrid </p>
             <div className="vi-content-top-img-con">
-              <div className="vi-content-top-btns">
+              {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload Files
                   <input
@@ -81,7 +79,7 @@ function MainDataMonitorHybrid() {
                     style={{ display: "none" }}
                   />
                 </label>
-              </div>
+              </div> */}
               <div className="vi-content-top-img">
                 {files.map((file, index) => (
                   <div key={index} className="image-container">
@@ -169,8 +167,8 @@ function MainDataMonitorHybrid() {
                   <input
                     type="text"
                     name="Travel-milage-after-troble-hapended"
-                    id="Travel-milage-after-troble-hapended"
-                    {...register("Travel-milage-after-troble-hapended")}
+                    id="Travel-milage-after-troble-hapendedd"
+                    {...register("Travel-milage-after-troble-hapendedd")}
                   />
                 </div>
               </div>

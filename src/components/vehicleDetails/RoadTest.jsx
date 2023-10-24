@@ -3,8 +3,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
+import { useForm, Controller } from "react-hook-form";
 
 function RoadTest() {
+  const { register, handleSubmit, control, setValue } = useForm();
+
+  const onSubmit = (data) => {
+    // Handle form submission, `data` contains the form field values
+    console.log("data", data);
+
+    // Save the form data to local storage
+    localStorage.setItem("RoadTestdData", JSON.stringify(data));
+  };
+
+  useEffect(() => {
+    // Load saved data from local storage
+    const savedData = localStorage.getItem("RoadTestdData");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      // Set form field values from local storage
+      for (const key in parsedData) {
+        if (parsedData.hasOwnProperty(key)) {
+          setValue(key, parsedData[key]);
+        }
+      }
+    }
+  }, [setValue]);
   const ratingOptions = [
     { label: "Good", color: "green" },
     { label: "Normal", color: "yellow" },
@@ -96,7 +120,7 @@ function RoadTest() {
           <div className="vi-content-top">
             <p> Road Test </p>
             <div className="vi-content-top-img-con">
-              <div className="vi-content-top-btns">
+              {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload Files
                   <input
@@ -107,7 +131,7 @@ function RoadTest() {
                     style={{ display: "none" }}
                   />
                 </label>
-              </div>
+              </div> */}
               <div className="vi-content-top-img">
                 {files.map((file, index) => (
                   <div key={index} className="image-container">
@@ -175,20 +199,39 @@ function RoadTest() {
               </tbody>
             </table>
           </div>
-          <div className="content-bot" style={{ marginTop: "50px" }}>
-            <div className="vi-content-bot-left">
-              <div className="vi-content-bot-input">
-                <label> Dowel clutch od clutch tem</label>
-                <input type="text" name="table-cord" id="table-cord" />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="content-bot" style={{ marginTop: "50px" }}>
+              <div className="vi-content-bot-left">
+                <div className="vi-content-bot-input">
+                  <label> Dowel clutch odd clutch tem</label>
+                  <input
+                    type="text"
+                    name="odd-clutch"
+                    id="odd-clutch"
+                    {...register("Full-data-report")}
+                  />
+                </div>
+              </div>
+              <div className="vi-content-bot-right">
+                <div className="vi-content-bot-input-right">
+                  <label> Dowel clutch even clutch tem</label>
+                  <input
+                    type="text"
+                    name="even-clutch"
+                    id="even-clutch"
+                    {...register("even-clutch")}
+                  />
+                </div>
               </div>
             </div>
-            <div className="vi-content-bot-right">
-              <div className="vi-content-bot-input-right">
-                <label> Dowel clutch even clutch tem</label>
-                <input type="text" name="table-cord" id="table-cord" />
-              </div>
-            </div>
-          </div>
+            <button
+              className="btn btn-success"
+              type="submit"
+              style={{ width: "150px", marginTop: "20px" }}
+            >
+              Save
+            </button>
+          </form>
         </div>
       </div>
     </div>

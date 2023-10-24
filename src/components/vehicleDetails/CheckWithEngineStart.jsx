@@ -34,7 +34,10 @@ function CheckWithEngineStart() {
     // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
-    localStorage.setItem("CheckWithEngineStart", JSON.stringify(updatedRatings));
+    localStorage.setItem(
+      "CheckWithEngineStart",
+      JSON.stringify(updatedRatings)
+    );
   };
 
   // Function to handle file selection
@@ -85,7 +88,7 @@ function CheckWithEngineStart() {
           <div className="vi-content-top">
             <p>Check with Engine Start</p>
             <div className="vi-content-top-img-con">
-              <div className="vi-content-top-btns">
+              {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
                   Upload Files
                   <input
@@ -96,7 +99,7 @@ function CheckWithEngineStart() {
                     style={{ display: "none" }}
                   />
                 </label>
-              </div>
+              </div> */}
               <div className="vi-content-top-img">
                 {files.map((file, index) => (
                   <div key={index} className="image-container">
