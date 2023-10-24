@@ -117,61 +117,61 @@ function MainDataMonitorHybrid() {
               </div>
               <div className="vi-content-bot-input">
                 <label>HV Battery minimum cell voltage</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="HV-Battery-minimum-cell-voltaged" id="HV-Battery-minimum-cell-voltage" />
               </div>
               <div className="vi-content-bot-input">
                 <label> HV Battery module minimum temparatur</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="HV-Battery-module-minimum-temparatur" id="HV-Battery-module-minimum-temparatur" />
               </div>
               <div className="vi-content-bot-input">
                 <label>HV Battery usable capacity</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="HV-Battery-usable-capacity" id="HV-Battery-usable-capacity" />
               </div>
               <div className="vi-content-bot-input">
                 <label>S.O.C After IO-OR</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="S.O.C After IO-OR" id="S.O.C After IO-OR" />
               </div>
               <div className="vi-content-bot-input">
                 <label>Staters of change minimum</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="Staters-of-change-minimum" id="Staters-of-change-minimum" />
               </div>
               <div className="vi-content-bot-input">
                 <label>Travel milage</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="Travel-milage" id="Travel-milage" />
               </div>
               <div className="vi-content-bot-input">
                 <label>Travel milage after troble hapended</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="Travel-milage-after-troble-hapended" id="Travel-milage-after-troble-hapended" />
               </div>
             </div>
             <div className="vi-content-bot-right">
               <div className="vi-content-bot-input-right">
                 <label> HV Battery maximum cell voltage</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="HV-Battery-maximum-cell-voltage" id="HV-Battery-maximum-cell-voltage" />
               </div>
               <div className="vi-content-bot-input-right">
                 <label> HV Battery module maximum temparature</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="HV-Battery-module-maximum-temparature" id="HV-Battery-module-maximum-temparature" />
               </div>
               <div className="vi-content-bot-input-right">
                 <label> HV total voltage</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="HV-total-voltage" id="HV-total-voltage" />
               </div>
               <div className="vi-content-bot-input-right">
                 <label>S.O.C</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="S.O.C" id="S.O.C" />
               </div>
               <div className="vi-content-bot-input-right">
                 <label>Staters of change maximum</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="Staters-of-change-maximum" id="Staters-of-change-maximum" />
               </div>
               <div className="vi-content-bot-input-right">
                 <label>Travel milage After battry removed</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="Travel-milage-After-battry-removed" id="Travel-milage-After-battry-removed" />
               </div>
               <div className="vi-content-bot-input-right">
                 <label> Full data report</label>
-                <input type="text" name="table-cord" id="table-cord" />
+                <input type="text" name="Full-data-report" id="Full-data-report" />
               </div>
             </div>
           </div>

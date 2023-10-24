@@ -13,28 +13,26 @@ function WindShield() {
   ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("WindShield");
+    const savedRatings = localStorage.getItem("WindShieldRatings");
+    const savedImages = JSON.parse(localStorage.getItem("WindShieldImages")) || [];
+
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
+    if (savedImages) {
+      setFiles(savedImages);
+    }
   }, []);
 
-  // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-
-  // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
 
-  // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
     const updatedRatings = { ...attributeRatings, [attribute]: rating };
     setAttributeRatings(updatedRatings);
-
-    // Save the updated ratings to localStorage
-    localStorage.setItem("WindShield", JSON.stringify(updatedRatings));
+    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
   };
 
-  // Function to handle file selection
   const handleFileChange = (e) => {
     const selectedFiles = e.target.files;
     const fileURLs = [];
@@ -44,17 +42,21 @@ function WindShield() {
       fileURLs.push(objectURL);
     }
 
-    setFiles([...files, ...fileURLs]);
-  };
-
-  // Function to delete a specific image
-  const handleDeleteImage = (index) => {
-    const updatedFiles = [...files];
-    updatedFiles.splice(index, 1);
+    // Save the updated images to local storage
+    const updatedFiles = [...files, ...fileURLs];
+    localStorage.setItem("WindShieldImages", JSON.stringify(updatedFiles));
     setFiles(updatedFiles);
   };
 
-  // Sample data for your table
+  const handleDeleteImage = (index) => {
+    const updatedFiles = [...files];
+    updatedFiles.splice(index, 1);
+
+    // Update local storage with the new image URLs
+    localStorage.setItem("WindShieldImages", JSON.stringify(updatedFiles));
+    setFiles(updatedFiles);
+  };
+
   const data = [
     { id: 1, attribute: "Original" },
     { id: 2, attribute: "No evidence of major damage" },
@@ -68,16 +70,6 @@ function WindShield() {
   return (
     <div className="vi-main-con">
       <div className="vi-main-content">
-        {/* <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: "20%" }}
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Wind Shield</p>
