@@ -9,8 +9,8 @@
   background-color: #9ec696;
   min-height: 100vh;
   /* page-break-before: auto; */
-  /* page-break-before: always; */
-  /* break-before: always; */
+  page-break-before: always;
+  break-before: always;
 }
 
 .vi-content {
