@@ -29,27 +29,9 @@ function MainDataMonitorHybrid() {
       }
     }
   }, [setValue]);
-
-  // Create a state to keep track of the selected ratings for each attribute
-  const [attributeRatings, setAttributeRatings] = useState({});
-
   // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
 
-  // Function to handle changes in attribute ratings
-  const handleRatingChange = (attribute, rating) => {
-    const updatedRatings = { ...attributeRatings, [attribute]: rating };
-    setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
-
-    // Save the updated ratings to localStorage
-    localStorage.setItem(
-      "MainDataMonitorHybrid",
-      JSON.stringify(updatedRatings)
-    );
-  };
 
   // Function to handle file selection
   const handleFileChange = (e) => {
@@ -62,9 +44,6 @@ function MainDataMonitorHybrid() {
     }
 
     setFiles([...files, ...fileURLs]);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
