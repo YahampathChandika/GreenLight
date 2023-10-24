@@ -3,6 +3,7 @@ import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "../../assets/scss/Sidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import CustomerDetails from "../customersDetails/CustomerDetails";
 import WindShield from "../vehicleDetails/WindShield";
 import Hood from "../vehicleDetails/Hood";
 import Grill from "../vehicleDetails/Grill";
@@ -42,6 +43,7 @@ function SidebarComp() {
   const [selectedMenuItemIndex, setSelectedMenuItemIndex] = useState(0);
 
   const menuItems = [
+    "Customer Details",
     "Wind Shield",
     "Hood",
     "Grill",
@@ -99,6 +101,8 @@ function SidebarComp() {
     const selectedMenuItem = menuItems[selectedMenuItemIndex];
 
     switch (selectedMenuItem) {
+      case "Customer Details":
+        return <CustomerDetails/>;
       case "Wind Shield":
         return <WindShield />;
       case "Hood":

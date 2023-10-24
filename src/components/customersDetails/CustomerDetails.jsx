@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
-import Navbar from '../common/Navbar'
-import Paginations from '../common/Paginations'
-import '../../assets/scss/CustomerDetails.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { faImage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-
-
+import React, { useState } from "react";
+import Navbar from "../common/Navbar";
+import Paginations from "../common/Paginations";
+import "../../assets/scss/CustomerDetails.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CustomerDetails() {
-  const [selectedFiles, setSelectedFiles] = useState([null, null, null, null, null]);
+  const [selectedFiles, setSelectedFiles] = useState([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   const labels = [
-    'Mileage',
-    'Frame No',
-    'Certificate of Registration',
-    'Engine No',
+    "Mileage",
+    "Frame No",
+    "Certificate of Registration",
+    "Engine No",
   ];
 
   const handleFileInputChange = (e, index) => {
@@ -31,157 +33,96 @@ function CustomerDetails() {
     document.getElementById(`fileInput${index}`).click();
   };
 
-
-      
   return (
     <div>
-
-      <Navbar/>
-      <div className='details-main'>
-        <p>Customer Details</p>  
-      <div className='details-top'>
-        <div className='details-top-left'>
-        <div className='details-input'>
-            <label>Name</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Phone No</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        </div>
-        <div className='details-top-right'>
-        <div className='details-input'>
-            <label>Email</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Inspection Location</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        </div>
-      </div>
-      <div className='details-mid'>
-        <p>Vehicle Details</p>
-        <div className='details-mid-con'>
-          <div className='details-mid-con-left'>
-            <div className='details-input'>
-              <label>Vehicle No.</label>
-              <input 
-                type="text" 
-                name='name'
-                id='name'
-                />
+      <div className="details-main">
+        <p>Customer Details</p>
+        <div className="details-top">
+          <div className="details-top-left">
+            <div className="details-input">
+              <label>Name</label>
+              <input type="text" name="name" id="name" />
+            </div>
+            <div className="details-input">
+              <label>Phone No</label>
+              <input type="text" name="name" id="name" />
+            </div>
           </div>
-          <div className='details-input'>
-            <label>Make</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-         </div>
-         <div className='details-input'>
-            <label>Transmission</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Transmission</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-          </div>
-          <div className='details-mid-con-mid'>
-          <div className='details-input'>
-            <label>Manufacture Year</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Model</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Milage</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-
-          </div>
-          <div className='details-mid-con-right'>
-          <div className='details-input'>
-            <label>Registration Year</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Fuel Type</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
-        <div className='details-input'>
-            <label>Fuel Type</label>
-            <input 
-              type="text" 
-              name='name'
-              id='name'
-              />
-        </div>
+          <div className="details-top-right">
+            <div className="details-input">
+              <label>Email</label>
+              <input type="text" name="name" id="name" />
+            </div>
+            <div className="details-input">
+              <label>Inspection Location</label>
+              <input type="text" name="name" id="name" />
+            </div>
           </div>
         </div>
-      </div>
-      <div className='details-bot'>
+        <div className="details-mid">
+          <p>Vehicle Details</p>
+          <div className="details-mid-con">
+            <div className="details-mid-con-left">
+              <div className="details-input">
+                <label>Vehicle No.</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Make</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Transmission</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Transmission</label>
+                <input type="text" name="name" id="name" />
+              </div>
+            </div>
+            <div className="details-mid-con-mid">
+              <div className="details-input">
+                <label>Manufacture Year</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Model</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Milage</label>
+                <input type="text" name="name" id="name" />
+              </div>
+            </div>
+            <div className="details-mid-con-right">
+              <div className="details-input">
+                <label>Registration Year</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Fuel Type</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div className="details-input">
+                <label>Fuel Type</label>
+                <input type="text" name="name" id="name" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="details-bot">
           {[0, 1, 2, 3].map((index) => (
-            <div className='details-bot-left' key={index}>
-              <div className='details-input-image'>
+            <div className="details-bot-left" key={index}>
+              <div className="details-input-image">
                 <label>{labels[index]}</label>
                 <input
                   type="file"
                   id={`fileInput${index}`}
                   accept=".jpg, .png, .pdf"
                   onChange={(e) => handleFileInputChange(e, index)}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                 />
-                <input type="text" name='name' id='name' />
+                <input type="text" name="name" id="name" />
                 <span
                   className={`image-icon-${index + 1}`}
                   onClick={() => openFileUploader(index)}
@@ -195,15 +136,22 @@ function CustomerDetails() {
             </div>
           ))}
         </div>
-      {/* <div className='details-button'>
+        {/* <div className='details-button'>
          <button type="button" class="btn btn-primary">Next</button>
       </div> */}
-      <div style={{ width: '100%', marginBottom:'50px' , display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-         <Paginations />
-      </div>
+        <div
+          style={{
+            width: "100%",
+            marginBottom: "50px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CustomerDetails
+export default CustomerDetails;
