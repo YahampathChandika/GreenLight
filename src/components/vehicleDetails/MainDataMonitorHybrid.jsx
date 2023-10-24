@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 import "../../assets/scss/MainDateMonittorHybrid.css";
+import { useForm, Controller } from "react-hook-form";
 
 function MainDataMonitorHybrid() {
-  const ratingOptions = [
-    { label: "Good", color: "green" },
-    { label: "Normal", color: "yellow" },
-    { label: "NR", color: "red" },
-    { label: "NA", color: "gray" },
-  ];
+  
+  const { register, handleSubmit, control, setValue  } = useForm();
+
+  const onSubmit = (data) => {
+    // Handle form submission, `data` contains the form field values
+    console.log("data", data);
+
+    // Save the form data to local storage
+    localStorage.setItem("MainDataMonitorHybridData", JSON.stringify(data));
+  };
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("MainDataMonitorHybrid");
-    if (savedRatings) {
-      setAttributeRatings(JSON.parse(savedRatings));
+    // Load saved data from local storage
+    const savedData = localStorage.getItem("MainDataMonitorHybridData");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      // Set form field values from local storage
+      for (const key in parsedData) {
+        if (parsedData.hasOwnProperty(key)) {
+          setValue(key, parsedData[key]);
+        }
+      }
     }
-  }, []);
+  }, [setValue]);
 
   // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
@@ -109,72 +119,151 @@ function MainDataMonitorHybrid() {
               </div>
             </div>
           </div>
-          <div className="content-bot">
-            <div className="vi-content-bot-left">
-              <div className="vi-content-bot-input">
-                <label> No table cord</label>
-                <input type="text" name="table-cord" id="table-cord" />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="content-bot">
+              <div className="vi-content-bot-left">
+                <div className="vi-content-bot-input">
+                  <label> No table cord</label>
+                  <input
+                    type="text"
+                    name="table-cord"
+                    id="table-cord"
+                    {...register("table-cord")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label>HV Battery minimum cell voltage</label>
+                  <input
+                    type="text"
+                    name="HV-Battery-minimum-cell-voltaged"
+                    id="HV-Battery-minimum-cell-voltage"
+                    {...register("HV-Battery-minimum-cell-voltage")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label> HV Battery module minimum temparatur</label>
+                  <input
+                    type="text"
+                    name="HV-Battery-module-minimum-temparatur"
+                    id="HV-Battery-module-minimum-temparatur"
+                    {...register("HV-Battery-module-minimum-temparatur")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label>HV Battery usable capacity</label>
+                  <input
+                    type="text"
+                    name="HV-Battery-usable-capacity"
+                    id="HV-Battery-usable-capacity"
+                    {...register("HV-Battery-usable-capacity")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label>S.O.C After IO-OR</label>
+                  <input
+                    type="text"
+                    name="SOC-After-IO-OR"
+                    id="SOC-After-IO-OR"
+                    {...register("SOC-After-IO-OR")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label>Staters of change minimum</label>
+                  <input
+                    type="text"
+                    name="Staters-of-change-minimum"
+                    id="Staters-of-change-minimum"
+                    {...register("Staters-of-change-minimum")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label>Travel milage</label>
+                  <input
+                    type="text"
+                    name="Travel-milage"
+                    id="Travel-milage"
+                    {...register("Travel-milage")}
+                  />
+                </div>
+                <div className="vi-content-bot-input">
+                  <label>Travel milage after troble hapended</label>
+                  <input
+                    type="text"
+                    name="Travel-milage-after-troble-hapended"
+                    id="Travel-milage-after-troble-hapended"
+                    {...register("Travel-milage-after-troble-hapended")}
+                  />
+                </div>
               </div>
-              <div className="vi-content-bot-input">
-                <label>HV Battery minimum cell voltage</label>
-                <input type="text" name="HV-Battery-minimum-cell-voltaged" id="HV-Battery-minimum-cell-voltage" />
-              </div>
-              <div className="vi-content-bot-input">
-                <label> HV Battery module minimum temparatur</label>
-                <input type="text" name="HV-Battery-module-minimum-temparatur" id="HV-Battery-module-minimum-temparatur" />
-              </div>
-              <div className="vi-content-bot-input">
-                <label>HV Battery usable capacity</label>
-                <input type="text" name="HV-Battery-usable-capacity" id="HV-Battery-usable-capacity" />
-              </div>
-              <div className="vi-content-bot-input">
-                <label>S.O.C After IO-OR</label>
-                <input type="text" name="S.O.C After IO-OR" id="S.O.C After IO-OR" />
-              </div>
-              <div className="vi-content-bot-input">
-                <label>Staters of change minimum</label>
-                <input type="text" name="Staters-of-change-minimum" id="Staters-of-change-minimum" />
-              </div>
-              <div className="vi-content-bot-input">
-                <label>Travel milage</label>
-                <input type="text" name="Travel-milage" id="Travel-milage" />
-              </div>
-              <div className="vi-content-bot-input">
-                <label>Travel milage after troble hapended</label>
-                <input type="text" name="Travel-milage-after-troble-hapended" id="Travel-milage-after-troble-hapended" />
+              <div className="vi-content-bot-right">
+                <div className="vi-content-bot-input-right">
+                  <label> HV Battery maximum cell voltage</label>
+                  <input
+                    type="text"
+                    name="HV-Battery-maximum-cell-voltage"
+                    id="HV-Battery-maximum-cell-voltage"
+                    {...register("HV-Battery-maximum-cell-voltage")}
+                  />
+                </div>
+                <div className="vi-content-bot-input-right">
+                  <label> HV Battery module maximum temparature</label>
+                  <input
+                    type="text"
+                    name="HV-Battery-module-maximum-temparature"
+                    id="HV-Battery-module-maximum-temparature"
+                    {...register("HV-Battery-module-maximum-temparature")}
+                  />
+                </div>
+                <div className="vi-content-bot-input-right">
+                  <label> HV total voltage</label>
+                  <input
+                    type="text"
+                    name="HV-total-voltage"
+                    id="HV-total-voltage"
+                    {...register("HV-total-voltage")}
+                  />
+                </div>
+                <div className="vi-content-bot-input-right">
+                  <label>S.O.C</label>
+                  <input type="text" name="SOC" id="SOC" {...register("SOC")} />
+                </div>
+                <div className="vi-content-bot-input-right">
+                  <label>Staters of change maximum</label>
+                  <input
+                    type="text"
+                    name="Staters-of-change-maximum"
+                    id="Staters-of-change-maximum"
+                    {...register("Staters-of-change-maximum")}
+                  />
+                </div>
+                <div className="vi-content-bot-input-right">
+                  <label>Travel milage After battry removed</label>
+                  <input
+                    type="text"
+                    name="Travel-milage-After-battry-removed"
+                    id="Travel-milage-After-battry-removed"
+                    {...register("Travel-milage-After-battry-removed")}
+                  />
+                </div>
+                <div className="vi-content-bot-input-right">
+                  <label> Full data report</label>
+                  <input
+                    type="text"
+                    name="Full-data-report"
+                    id="Full-data-report"
+                    {...register("Full-data-report")}
+                  />
+                </div>
+                <button
+                  className="btn btn-success"
+                  type="submit"
+                  style={{ width: "150px", marginTop: "20px" }}
+                >
+                  Save
+                </button>
               </div>
             </div>
-            <div className="vi-content-bot-right">
-              <div className="vi-content-bot-input-right">
-                <label> HV Battery maximum cell voltage</label>
-                <input type="text" name="HV-Battery-maximum-cell-voltage" id="HV-Battery-maximum-cell-voltage" />
-              </div>
-              <div className="vi-content-bot-input-right">
-                <label> HV Battery module maximum temparature</label>
-                <input type="text" name="HV-Battery-module-maximum-temparature" id="HV-Battery-module-maximum-temparature" />
-              </div>
-              <div className="vi-content-bot-input-right">
-                <label> HV total voltage</label>
-                <input type="text" name="HV-total-voltage" id="HV-total-voltage" />
-              </div>
-              <div className="vi-content-bot-input-right">
-                <label>S.O.C</label>
-                <input type="text" name="S.O.C" id="S.O.C" />
-              </div>
-              <div className="vi-content-bot-input-right">
-                <label>Staters of change maximum</label>
-                <input type="text" name="Staters-of-change-maximum" id="Staters-of-change-maximum" />
-              </div>
-              <div className="vi-content-bot-input-right">
-                <label>Travel milage After battry removed</label>
-                <input type="text" name="Travel-milage-After-battry-removed" id="Travel-milage-After-battry-removed" />
-              </div>
-              <div className="vi-content-bot-input-right">
-                <label> Full data report</label>
-                <input type="text" name="Full-data-report" id="Full-data-report" />
-              </div>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
