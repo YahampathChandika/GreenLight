@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/scss/CustomerDetails.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useForm, Controller } from "react-hook-form";
+
 
 function CustomerDetails() {
   const [mileageFiles, setMileageFiles] = useState([]);
@@ -8,6 +10,17 @@ function CustomerDetails() {
   const [registrationFiles, setRegistrationFiles] = useState([]);
   const [engineFiles, setEngineFiles] = useState([]);
   const [files, setFiles] = useState([]);
+
+  const { register, handleSubmit, control, setValue  } = useForm();
+
+  const onSubmit = (data) => {
+    // Handle form submission, `data` contains the form field values
+    console.log("data", data);
+
+    // Save the form data to local storage
+    localStorage.setItem("MainDataMonitorHybridData", JSON.stringify(data));
+  };
+
 
   useEffect(() => {
     // Load images from local storage on component mount
@@ -90,21 +103,38 @@ function CustomerDetails() {
     <div>
       <div className="details-main">
         <p>Customer Details</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <>
         <div className="details-top">
           <div className="details-top-left">
             <div className="details-input">
               <label>Name</label>
-              <input type="text" />
+              <input 
+                type="text"
+                name="name"
+                id="name"
+                {...register("name")}
+                />
             </div>
             <div className="details-input">
               <label>Phone No</label>
-              <input type="text" name="phone" />
+              <input 
+                type="text"
+                name="phone-no" 
+                id="phone-no"
+                {...register("phone-no")}
+                />
             </div>
           </div>
           <div className="details-top-right">
             <div className="details-input">
               <label>Email</label>
-              <input type="text" name="email" />
+              <input 
+                type="text"
+                name="email"
+                id="email"
+                {...register("email")}
+                />
             </div>
             <div className="details-input">
               <label>Inspection Location</label>
@@ -163,6 +193,8 @@ function CustomerDetails() {
             </div>
           </div>
         </div>
+        </>
+        </form>
         <div className="details-bot">
           <div className="details-bot-inputs">
             <div className="bot-input">
@@ -294,6 +326,7 @@ function CustomerDetails() {
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
