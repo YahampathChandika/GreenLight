@@ -151,9 +151,16 @@ function UnderCarriageView() {
                                   )
                                 }
                               />
-                              <span
-                                className={`rating-color ${option.label.toLowerCase()}`}
-                              ></span>
+                              <div
+                                className={`rating-label ${option.label.toLowerCase()}`}
+                              >
+                                {attributeRatings[item.attribute] ===
+                                option.label ? (
+                                  <FontAwesomeIcon icon={faXmark} />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
                             </label>
                           </td>
                         ))}

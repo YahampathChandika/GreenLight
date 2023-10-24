@@ -1,35 +1,94 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/scss/CustomerDetails.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function CustomerDetails() {
-  const [selectedFiles, setSelectedFiles] = useState([
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
-  const labels = [
-    "Mileage",
-    "Frame No",
-    "Certificate of Registration",
-    "Engine No",
-  ];
+  const [mileageFiles, setMileageFiles] = useState([]);
+  const [frameNoFiles, setFrameNoFiles] = useState([]);
+  const [registrationFiles, setRegistrationFiles] = useState([]);
+  const [engineFiles, setEngineFiles] = useState([]);
 
-  const handleFileInputChange = (e, index) => {
-    const file = e.target.files[0];
-    const updatedSelectedFiles = [...selectedFiles];
-    updatedSelectedFiles[index] = file;
-    setSelectedFiles(updatedSelectedFiles);
+  useEffect(() => {
+    // Load images from local storage on component mount
+    const storedMileageFiles = JSON.parse(localStorage.getItem("mileageFiles"));
+    const storedFrameNoFiles = JSON.parse(localStorage.getItem("frameNoFiles"));
+    const storedRegistrationFiles = JSON.parse(
+      localStorage.getItem("registrationFiles")
+    );
+    const storedEngineFiles = JSON.parse(localStorage.getItem("engineFiles"));
+
+    if (storedMileageFiles) {
+      setMileageFiles(storedMileageFiles);
+    }
+
+    if (storedFrameNoFiles) {
+      setFrameNoFiles(storedFrameNoFiles);
+    }
+
+    if (storedRegistrationFiles) {
+      setRegistrationFiles(storedRegistrationFiles);
+    }
+
+    if (storedEngineFiles) {
+      setEngineFiles(storedEngineFiles);
+    }
+  }, []);
+
+  const saveToLocalStorage = () => {
+    // Save images to local storage
+    localStorage.setItem("mileageFiles", JSON.stringify(mileageFiles));
+    localStorage.setItem("frameNoFiles", JSON.stringify(frameNoFiles));
+    localStorage.setItem(
+      "registrationFiles",
+      JSON.stringify(registrationFiles)
+    );
+    localStorage.setItem("engineFiles", JSON.stringify(engineFiles));
   };
 
-  const openFileUploader = (index) => {
-    // Trigger a click on the hidden file input when the FontAwesome icon is clicked.
-    document.getElementById(`fileInput${index}`).click();
+  const handleFileChange = (e, field) => {
+    const selectedFiles = e.target.files;
+    const fileURLs = [];
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const objectURL = URL.createObjectURL(selectedFiles[i]);
+      fileURLs.push(objectURL);
+    }
+
+    if (field === "mileage") {
+      setMileageFiles([...mileageFiles, ...fileURLs]);
+    } else if (field === "frameNo") {
+      setFrameNoFiles([...frameNoFiles, ...fileURLs]);
+    } else if (field === "registration") {
+      setRegistrationFiles([...registrationFiles, ...fileURLs]);
+    } else if (field === "engine") {
+      setEngineFiles([...engineFiles, ...fileURLs]);
+    }
   };
+
+  const handleDeleteImage = (index, field) => {
+    if (field === "mileage") {
+      const updatedFiles = [...mileageFiles];
+      updatedFiles.splice(index, 1);
+      setMileageFiles(updatedFiles);
+    } else if (field === "frameNo") {
+      const updatedFiles = [...frameNoFiles];
+      updatedFiles.splice(index, 1);
+      setFrameNoFiles(updatedFiles);
+    } else if (field === "registration") {
+      const updatedFiles = [...registrationFiles];
+      updatedFiles.splice(index, 1);
+      setRegistrationFiles(updatedFiles);
+    } else if (field === "engine") {
+      const updatedFiles = [...engineFiles];
+      updatedFiles.splice(index, 1);
+      setEngineFiles(updatedFiles);
+    }
+  };
+
+  useEffect(() => {
+    // Save images to local storage whenever they change
+    saveToLocalStorage();
+  }, [mileageFiles, frameNoFiles, registrationFiles, engineFiles]);
 
   return (
     <div>
@@ -109,43 +168,136 @@ function CustomerDetails() {
           </div>
         </div>
         <div className="details-bot">
-          {[0, 1, 2, 3].map((index) => (
-            <div className="details-bot-left" key={index}>
-              <div className="details-input-image">
-                <label>{labels[index]}</label>
-                <input
-                  type="file"
-                  id={`fileInput${index}`}
-                  accept=".jpg, .png, .pdf"
-                  onChange={(e) => handleFileInputChange(e, index)}
-                  style={{ display: "none" }}
-                />
-                <input type="text" />
-                <span
-                  className={`image-icon-${index + 1}`}
-                  onClick={() => openFileUploader(index)}
-                >
-                  <FontAwesomeIcon icon={faImage} />
-                </span>
-                {selectedFiles[index] && (
-                  <p>Selected File: {selectedFiles[index].name}</p>
-                )}
+          <div className="details-bot-inputs">
+            <div className="bot-input">
+              <label>Milage</label>
+              <input type="text" />
+              <div className="customer-img-con">
+                <div className="customer-btns">
+                  <label className="btn btn-secondary">
+                    Image
+                    <input
+                      type="file"
+                      accept="image/jpeg, image/png, image/gif"
+                      multiple
+                      onChange={(e) => handleFileChange(e, "mileage")}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
+                <div className="customer-img">
+                  {mileageFiles.map((file, index) => (
+                    <div key={index} className="cus-image-container">
+                      <img src={file} alt="Uploaded" />
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteImage(index, "mileage")}
+                        className="btn btn-danger customer-dlt-btn"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-        {/* <div className='details-button'>
-         <button type="button" class="btn btn-primary">Next</button>
-      </div> */}
-        <div
-          style={{
-            width: "100%",
-            marginBottom: "50px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+            <div className="bot-input">
+              <label>Frame No.</label>
+              <input type="text" />
+              <div className="customer-img-con">
+                <div className="customer-btns">
+                  <label className="btn btn-secondary">
+                    Image
+                    <input
+                      type="file"
+                      accept="image/jpeg, image/png, image/gif"
+                      multiple
+                      onChange={(e) => handleFileChange(e, "frameNo")}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
+                <div className="customer-img">
+                  {frameNoFiles.map((file, index) => (
+                    <div key={index} className="cus-image-container">
+                      <img src={file} alt="Uploaded" />
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteImage(index, "frameNo")}
+                        className="btn btn-danger customer-dlt-btn"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="bot-input">
+              <label>Certificate of Reg.</label>
+              <input type="text" />
+              <div className="customer-img-con">
+                <div className="customer-btns">
+                  <label className="btn btn-secondary">
+                    Image
+                    <input
+                      type="file"
+                      accept="image/jpeg, image/png, image/gif"
+                      multiple
+                      onChange={(e) => handleFileChange(e, "registration")}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
+                <div className="customer-img">
+                  {registrationFiles.map((file, index) => (
+                    <div key={index} className="cus-image-container">
+                      <img src={file} alt="Uploaded" />
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteImage(index, "registration")}
+                        className="btn btn-danger customer-dlt-btn"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="bot-input">
+              <label>Engine No. & Model</label>
+              <input type="text" />
+              <div className="customer-img-con">
+                <div className="customer-btns">
+                  <label className="btn btn-secondary">
+                    Image
+                    <input
+                      type="file"
+                      accept="image/jpeg, image/png, image/gif"
+                      multiple
+                      onChange={(e) => handleFileChange(e, "engine")}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
+                <div className="customer-img">
+                  {engineFiles.map((file, index) => (
+                    <div key={index} className="cus-image-container">
+                      <img src={file} alt="Uploaded" />
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteImage(index, "engine")}
+                        className="btn btn-danger customer-dlt-btn"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
