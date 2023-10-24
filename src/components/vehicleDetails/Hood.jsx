@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbar from "../common/Navbar";
-import "../../assets/scss/VisualInspection.css";
 
 function Hood() {
   const ratingOptions = [
@@ -15,8 +14,13 @@ function Hood() {
 
   useEffect(() => {
     const savedRatings = localStorage.getItem("Hood");
+    const savedImages = JSON.parse(localStorage.getItem("HoodImages")) || [];
+
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
+    }
+    if (savedImages) {
+      setFiles(savedImages);
     }
   }, []);
 
@@ -30,9 +34,6 @@ function Hood() {
   const handleRatingChange = (attribute, rating) => {
     const updatedRatings = { ...attributeRatings, [attribute]: rating };
     setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
     localStorage.setItem("Hood", JSON.stringify(updatedRatings));
@@ -48,10 +49,11 @@ function Hood() {
       fileURLs.push(objectURL);
     }
 
-    setFiles([...files, ...fileURLs]);
+    const updatedFiles = [...files, ...fileURLs];
+    setFiles(updatedFiles);
 
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("fileURLs", [...files, ...fileURLs]);
+    // Save the updated files to localStorage
+    localStorage.setItem("HoodImages", JSON.stringify(updatedFiles));
   };
 
   // Function to delete a specific image
@@ -59,35 +61,28 @@ function Hood() {
     const updatedFiles = [...files];
     updatedFiles.splice(index, 1);
     setFiles(updatedFiles);
+
+    // Update local storage after deleting an image
+    localStorage.setItem("HoodImages", JSON.stringify(updatedFiles));
   };
 
   // Sample data for your table
   const data = [
-    { id: 1, attribute: "Elignment" },
+    { id: 1, attribute: "Alignment" },
     { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No re paint" },
-    { id: 4, attribute: "Existing point condition" },
+    { id: 3, attribute: "No repaint" },
+    { id: 4, attribute: "Existing paint condition" },
     { id: 5, attribute: "No scratches" },
-    { id: 6, attribute: "No corossion" },
+    { id: 6, attribute: "No corrosion" },
     { id: 7, attribute: "Hood prop rod / Gas struts" },
   ];
 
   return (
     <div className="vi-main-con">
       <div className="vi-main-content">
-        {/* <div className="progress">
-          <div
-            className="progress-bar"
-            role="progressbar"
-            style={{ width: "20%" }}
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          ></div>
-        </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
-            <p>Hood / Bonet</p>
+            <p>Hood / Bonnet</p>
             <div className="vi-content-top-img-con">
               <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -110,7 +105,7 @@ function Hood() {
                       onClick={() => handleDeleteImage(index)}
                       className="btn btn-danger"
                     >
-                      Delete
+                      <FontAwesomeIcon icon={faTimes} />
                     </button>
                   </div>
                 ))}
@@ -153,9 +148,8 @@ function Hood() {
                           <div
                             className={`rating-label ${option.label.toLowerCase()}`}
                           >
-                            {attributeRatings[item.attribute] ===
-                            option.label ? (
-                              <FontAwesomeIcon icon={faXmark} />
+                            {attributeRatings[item.attribute] === option.label ? (
+                              <FontAwesomeIcon icon={faTimes} />
                             ) : (
                               ""
                             )}

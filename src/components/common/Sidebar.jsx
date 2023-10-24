@@ -24,6 +24,9 @@ import FrontDoorDriver from "../vehicleDetails/FrontDoorDriver";
 import FrontFenderRHS from "../vehicleDetails/FrontFenderRHS";
 import VehicleRoof from "../vehicleDetails/VehicleRoof";
 import WheelArchFrontLHS from "../vehicleDetails/WheelArchFrontLHS";
+import WheelArchFrontRHS from "../vehicleDetails/WheelArchFrontRHS";
+import WheelArchRearLHS from "../vehicleDetails/WheelArchRearLHS";
+import WheelArchRearRHS from "../vehicleDetails/WheelArchRearRHS";
 import EngineCompartment from "../vehicleDetails/EngineCompartment";
 import BootSpace from "../vehicleDetails/BootSpace";
 import UnderCarriageView from "../vehicleDetails/UnderCarriageView";
@@ -64,6 +67,9 @@ function SidebarComp() {
     "Front Fender RHS",
     "Vehicle Roof",
     "Wheel Arch Front LHS",
+    "Wheel Arch Front RHS",
+    "Wheel Arch Rear LHS",
+    "Wheel Arch Rear RHS",
     "Engine Compartment",
     "Boot Space",
     "Under Carriage View",
@@ -103,7 +109,7 @@ function SidebarComp() {
 
     switch (selectedMenuItem) {
       case "Customer Details":
-        return <CustomerDetails/>;
+        return <CustomerDetails />;
       case "Wind Shield":
         return <WindShield />;
       case "Hood":
@@ -144,6 +150,12 @@ function SidebarComp() {
         return <VehicleRoof />;
       case "Wheel Arch Front LHS":
         return <WheelArchFrontLHS />;
+      case "Wheel Arch Front RHS":
+        return <WheelArchFrontRHS />;
+      case "Wheel Arch Rear LHS":
+        return <WheelArchRearLHS />;
+      case "Wheel Arch Rear RHS":
+        return <WheelArchRearRHS />;
       case "Engine Compartment":
         return <EngineCompartment />;
       case "Boot Space":

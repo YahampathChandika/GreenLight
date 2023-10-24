@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 
@@ -14,8 +14,13 @@ function Grill() {
 
   useEffect(() => {
     const savedRatings = localStorage.getItem("Grill");
+    const savedImages = JSON.parse(localStorage.getItem("GrillImages")) || [];
+
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
+    }
+    if (savedImages) {
+      setFiles(savedImages);
     }
   }, []);
 
@@ -29,9 +34,6 @@ function Grill() {
   const handleRatingChange = (attribute, rating) => {
     const updatedRatings = { ...attributeRatings, [attribute]: rating };
     setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
 
     // Save the updated ratings to localStorage
     localStorage.setItem("Grill", JSON.stringify(updatedRatings));
@@ -47,10 +49,11 @@ function Grill() {
       fileURLs.push(objectURL);
     }
 
-    setFiles([...files, ...fileURLs]);
+    const updatedFiles = [...files, ...fileURLs];
+    setFiles(updatedFiles);
 
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("fileURLs", [...files, ...fileURLs]);
+    // Save the updated files to localStorage
+    localStorage.setItem("GrillImages", JSON.stringify(updatedFiles));
   };
 
   // Function to delete a specific image
@@ -58,23 +61,23 @@ function Grill() {
     const updatedFiles = [...files];
     updatedFiles.splice(index, 1);
     setFiles(updatedFiles);
+
+    // Update local storage after deleting an image
+    localStorage.setItem("GrillImages", JSON.stringify(updatedFiles));
   };
 
   // Sample data for your table
   const data = [
-    { id: 1, attribute: "Elignment" },
+    { id: 1, attribute: "Alignment" },
     { id: 2, attribute: "No evidence of major damage" },
-    { id: 3, attribute: "No re paint" },
-    { id: 4, attribute: "Existing point condition" },
+    { id: 3, attribute: "No repaint" },
+    { id: 4, attribute: "Existing paint condition" },
     { id: 5, attribute: "Logo" },
   ];
 
   return (
     <div className="vi-main-con">
       <div className="vi-main-content">
-        {/* <div className="progress">
-          <div className="progress-bar" role="progressbar" style={{ width: '30%' }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div> */}
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Grill</p>
@@ -100,7 +103,7 @@ function Grill() {
                       onClick={() => handleDeleteImage(index)}
                       className="btn btn-danger"
                     >
-                      Delete
+                  Delete
                     </button>
                   </div>
                 ))}
@@ -145,7 +148,7 @@ function Grill() {
                           >
                             {attributeRatings[item.attribute] ===
                             option.label ? (
-                              <FontAwesomeIcon icon={faXmark} />
+                              <FontAwesomeIcon icon={faTimes} />
                             ) : (
                               ""
                             )}
