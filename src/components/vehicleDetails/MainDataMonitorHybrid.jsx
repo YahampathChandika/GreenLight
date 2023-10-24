@@ -141,7 +141,7 @@ function MainDataMonitorHybrid() {
                   />
                 </div>
                 <div className="vi-content-bot-input">
-                  <label> HV Battery module minimum temparatur</label>
+                  <label> HV Battery module minimum temparature</label>
                   <input
                     type="text"
                     name="HV-Battery-module-minimum-temparatur"
@@ -197,7 +197,7 @@ function MainDataMonitorHybrid() {
               </div>
               <div className="vi-content-bot-right">
                 <div className="vi-content-bot-input-right">
-                  <label> HV Battery maximum cell voltage</label>
+                  <label>HV Battery maximum cell voltage</label>
                   <input
                     type="text"
                     name="HV-Battery-maximum-cell-voltage"
@@ -206,7 +206,7 @@ function MainDataMonitorHybrid() {
                   />
                 </div>
                 <div className="vi-content-bot-input-right">
-                  <label> HV Battery module maximum temparature</label>
+                  <label>HV Battery module maximum temparature</label>
                   <input
                     type="text"
                     name="HV-Battery-module-maximum-temparature"
