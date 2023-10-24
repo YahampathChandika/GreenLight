@@ -144,7 +144,6 @@ function MainDataMonitorHybrid() {
                 <input type="text" name="table-cord" id="table-cord" />
               </div>
             </div>
-
             <div className="vi-content-bot-right">
               <div className="vi-content-bot-input-right">
                 <label> HV Battery maximum cell voltage</label>
