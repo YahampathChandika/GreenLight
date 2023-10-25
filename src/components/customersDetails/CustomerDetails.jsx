@@ -27,7 +27,7 @@ function CustomerDetails() {
   }, []);
 
   // Get only the date part (YYYY-MM-DD)
-  const formattedDate = currentDate.toISOString().split('T')[0];
+  const formattedDate = currentDate.toISOString().split("T")[0];
 
   useEffect(() => {
     // Load saved data from local storage
@@ -129,9 +129,14 @@ function CustomerDetails() {
   return (
     <div>
       <div className="details-main">
-        <div>
+        <div className="details-main-con">
           <p>Customer Details</p>
-          <p>Current Date: {formattedDate}</p>
+          <input
+            type="text"
+            placeholder="Invoice No."
+            id="invoice"
+            {...register("invoice")}
+          />
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <>

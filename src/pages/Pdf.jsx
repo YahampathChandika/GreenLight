@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/scss/VisualInspection.css";
 import WindShield from "../components/vehicleDetails/WindShield";
@@ -42,21 +42,40 @@ import WheelArchRearLHS from "../components/vehicleDetails/WheelArchRearLHS";
 import WheelArchRearRHS from "../components/vehicleDetails/WheelArchRearRHS";
 
 const PDF = forwardRef((props, ref) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000); // Update every 1 second
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Get only the date part (YYYY-MM-DD)
+  const formattedDate = currentDate.toISOString().split("T")[0];
+
   return (
     <>
       <div>
-        <div className="navBar" >
+        <div className="navBar" style={{ display:'flex', justifyContent: 'space-around', width:'100%' }}>
           <img src={logo} alt="Green Light Logo" className="logo" />
           <h1
             style={{
               textAlign: "center",
               color: "#accfa5",
               fontFamily: 'Poppins", sans-serif',
-              paddingLeft:"3%"
+              paddingLeft: "3%",
+              fontSize:'40px'
             }}
           >
             Final Report
           </h1>
+          <h5
+            style={{ color: "white", fontSize: "20px" }}
+          >
+            {formattedDate}
+          </h5>
         </div>
         <CustomerDetails />
         <WindShield />
@@ -80,8 +99,8 @@ const PDF = forwardRef((props, ref) => {
         <VehicleRoof />
         <WheelArchFrontLHS />
         <WheelArchFrontRHS />
-        <WheelArchRearLHS/>
-        <WheelArchRearRHS/>
+        <WheelArchRearLHS />
+        <WheelArchRearRHS />
         <EngineCompartment />
         <BootSpace />
         <UnderCarriageView />

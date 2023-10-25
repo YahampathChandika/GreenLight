@@ -11,12 +11,31 @@
   margin-top: 1%;
 }
 
-.details-main p {
-  color: #070707;
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 15px;
+.details-main-con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+  margin: 15px 0;
 }
+
+.details-main-con p {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.details-main-con input {
+  border-radius: 3px;
+  border-style: none;
+  border: black solid 0.1px;
+  height: 30px;
+  width: 100px;
+  color: black;
+  outline: none;
+  text-align: center;
+}
+
 .details-top {
   display: flex;
 }
