@@ -11,11 +11,23 @@ function CustomerDetails() {
   const [files, setFiles] = useState([]);
 
   const { register, handleSubmit, control, setValue } = useForm();
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const onSubmit = (data) => {
     console.log("data", data);
     localStorage.setItem("CustomerDetailsData", JSON.stringify(data));
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 1000); // Update every 1 second
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Get only the date part (YYYY-MM-DD)
+  const formattedDate = currentDate.toISOString().split('T')[0];
 
   useEffect(() => {
     // Load saved data from local storage
@@ -117,7 +129,10 @@ function CustomerDetails() {
   return (
     <div>
       <div className="details-main">
-        <p>Customer Details</p>
+        <div>
+          <p>Customer Details</p>
+          <p>Current Date: {formattedDate}</p>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <>
             <div className="details-top">
