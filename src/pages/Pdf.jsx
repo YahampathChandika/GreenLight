@@ -36,23 +36,29 @@ import StartingDelay from "../components/vehicleDetails/StartingDelay";
 import EngineMissIdling from "../components/vehicleDetails/EngineMissIdling";
 import DocumentsRecords from "../components/vehicleDetails/DocumentsRecords";
 import CustomerDetails from "../components/customersDetails/CustomerDetails";
+import logo from "../../src/assets/images/greenlight logo.png";
+import WheelArchFrontRHS from "../components/vehicleDetails/WheelArchFrontRHS";
+import WheelArchRearLHS from "../components/vehicleDetails/WheelArchRearLHS";
+import WheelArchRearRHS from "../components/vehicleDetails/WheelArchRearRHS";
 
 const PDF = forwardRef((props, ref) => {
   return (
     <>
       <div>
-        <h1
-          style={{
-            textAlign: "center",
-            backgroundColor: "#063c37",
-            color: "#accfa5",
-            fontFamily: 'Poppins", sans-serif',
-            padding: '5px',
-          }}
-        >
-          Final Report
-        </h1>
-        <CustomerDetails/>
+        <div className="navBar" >
+          <img src={logo} alt="Green Light Logo" className="logo" />
+          <h1
+            style={{
+              textAlign: "center",
+              color: "#accfa5",
+              fontFamily: 'Poppins", sans-serif',
+              paddingLeft:"3%"
+            }}
+          >
+            Final Report
+          </h1>
+        </div>
+        <CustomerDetails />
         <WindShield />
         <Hood />
         <Grill />
@@ -73,6 +79,9 @@ const PDF = forwardRef((props, ref) => {
         <FrontFenderRHS />
         <VehicleRoof />
         <WheelArchFrontLHS />
+        <WheelArchFrontRHS />
+        <WheelArchRearLHS/>
+        <WheelArchRearRHS/>
         <EngineCompartment />
         <BootSpace />
         <UnderCarriageView />
