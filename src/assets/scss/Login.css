@@ -4,27 +4,29 @@
   align-items: center;
   height: 100vh;
   /* background-color: #808080; */
-  background-image: url(../images/bck_loginn.jpg);
+  background-image: url(../images/gg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50%;
+  background-position: 0%;
 }
 
 .login-container {
   width: 30%;
-  height: 30%;
-  background-color: #dbdbdb;
+  height: 30% auto;
+  background-color: rgb(160, 125, 90, 0.85);
   padding: 20px;
-  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  /* font-family: 'Raleway', sans-serif;  border-radius: 5px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  border-radius: 5px;
 }
 
 .login-container h1 {
   font-size: 35px;
   margin-bottom: 20px;
   font-weight: bolder;
-  color: black;
+  color: #ffffff;
 }
 
 .input-container {
@@ -34,21 +36,25 @@
 .input-container input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(0, 0, 0, 0.7);
   border-radius: 5px;
   outline: none;
+  color: #414141;
+  font-weight: 600;
+}
+
+.input-container input::placeholder {
+  color: black;
+  font-weight: 500;
 }
 
 .login-button {
   background-color: #007bff;
   color: #fff;
-  padding: 10px 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   border: none;
-  border-radius: 5px;
+  width: 110px;
+  height: 45px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
 }
