@@ -1,17 +1,34 @@
 import React, { useState, useCallback, useRef } from "react";
 import ReactToPrint from "react-to-print";
+import { useNavigate  } from "react-router-dom";
 import { Bars } from "react-loader-spinner";
 import "rsuite/esm/Overlay/Position";
 import "../assets/scss/Download.css";
 import "../assets/scss/VisualInspection.css";
 import PDF from "./Pdf";
+import Swal from "sweetalert2";
 
 export const Download = () => {
   const componentRef = useRef(null);
-
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handleAfterPrint = useCallback(() => {
+    Swal.fire({
+      title: "Clear Data?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#5cb85c",
+      cancelButtonColor: "#d9534f",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      navigate("/home")
+      if (result.isConfirmed) {
+        localStorage.clear();
+        Swal.fire("Deleted!", "Your data has been deleted.", "success");
+      }
+    });
     console.log("`onAfterPrint` called");
   }, []);
 

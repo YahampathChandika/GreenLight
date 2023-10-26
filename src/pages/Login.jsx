@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = () => {
     // Add your login logic here
-    if (username === 'bk' && password === 'bkp') {
+    if (username === 'green' && password === 'Green123') {
       console.log("Login successful");
       const Toast = Swal.mixin({
         toast: true,
@@ -32,6 +32,11 @@ const Login = () => {
       })
       navigate("/home")
     } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Incorrect Credentials !',
+      })
       console.log("Login failed");
     }
   };

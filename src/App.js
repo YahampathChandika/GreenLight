@@ -6,11 +6,9 @@ import Home from "./pages/Home";
 import Grill from "./components/vehicleDetails/Grill";
 import Login from "./pages/Login";
 
-// import Navbar from './components/common/Navbar'
 import CustomerDetails from "./components/customersDetails/CustomerDetails";
 import PDF from "./pages/Pdf";
 import Download from "./pages/Download";
-// import VisualInspection from './components/vehicleDetails/VisualInspection'
 function App() {
   return (
     <Router>
@@ -22,11 +20,6 @@ function App() {
         <Route path="/" element={<Login/>} />
       </Routes>
     </Router>
-    // <div className="App">
-    //  {/* <Navbar/> */}
-    //  <CustomerDetails/>
-    //  {/* <VisualInspection/> */}
-    // </div>
   );
 }
 
