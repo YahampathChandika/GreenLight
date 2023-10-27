@@ -182,7 +182,7 @@ input[type="radio"]:checked + .rating-color.rating-color.rating-color.na {
   justify-content: center;
   font-weight: bold;
   font-size: 20px;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Style for different rating options */

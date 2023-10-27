@@ -3,14 +3,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
+import { CheckPicker } from "rsuite";
+import "rsuite/dist/rsuite-no-reset.min.css";
 
 function CoolingSystem() {
-  const ratingOptions = [
-    { label: "Good", color: "green" },
-    { label: "Normal", color: "yellow" },
-    { label: "NR", color: "red" },
-    { label: "NA", color: "gray" },
-  ];
+  // const ratingOptions = [
+  //   { label: "Good", color: "green" },
+  //   { label: "Normal", color: "yellow" },
+  //   { label: "NR", color: "red" },
+  //   { label: "NA", color: "gray" },
+  // ];
 
   useEffect(() => {
     const savedRatings = localStorage.getItem("CoolingSystem");
@@ -21,7 +23,9 @@ function CoolingSystem() {
 
   // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedLabel, setSelectedLabel] = useState(null);
+  const [selectedValue, setSelectedValue] = useState(null);
   // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
 
@@ -61,6 +65,18 @@ function CoolingSystem() {
   };
 
   // Sample data for your table
+  const clearAttributeRating = (attribute) => {
+    // Clear the rating for the specified attribute
+    const updatedRatings = { ...attributeRatings };
+    delete updatedRatings[attribute];
+    setAttributeRatings(updatedRatings);
+    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+  };
+
+  const getSelectedData = () => {
+    return data.filter((item) => selectedOptions.includes(item.id));
+  };
+
   const data = [
     { id: 1, attribute: "Radiator complete" },
     { id: 2, attribute: "Radiator cap / Pressure cap" },
@@ -80,6 +96,20 @@ function CoolingSystem() {
     { id: 16, attribute: "Cylinder head gasket" },
     { id: 17, attribute: "Temperature sensor" },
   ];
+  
+  const checkPickerData = data.map((item) => ({
+    label: item.attribute,
+    value: item.id,
+  }));
+
+  const handleSelect = (value) => {
+    const selectedOption = checkPickerData.find((option) => option.value === value);
+    if (selectedOption) {
+      setSelectedLabel(selectedOption.label);
+      setSelectedValue(selectedOption.value);
+    }
+    setSelectedOptions([value]);
+  };
 
   return (
     <div className="vi-main-con">
@@ -90,6 +120,15 @@ function CoolingSystem() {
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Cooling System</p>
+            <CheckPicker
+              data={data}
+              value={selectedOptions}
+              onSelect={handleSelect}
+              searchable={false}
+              placeholder="Select Options"
+              style={{ width: "100%" }}
+              countable={false}
+            />
             <div className="vi-content-top-img-con">
               {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -125,51 +164,26 @@ function CoolingSystem() {
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Attribute Name</th>
-                  <th scope="col">Good</th>
-                  <th scope="col">Normal</th>
+                  {/* <th scope="col">Select</th> */}
+                  {/* <th scope="col">Normal</th>
                   <th scope="col">N/R</th>
-                  <th scope="col">N/A</th>
+                  <th scope="col">N/A</th> */}
                 </tr>
               </thead>
               <tbody>
-                {data.map((item) => (
-                  <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
-                    <td style={{ paddingLeft: "40px", width: "35%" }}>
-                      {item.attribute}
-                    </td>
-                    {ratingOptions.map((option) => (
-                      <td key={option.label}>
-                        <label className="select-lbl">
-                          <input
-                            type="radio"
-                            name={`rating-${item.id}-${item.attribute}`}
-                            value={option.label}
-                            checked={
-                              attributeRatings[item.attribute] === option.label
-                            }
-                            onChange={() =>
-                              handleRatingChange(item.attribute, option.label)
-                            }
-                          />
-                          <div
-                            className={`rating-label ${option.label.toLowerCase()}`}
-                          >
-                            {attributeRatings[item.attribute] ===
-                            option.label ? (
-                              <FontAwesomeIcon icon={faXmark} />
-                            ) : (
-                              ""
-                            )}
-                          </div>
-                        </label>
-                      </td>
-                    ))}
-                  </tr>
-                ))}
+                {data
+                  .filter((item) => selectedOptions.includes(item.id))
+                  .map((item) => (
+                    <tr key={item.id}>
+                      <td>{item.id}</td>
+                      <td>{item.attribute}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
+          <p>Selected Label: {selectedLabel}</p>
+              <p>Selected Value: {selectedValue}</p>
         </div>
       </div>
     </div>

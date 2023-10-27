@@ -34,6 +34,14 @@ function WindShield() {
     localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
   };
 
+  const clearAttributeRating = (attribute) => {
+    // Clear the rating for the specified attribute
+    const updatedRatings = { ...attributeRatings };
+    delete updatedRatings[attribute];
+    setAttributeRatings(updatedRatings);
+    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+  };
+
   const handleFileChange = (e) => {
     const selectedFiles = e.target.files;
     const fileURLs = [];
@@ -119,7 +127,9 @@ function WindShield() {
               <tbody>
                 {data.map((item) => (
                   <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
+                    <th scope="row" onClick={() => clearAttributeRating(item.attribute)} style={{cursor:'pointer'}}>
+                      {item.id}
+                    </th>
                     <td style={{ paddingLeft: "40px", width: "35%" }}>
                       {item.attribute}
                     </td>

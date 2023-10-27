@@ -30,7 +30,7 @@
     "react-scripts": "5.0.1",
     "react-to-pdf": "^1.0.1",
     "react-to-print": "^2.14.15",
-    "rsuite": "^5.40.0",
+    "rsuite": "^5.41.0",
     "sweetalert2": "^11.7.32",
     "web-vitals": "^2.1.4"
   },

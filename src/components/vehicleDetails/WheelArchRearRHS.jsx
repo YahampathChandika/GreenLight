@@ -12,54 +12,62 @@ function WheelArchRearRHS() {
     { label: "NA", color: "gray" },
   ];
 
- useEffect(() => {
-   const savedRatings = localStorage.getItem("WheelArchRearRHS");
-   if (savedRatings) {
-     setAttributeRatings(JSON.parse(savedRatings));
-   }
- }, []);
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("WheelArchRearRHS");
+    if (savedRatings) {
+      setAttributeRatings(JSON.parse(savedRatings));
+    }
+  }, []);
 
- // Create a state to keep track of the selected ratings for each attribute
- const [attributeRatings, setAttributeRatings] = useState({});
+  // Create a state to keep track of the selected ratings for each attribute
+  const [attributeRatings, setAttributeRatings] = useState({});
 
- // Create a state to store the selected image files and their URLs
- const [files, setFiles] = useState([]);
+  // Create a state to store the selected image files and their URLs
+  const [files, setFiles] = useState([]);
 
- // Function to handle changes in attribute ratings
- const handleRatingChange = (attribute, rating) => {
-   const updatedRatings = { ...attributeRatings, [attribute]: rating };
-   setAttributeRatings(updatedRatings);
+  // Function to handle changes in attribute ratings
+  const handleRatingChange = (attribute, rating) => {
+    const updatedRatings = { ...attributeRatings, [attribute]: rating };
+    setAttributeRatings(updatedRatings);
 
-   // Call the updatePdfData function to update the data in the PDF component
-   // updatePdfData("windShieldData", updatedRatings);
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("windShieldData", updatedRatings);
 
-   // Save the updated ratings to localStorage
-   localStorage.setItem("WheelArchRearRHS", JSON.stringify(updatedRatings));
- };
+    // Save the updated ratings to localStorage
+    localStorage.setItem("WheelArchRearRHS", JSON.stringify(updatedRatings));
+  };
 
- // Function to handle file selection
- const handleFileChange = (e) => {
-   const selectedFiles = e.target.files;
-   const fileURLs = [];
+  // Function to handle file selection
+  const handleFileChange = (e) => {
+    const selectedFiles = e.target.files;
+    const fileURLs = [];
 
-   for (let i = 0; i < selectedFiles.length; i++) {
-     const objectURL = URL.createObjectURL(selectedFiles[i]);
-     fileURLs.push(objectURL);
-   }
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const objectURL = URL.createObjectURL(selectedFiles[i]);
+      fileURLs.push(objectURL);
+    }
 
-   setFiles([...files, ...fileURLs]);
+    setFiles([...files, ...fileURLs]);
 
-   // Call the updatePdfData function to update the data in the PDF component
-   // updatePdfData("fileURLs", [...files, ...fileURLs]);
- };
+    // Call the updatePdfData function to update the data in the PDF component
+    // updatePdfData("fileURLs", [...files, ...fileURLs]);
+  };
 
- // Function to delete a specific image
- const handleDeleteImage = (index) => {
-   const updatedFiles = [...files];
-   updatedFiles.splice(index, 1);
-   setFiles(updatedFiles);
- };
+  // Function to delete a specific image
+  const handleDeleteImage = (index) => {
+    const updatedFiles = [...files];
+    updatedFiles.splice(index, 1);
+    setFiles(updatedFiles);
+  };
 
+  // Sample data for your table
+  const clearAttributeRating = (attribute) => {
+    // Clear the rating for the specified attribute
+    const updatedRatings = { ...attributeRatings };
+    delete updatedRatings[attribute];
+    setAttributeRatings(updatedRatings);
+    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+  };
 
   // Sample data for your table
   const data = [
@@ -130,7 +138,13 @@ function WheelArchRearRHS() {
               <tbody>
                 {data.map((item) => (
                   <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
+                    <th
+                      scope="row"
+                      onClick={() => clearAttributeRating(item.attribute)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {item.id}
+                    </th>{" "}
                     <td style={{ paddingLeft: "40px", width: "35%" }}>
                       {item.attribute}
                     </td>

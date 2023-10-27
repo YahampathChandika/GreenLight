@@ -64,6 +64,15 @@ function CheckWithEngineStart() {
   };
 
   // Sample data for your table
+  const clearAttributeRating = (attribute) => {
+    // Clear the rating for the specified attribute
+    const updatedRatings = { ...attributeRatings };
+    delete updatedRatings[attribute];
+    setAttributeRatings(updatedRatings);
+    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+  };
+
+  // Sample data for your table
   const data = [
     { id: 1, attribute: "No under compression" },
     { id: 2, attribute: "No N/R noise in the drive belt" },
@@ -131,7 +140,13 @@ function CheckWithEngineStart() {
               <tbody>
                 {data.map((item) => (
                   <tr key={item.id}>
-                    <th scope="row">{item.id}</th>
+                    <th
+                      scope="row"
+                      onClick={() => clearAttributeRating(item.attribute)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {item.id}
+                    </th>{" "}
                     <td style={{ paddingLeft: "40px", width: "35%" }}>
                       {item.attribute}
                     </td>
