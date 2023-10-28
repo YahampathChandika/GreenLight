@@ -90,7 +90,7 @@ function RoadTest() {
     const updatedRatings = { ...attributeRatings };
     delete updatedRatings[attribute];
     setAttributeRatings(updatedRatings);
-    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("RoadTest", JSON.stringify(updatedRatings));
   };
 
   // Sample data for your table
@@ -178,7 +178,7 @@ function RoadTest() {
                       style={{ cursor: "pointer" }}
                     >
                       {item.id}
-                    </th>{" "}
+                    </th>
                     <td style={{ paddingLeft: "40px", width: "35%" }}>
                       {item.attribute}
                     </td>

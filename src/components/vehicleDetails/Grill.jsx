@@ -66,13 +66,12 @@ function Grill() {
     localStorage.setItem("GrillImages", JSON.stringify(updatedFiles));
   };
 
-  // Sample data for your table
   const clearAttributeRating = (attribute) => {
     // Clear the rating for the specified attribute
     const updatedRatings = { ...attributeRatings };
     delete updatedRatings[attribute];
     setAttributeRatings(updatedRatings);
-    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("Grill", JSON.stringify(updatedRatings));
   };
 
   // Sample data for your table
@@ -140,7 +139,7 @@ function Grill() {
                       style={{ cursor: "pointer" }}
                     >
                       {item.id}
-                    </th>{" "}
+                    </th>
                     <td style={{ paddingLeft: "40px", width: "35%" }}>
                       {item.attribute}
                     </td>

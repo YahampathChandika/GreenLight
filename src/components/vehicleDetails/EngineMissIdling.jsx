@@ -3,39 +3,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
+import { CheckPicker } from "rsuite";
 
 function EngineMissIdling() {
-  const ratingOptions = [
-    { label: "Good", color: "green" },
-    { label: "Normal", color: "yellow" },
-    { label: "NR", color: "red" },
-    { label: "NA", color: "gray" },
-  ];
+  // const ratingOptions = [
+  //   { label: "Good", color: "green" },
+  //   { label: "Normal", color: "yellow" },
+  //   { label: "NR", color: "red" },
+  //   { label: "NA", color: "gray" },
+  // ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("EngineMissIdling");
-    if (savedRatings) {
-      setAttributeRatings(JSON.parse(savedRatings));
+    const savedSelectedOptions = localStorage.getItem("EngineMissIdling");
+    if (savedSelectedOptions) {
+      setSelectedOptions(JSON.parse(savedSelectedOptions));
     }
   }, []);
 
-  // Create a state to keep track of the selected ratings for each attribute
-  const [attributeRatings, setAttributeRatings] = useState({});
-
-  // Create a state to store the selected image files and their URLs
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [files, setFiles] = useState([]);
-
-  // Function to handle changes in attribute ratings
-  const handleRatingChange = (attribute, rating) => {
-    const updatedRatings = { ...attributeRatings, [attribute]: rating };
-    setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
-
-    // Save the updated ratings to localStorage
-    localStorage.setItem("EngineMissIdling", JSON.stringify(updatedRatings));
-  };
 
   // Function to handle file selection
   const handleFileChange = (e) => {
@@ -61,15 +47,6 @@ function EngineMissIdling() {
   };
 
   // Sample data for your table
-  const clearAttributeRating = (attribute) => {
-    // Clear the rating for the specified attribute
-    const updatedRatings = { ...attributeRatings };
-    delete updatedRatings[attribute];
-    setAttributeRatings(updatedRatings);
-    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
-  };
-
-  // Sample data for your table
   const data = [
     { id: 1, attribute: "Spark plug" },
     { id: 2, attribute: "Ig coil" },
@@ -86,7 +63,14 @@ function EngineMissIdling() {
     { id: 13, attribute: "E C U" },
     { id: 14, attribute: "Timing" },
     { id: 15, attribute: "Need tuneup" },
-  ];
+  ].map((item) => ({ label: item.attribute, value: item.id }));
+
+  const handleSelect = (values) => {
+    setSelectedOptions(values);
+    localStorage.setItem("EngineMissIdling", JSON.stringify(values));
+  };
+
+  let count = 1;
 
   return (
     <div className="vi-main-con">
@@ -97,6 +81,15 @@ function EngineMissIdling() {
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Engine Missidling</p>
+            <CheckPicker className="check-picker"
+              data={data}
+              onChange={handleSelect}
+              value={selectedOptions}
+              searchable={false}
+              placeholder="Select Options"
+              style={{ width: "100%" }}
+              countable={false}
+            />
             <div className="vi-content-top-img-con">
               {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -127,59 +120,35 @@ function EngineMissIdling() {
             </div>
           </div>
           <div className="vi-content-bot">
-            <table className="table table-hover">
+          <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Attribute Name</th>
-                  <th scope="col">Good</th>
-                  <th scope="col">Normal</th>
+                  <th
+                    scope="col"
+                    style={{ textAlign: "left", paddingLeft: "10%" }}
+                  >
+                    Attribute Name
+                  </th>
+                  {/* <th scope="col">Select</th> */}
+                  {/* <th scope="col">Normal</th>
                   <th scope="col">N/R</th>
-                  <th scope="col">N/A</th>
+                  <th scope="col">N/A</th> */}
                 </tr>
               </thead>
               <tbody>
-                {data.map((item) => (
-                  <tr key={item.id}>
-                    <th
-                      scope="row"
-                      onClick={() => clearAttributeRating(item.attribute)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      {item.id}
-                    </th>{" "}
-                    <td style={{ paddingLeft: "40px", width: "35%" }}>
-                      {item.attribute}
-                    </td>
-                    {ratingOptions.map((option) => (
-                      <td key={option.label}>
-                        <label className="select-lbl">
-                          <input
-                            type="radio"
-                            name={`rating-${item.id}-${item.attribute}`}
-                            value={option.label}
-                            checked={
-                              attributeRatings[item.attribute] === option.label
-                            }
-                            onChange={() =>
-                              handleRatingChange(item.attribute, option.label)
-                            }
-                          />
-                          <div
-                            className={`rating-label ${option.label.toLowerCase()}`}
-                          >
-                            {attributeRatings[item.attribute] ===
-                            option.label ? (
-                              <FontAwesomeIcon icon={faXmark} />
-                            ) : (
-                              ""
-                            )}
-                          </div>
-                        </label>
+                {data
+                  .filter((item) => selectedOptions.includes(item.value))
+                  .map((item) => (
+                    <tr key={item.value}>
+                      <td style={{ textAlign: "center", width: "40%" }}>
+                        {count++}
                       </td>
-                    ))}
-                  </tr>
-                ))}
+                      <td style={{ textAlign: "left", paddingLeft: "10%" }}>
+                        {item.label}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

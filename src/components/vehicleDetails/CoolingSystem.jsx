@@ -15,31 +15,14 @@ function CoolingSystem() {
   // ];
 
   useEffect(() => {
-    const savedRatings = localStorage.getItem("CoolingSystem");
-    if (savedRatings) {
-      setAttributeRatings(JSON.parse(savedRatings));
+    const savedSelectedOptions = localStorage.getItem("CoolingSystemSelectedOptions");
+    if (savedSelectedOptions) {
+      setSelectedOptions(JSON.parse(savedSelectedOptions));
     }
   }, []);
-
-  // Create a state to keep track of the selected ratings for each attribute
-  const [attributeRatings, setAttributeRatings] = useState({});
+  
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [selectedLabel, setSelectedLabel] = useState(null);
-  const [selectedValue, setSelectedValue] = useState(null);
-  // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
-
-  // Function to handle changes in attribute ratings
-  const handleRatingChange = (attribute, rating) => {
-    const updatedRatings = { ...attributeRatings, [attribute]: rating };
-    setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
-
-    // Save the updated ratings to localStorage
-    localStorage.setItem("CoolingSystem", JSON.stringify(updatedRatings));
-  };
 
   // Function to handle file selection
   const handleFileChange = (e) => {
@@ -52,9 +35,6 @@ function CoolingSystem() {
     }
 
     setFiles([...files, ...fileURLs]);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
@@ -62,19 +42,6 @@ function CoolingSystem() {
     const updatedFiles = [...files];
     updatedFiles.splice(index, 1);
     setFiles(updatedFiles);
-  };
-
-  // Sample data for your table
-  const clearAttributeRating = (attribute) => {
-    // Clear the rating for the specified attribute
-    const updatedRatings = { ...attributeRatings };
-    delete updatedRatings[attribute];
-    setAttributeRatings(updatedRatings);
-    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
-  };
-
-  const getSelectedData = () => {
-    return data.filter((item) => selectedOptions.includes(item.id));
   };
 
   const data = [
@@ -95,21 +62,14 @@ function CoolingSystem() {
     { id: 15, attribute: "Oil cooler" },
     { id: 16, attribute: "Cylinder head gasket" },
     { id: 17, attribute: "Temperature sensor" },
-  ];
-  
-  const checkPickerData = data.map((item) => ({
-    label: item.attribute,
-    value: item.id,
-  }));
+  ].map((item) => ({ label: item.attribute, value: item.id }));
 
-  const handleSelect = (value) => {
-    const selectedOption = checkPickerData.find((option) => option.value === value);
-    if (selectedOption) {
-      setSelectedLabel(selectedOption.label);
-      setSelectedValue(selectedOption.value);
-    }
-    setSelectedOptions([value]);
+  const handleSelect = (values) => {
+    setSelectedOptions(values);
+    localStorage.setItem("CoolingSystemSelectedOptions", JSON.stringify(values));
   };
+
+  let count = 1;
 
   return (
     <div className="vi-main-con">
@@ -120,15 +80,16 @@ function CoolingSystem() {
         <div className="vi-content">
           <div className="vi-content-top">
             <p>Cooling System</p>
-            <CheckPicker
+            <CheckPicker className="check-picker"
               data={data}
+              onChange={handleSelect}
               value={selectedOptions}
-              onSelect={handleSelect}
               searchable={false}
               placeholder="Select Options"
               style={{ width: "100%" }}
               countable={false}
             />
+
             <div className="vi-content-top-img-con">
               {/* <div className="vi-content-top-btns">
                 <label className="btn btn-secondary">
@@ -163,7 +124,12 @@ function CoolingSystem() {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Attribute Name</th>
+                  <th
+                    scope="col"
+                    style={{ textAlign: "left", paddingLeft: "10%" }}
+                  >
+                    Attribute Name
+                  </th>
                   {/* <th scope="col">Select</th> */}
                   {/* <th scope="col">Normal</th>
                   <th scope="col">N/R</th>
@@ -172,18 +138,20 @@ function CoolingSystem() {
               </thead>
               <tbody>
                 {data
-                  .filter((item) => selectedOptions.includes(item.id))
+                  .filter((item) => selectedOptions.includes(item.value))
                   .map((item) => (
-                    <tr key={item.id}>
-                      <td>{item.id}</td>
-                      <td>{item.attribute}</td>
+                    <tr key={item.value}>
+                      <td style={{ textAlign: "center", width: "40%" }}>
+                        {count++}
+                      </td>
+                      <td style={{ textAlign: "left", paddingLeft: "10%" }}>
+                        {item.label}
+                      </td>
                     </tr>
                   ))}
               </tbody>
             </table>
           </div>
-          <p>Selected Label: {selectedLabel}</p>
-              <p>Selected Value: {selectedValue}</p>
         </div>
       </div>
     </div>

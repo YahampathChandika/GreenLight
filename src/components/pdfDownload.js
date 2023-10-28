@@ -32,7 +32,7 @@ const Download = () => {
 
   return (
     <div className="download-page">
-      <div className="background-image" />{" "}
+      <div className="background-image" />
       {/* New element for the background image */}
       <div className="download-page-con">
         <h1>Click to Download...</h1>

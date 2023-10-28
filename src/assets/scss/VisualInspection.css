@@ -30,6 +30,11 @@
   text-align: left;
 }
 
+.vi-content-top .check-picker {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .vi-content-top p {
   font-size: 1.75rem;
   font-weight: 600;

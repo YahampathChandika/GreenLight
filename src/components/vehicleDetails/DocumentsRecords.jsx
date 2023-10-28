@@ -66,7 +66,7 @@ function DocumentsRecords() {
     const updatedRatings = { ...attributeRatings };
     delete updatedRatings[attribute];
     setAttributeRatings(updatedRatings);
-    localStorage.setItem("WindShieldRatings", JSON.stringify(updatedRatings));
+    localStorage.setItem("DocumentsRecords", JSON.stringify(updatedRatings));
   };
 
   // Sample data for your table
@@ -140,7 +140,7 @@ function DocumentsRecords() {
                       style={{ cursor: "pointer" }}
                     >
                       {item.id}
-                    </th>{" "}
+                    </th>
                     <td style={{ paddingLeft: "40px", width: "35%" }}>
                       {item.attribute}
                     </td>
