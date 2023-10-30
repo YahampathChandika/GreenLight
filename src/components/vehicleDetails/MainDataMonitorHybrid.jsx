@@ -4,7 +4,7 @@ import "../../assets/scss/VisualInspection.css";
 import "../../assets/scss/MainDateMonittorHybrid.css";
 import { useForm, Controller } from "react-hook-form";
 
-function MainDataMonitorHybrid() {
+function MainDataMonitorHybrid({hideButtons}) {
   const { register, handleSubmit, control, setValue } = useForm();
 
   const onSubmit = (data) => {
@@ -231,13 +231,16 @@ function MainDataMonitorHybrid() {
                     {...register("Full-data-report")}
                   />
                 </div>
-                <button
+                { !hideButtons && (
+                  <button
                   className="btn btn-outline-success"
                   type="submit"
                   style={{ width: "150px", marginTop: "20px" }}
                 >
                   Save
                 </button>
+                )}
+                
               </div>
             </div>
           </form>

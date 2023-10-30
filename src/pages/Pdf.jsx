@@ -58,7 +58,7 @@ const PDF = forwardRef((props, ref) => {
   return (
     <>
       <div>
-        <div className="navBar" style={{ display:'flex', justifyContent: 'space-around', width:'100%' }}>
+        <div className="navBar" style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
           <img src={logo} alt="Green Light Logo" className="logo" />
           <h1
             style={{
@@ -77,7 +77,7 @@ const PDF = forwardRef((props, ref) => {
             {formattedDate}
           </h5>
         </div>
-        <CustomerDetails />
+        <CustomerDetails hideButtons={true} />
         <WindShield />
         <Hood />
         <Grill />
@@ -107,9 +107,9 @@ const PDF = forwardRef((props, ref) => {
         <CheckWithEngineStart />
         <InteriorInspection />
         <ScanningReport />
-        <MainDataMonitorHybrid />
+        <MainDataMonitorHybrid hideButtons={true} />
         <WarningIndicatorMain />
-        <RoadTest />
+        <RoadTest hideButtons={true} />
         <CoolingSystem />
         <Suspension />
         <StartingDelay />

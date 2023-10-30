@@ -77,13 +77,14 @@ function Hood() {
 
   // Sample data for your table
   const data = [
-    { id: 1, attribute: "Alignment" },
+    { id: 1, attribute: "Alignment " },
     { id: 2, attribute: "No evidence of major damage" },
     { id: 3, attribute: "No repaint" },
     { id: 4, attribute: "Existing paint condition" },
     { id: 5, attribute: "No scratches" },
     { id: 6, attribute: "No corrosion" },
     { id: 7, attribute: "Hood prop rod / Gas struts" },
+    { id: 8, attribute: " Hinges " },
   ];
 
   return (

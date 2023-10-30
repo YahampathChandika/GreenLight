@@ -71,7 +71,7 @@ function FrontBumper() {
 
   // Sample data for your table
   const data = [
-    { id: 1, attribute: "Elignment" },
+    { id: 1, attribute: "Alignment " },
     { id: 2, attribute: "No evidence of major damage" },
     { id: 3, attribute: "No re paint" },
     { id: 4, attribute: "Existing point condition" },
@@ -79,7 +79,7 @@ function FrontBumper() {
     { id: 6, attribute: "No corosoin" },
     { id: 7, attribute: "Fog lamp L.H.S." },
     { id: 8, attribute: "Fog lamp R.H.S." },
-    { id: 9, attribute: "No plate" },
+    { id: 9, attribute: "Number Plate" },
     { id: 10, attribute: "Trim molding / crome line" },
   ];
 
