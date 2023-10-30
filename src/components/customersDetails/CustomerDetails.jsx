@@ -3,7 +3,7 @@ import "../../assets/scss/CustomerDetails.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useForm, Controller } from "react-hook-form";
 
-function CustomerDetails() {
+function CustomerDetails({ hideButtons }) {
   const [mileageFiles, setMileageFiles] = useState([]);
   const [frameNoFiles, setFrameNoFiles] = useState([]);
   const [registrationFiles, setRegistrationFiles] = useState([]);
@@ -202,14 +202,14 @@ function CustomerDetails() {
                       {...register("transmission")}
                     />
                   </div>
-                  <div className="details-input">
+                  {/* <div className="details-input">
                     <label>Transmission</label>
                     <input
                       type="text"
                       id="transmission"
                       {...register("transmission")}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="details-mid-con-mid">
                   <div className="details-input">
@@ -225,8 +225,8 @@ function CustomerDetails() {
                     <input type="text" id="model" {...register("model")} />
                   </div>
                   <div className="details-input">
-                    <label>Milage</label>
-                    <input type="text" id="milage" {...register("milage")} />
+                    <label>T belt next replacement </label>
+                    <input type="text" id="milage" {...register("T belt next replacement ")} />
                   </div>
                 </div>
                 <div className="details-mid-con-right">
@@ -243,8 +243,8 @@ function CustomerDetails() {
                     <input type="text" id="fuel" {...register("fuel")} />
                   </div>
                   <div className="details-input">
-                    <label>Fuel Type</label>
-                    <input type="text" id="fuel" {...register("fuel")} />
+                    <label>Next service</label>
+                    <input type="text" id="fuel" {...register("Next service")} />
                   </div>
                 </div>
               </div>
@@ -253,9 +253,10 @@ function CustomerDetails() {
               <div className="details-bot-inputs">
                 <div className="bot-input">
                   <label>Milage</label>
-                  <input type="text" id="milage" {...register("milage")} />
+                  <input type="text" id="milage" {...register("milage")} style={{marginBottom : "20px"}}/>
                   <div className="customer-img-con">
                     <div className="customer-btns">
+                    {!hideButtons && ( 
                       <label className="btn btn-outline-secondary">
                         Image
                         <input
@@ -266,18 +267,23 @@ function CustomerDetails() {
                           style={{ display: "none" }}
                         />
                       </label>
+                    )}
                     </div>
                     <div className="customer-img">
                       {mileageFiles.map((file, index) => (
                         <div key={index} className="cus-image-container">
                           <img src={file} alt="Uploaded" />
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteImage(index, "mileage")}
-                            className="btn btn-outline-danger customer-dlt-btn"
-                          >
-                            Delete
-                          </button>
+                          {!hideButtons && ( // Use the ! operator to check if hideButtons is false
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleDeleteImage(index, "mileage")
+                              }
+                              className="btn btn-outline-danger customer-dlt-btn"
+                            >
+                              Delete
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -285,9 +291,10 @@ function CustomerDetails() {
                 </div>
                 <div className="bot-input">
                   <label>Frame No.</label>
-                  <input type="text" id="frame-no" {...register("frame-no")} />
+                  <input type="text" id="frame-no" {...register("frame-no")} style={{marginBottom : "20px"}} />
                   <div className="customer-img-con">
                     <div className="customer-btns">
+                    {!hideButtons && ( 
                       <label className="btn btn-outline-secondary">
                         Image
                         <input
@@ -298,18 +305,23 @@ function CustomerDetails() {
                           style={{ display: "none" }}
                         />
                       </label>
+                    )}
                     </div>
                     <div className="customer-img">
                       {frameNoFiles.map((file, index) => (
                         <div key={index} className="cus-image-container">
                           <img src={file} alt="Uploaded" />
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteImage(index, "frameNo")}
-                            className="btn btn-outline-danger customer-dlt-btn"
-                          >
-                            Delete
-                          </button>
+                          {!hideButtons && ( // Use the ! operator to check if hideButtons is false
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleDeleteImage(index, "mileage")
+                              }
+                              className="btn btn-outline-danger customer-dlt-btn"
+                            >
+                              Delete
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -317,9 +329,10 @@ function CustomerDetails() {
                 </div>
                 <div className="bot-input">
                   <label>Certificate of Reg.</label>
-                  <input type="text" id="cer-reg" {...register("cer-reg")} />
+                  <input type="text" id="cer-reg" {...register("cer-reg")}  style={{marginBottom : "20px"}}/>
                   <div className="customer-img-con">
                     <div className="customer-btns">
+                    {!hideButtons && ( 
                       <label className="btn btn-outline-secondary">
                         Image
                         <input
@@ -330,20 +343,23 @@ function CustomerDetails() {
                           style={{ display: "none" }}
                         />
                       </label>
+                    )}
                     </div>
                     <div className="customer-img">
                       {registrationFiles.map((file, index) => (
                         <div key={index} className="cus-image-container">
                           <img src={file} alt="Uploaded" />
-                          <button
-                            type="button"
-                            onClick={() =>
-                              handleDeleteImage(index, "registration")
-                            }
-                            className="btn btn-outline-danger customer-dlt-btn"
-                          >
-                            Delete
-                          </button>
+                          {!hideButtons && ( // Use the ! operator to check if hideButtons is false
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleDeleteImage(index, "mileage")
+                              }
+                              className="btn btn-outline-danger customer-dlt-btn"
+                            >
+                              Delete
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -351,9 +367,10 @@ function CustomerDetails() {
                 </div>
                 <div className="bot-input">
                   <label>Engine No. & Model</label>
-                  <input type="text" id="eng-no" {...register("eng-no")} />
+                  <input type="text" id="eng-no" {...register("eng-no")} style={{marginBottom : "20px"}}/>
                   <div className="customer-img-con">
                     <div className="customer-btns">
+                    {!hideButtons && ( 
                       <label className="btn btn-outline-secondary">
                         Image
                         <input
@@ -364,18 +381,23 @@ function CustomerDetails() {
                           style={{ display: "none" }}
                         />
                       </label>
+                    )}
                     </div>
                     <div className="customer-img">
                       {engineFiles.map((file, index) => (
                         <div key={index} className="cus-image-container">
                           <img src={file} alt="Uploaded" />
-                          <button
-                            type="button"
-                            onClick={() => handleDeleteImage(index, "engine")}
-                            className="btn btn-outline-danger customer-dlt-btn"
-                          >
-                            Delete
-                          </button>
+                          {!hideButtons && ( // Use the ! operator to check if hideButtons is false
+                            <button
+                              type="button"
+                              onClick={() =>
+                                handleDeleteImage(index, "mileage")
+                              }
+                              className="btn btn-outline-danger customer-dlt-btn"
+                            >
+                              Delete
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -391,6 +413,7 @@ function CustomerDetails() {
                   marginTop: "10px",
                 }}
               >
+                {!hideButtons && ( 
                 <button
                   className="btn btn-outline-dark"
                   type="submit"
@@ -398,6 +421,7 @@ function CustomerDetails() {
                 >
                   Save
                 </button>
+                )}
               </div>
             </div>
           </>

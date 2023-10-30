@@ -127,7 +127,11 @@ function WindShield() {
               <tbody>
                 {data.map((item) => (
                   <tr key={item.id}>
-                    <th scope="row" onClick={() => clearAttributeRating(item.attribute)} style={{cursor:'pointer'}}>
+                    <th
+                      scope="row"
+                      onClick={() => clearAttributeRating(item.attribute)}
+                      style={{ cursor: "pointer" }}
+                    >
                       {item.id}
                     </th>
                     <td style={{ paddingLeft: "40px", width: "35%" }}>

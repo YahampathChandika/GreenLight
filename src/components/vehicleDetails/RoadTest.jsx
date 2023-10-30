@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
 import { useForm, Controller } from "react-hook-form";
 
-function RoadTest() {
+function RoadTest({ hideButtons }) {
   const { register, handleSubmit, control, setValue } = useForm();
 
   const onSubmit = (data) => {
@@ -239,13 +239,15 @@ function RoadTest() {
                 </div>
               </div>
             </div>
-            <button
-              className="btn btn-outline-success"
-              type="submit"
-              style={{ width: "150px", marginTop: "20px" }}
-            >
-              Save
-            </button>
+            {!hideButtons && (
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                style={{ width: "150px", marginTop: "20px" }}
+              >
+                Save
+              </button>
+            )}
           </form>
         </div>
       </div>
