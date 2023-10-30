@@ -207,21 +207,11 @@ input[type="radio"]:checked + .rating-color.rating-color.rating-color.na {
   background-color: rgb(128, 128, 128);
 }
 
-.wheel-drop {
-  margin-top: 15px;
-  display: flex;
-}
-
-.wheel-drop span {
-  font-size: 17px;
-  color: #000000;
-  font-weight: bold;
-  padding-top: 5px;
-}
-
-.wheel-drop-dropdown {
-  width: auto;
-  margin-left: 20px;
-  font-size: 16px;
-  font-weight: bold;
+.rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn {
+  display: inline-block;
+  width: 250px;
+  padding-right: 32px;
+  position: relative;
+  z-index: 5;
+  border: rgb(134, 134, 134) 0.5px solid;
 }

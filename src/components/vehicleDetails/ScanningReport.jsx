@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
+import { Dropdown } from "rsuite";
 
 function ScanningReport() {
   const ratingOptions = [
@@ -17,23 +18,20 @@ function ScanningReport() {
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
+    const savedDropdownOption = localStorage.getItem("ScanningReportBattery");
+    if (savedDropdownOption) {
+      setSelectedItem(savedDropdownOption);
+    }
   }, []);
 
-  // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-
-  // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
     const updatedRatings = { ...attributeRatings, [attribute]: rating };
     setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
-
-    // Save the updated ratings to localStorage
     localStorage.setItem("ScanningReport", JSON.stringify(updatedRatings));
   };
 
@@ -69,6 +67,12 @@ function ScanningReport() {
     localStorage.setItem("ScanningReport", JSON.stringify(updatedRatings));
   };
 
+   // Function to handle dropdown option selection and save it to local storage
+   const handleDropdownSelect = (value) => {
+    setSelectedItem(value);
+    localStorage.setItem("ScanningReportBattery", value);
+  };
+
   // Sample data for your table
   const data = [
     { id: 1, attribute: "No trouble cord" },
@@ -84,10 +88,9 @@ function ScanningReport() {
     { id: 11, attribute: "Break switch sensor" },
     { id: 12, attribute: "A/C switch and clutch" },
     { id: 13, attribute: "Reverse gear switch sensor" },
-    { id: 14, attribute: "12V battery voltage" },
-    { id: 15, attribute: "Electric load" },
-    { id: 16, attribute: "Engine RPM" },
-    { id: 17, attribute: "Fuel injection time" },
+    { id: 14, attribute: "Electric load" },
+    { id: 15, attribute: "Engine RPM" },
+    { id: 16, attribute: "Fuel injection time" },
   ];
 
   return (
@@ -182,6 +185,33 @@ function ScanningReport() {
                     ))}
                   </tr>
                 ))}
+                <tr>
+                  <th>17</th>
+                    <td colSpan={1}>
+                      <span style={{fontWeight:'500', paddingLeft:'30px'}}>12 V Battery Voltage</span>
+                    </td>
+                    <td colSpan={4} style={{textAlign:'center'}}>
+                      <Dropdown
+                        title={selectedItem || "Select an option"}
+                        placement="topStart"
+                        onSelect={handleDropdownSelect}
+                        className="wheel-drop-dropdown"
+                      ><div style={{width:'250px'}}>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="12.60+ V | 100%">12.60+ V | 100%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="12.50 V | 90%">12.50 V | 90%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="12.42 V | 80%">12.42 V | 80%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="12.32 V | 70%">12.32 V | 70%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="12.20 V | 60%">12.20 V | 60%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="12.06 V | 50%">12.06 V | 50%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="11.90 V | 40%">11.90 V | 40%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="11.75 V | 30%">11.75 V | 30%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="11.58 V | 20%">11.58 V | 20%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="11.31 V | 10%">11.31 V | 10%</Dropdown.Item>
+                        <Dropdown.Item className="wheel-drop-item" eventKey="10.50 V | 0%">10.50 V | 0%</Dropdown.Item>
+                        </div>
+                      </Dropdown>
+                    </td>
+                </tr>
               </tbody>
             </table>
           </div>

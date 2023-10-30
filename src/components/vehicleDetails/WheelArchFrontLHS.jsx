@@ -131,23 +131,6 @@ function WheelArchFrontLHS() {
                 ))}
               </div>
             </div>
-            <div className="wheel-drop">
-              <span>Tire Tread Depth</span>
-              <Dropdown
-                title={selectedItem || "Select an option"}
-                onSelect={handleDropdownSelect}
-                className="wheel-drop-dropdown"
-              >
-                <Dropdown.Item className="wheel-drop-item" eventKey="8mm Good">8mm Good</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="7mm Good">7mm Good</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="6mm Good">6mm Good</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="5mm Ok">5mm Ok</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="4mm Ok">4mm Ok</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="3mm Inspect Monthly">3mm Inspect Monthly</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="2mm Won't Last Long">2mm Won't Last Long</Dropdown.Item>
-                <Dropdown.Item className="wheel-drop-item" eventKey="1.66mm Legal Limit">1.66mm Legal Limit</Dropdown.Item>
-              </Dropdown>
-            </div>
           </div>
           <div className="vi-content-bot">
             <table className="table table-hover">
@@ -203,6 +186,30 @@ function WheelArchFrontLHS() {
                     ))}
                   </tr>
                 ))}
+                <tr>
+                  <th>13</th>
+                    <td colSpan={1}>
+                      <span style={{fontWeight:'500', paddingLeft:'30px'}}>Tire Tread Depth</span>
+                    </td>
+                    <td colSpan={4} style={{textAlign:'center'}}>
+                      <Dropdown
+                        title={selectedItem || "Tire Tread Depth"}
+                        placement="topStart"
+                        onSelect={handleDropdownSelect}
+                        className="wheel-drop-dropdown"
+                      ><div style={{width:'250px'}}>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="8mm Good">8mm Good</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="7mm Good">7mm Good</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="6mm Good">6mm Good</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="5mm Ok">5mm Ok</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="4mm Ok">4mm Ok</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="3mm Inspect Monthly">3mm Inspect Monthly</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="2mm Won't Last Long">2mm Won't Last Long</Dropdown.Item>
+                          <Dropdown.Item className="wheel-drop-item" eventKey="1.66mm Legal Limit">1.66mm Legal Limit</Dropdown.Item>
+                        </div>
+                      </Dropdown>
+                    </td>
+                </tr>
               </tbody>
             </table>
           </div>
