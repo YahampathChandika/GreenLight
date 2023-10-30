@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/VisualInspection.css";
+import { Dropdown } from "rsuite";
 
 function WheelArchFrontLHS() {
   const ratingOptions = [
@@ -17,13 +18,15 @@ function WheelArchFrontLHS() {
     if (savedRatings) {
       setAttributeRatings(JSON.parse(savedRatings));
     }
+    const savedDropdownOption = localStorage.getItem("WheelArchFrontLHSTire");
+    if (savedDropdownOption) {
+      setSelectedItem(savedDropdownOption);
+    }
   }, []);
 
-  // Create a state to keep track of the selected ratings for each attribute
   const [attributeRatings, setAttributeRatings] = useState({});
-
-  // Create a state to store the selected image files and their URLs
   const [files, setFiles] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // Function to handle changes in attribute ratings
   const handleRatingChange = (attribute, rating) => {
@@ -67,6 +70,12 @@ function WheelArchFrontLHS() {
     delete updatedRatings[attribute];
     setAttributeRatings(updatedRatings);
     localStorage.setItem("WheelArchFrontLHS", JSON.stringify(updatedRatings));
+  };
+
+  // Function to handle dropdown option selection and save it to local storage
+  const handleDropdownSelect = (value) => {
+    setSelectedItem(value);
+    localStorage.setItem("WheelArchFrontLHSTire", value);
   };
 
   // Sample data for your table
@@ -121,6 +130,23 @@ function WheelArchFrontLHS() {
                   </div>
                 ))}
               </div>
+            </div>
+            <div className="wheel-drop">
+              <span>Tire Tread Depth</span>
+              <Dropdown
+                title={selectedItem || "Select an option"}
+                onSelect={handleDropdownSelect}
+                className="wheel-drop-dropdown"
+              >
+                <Dropdown.Item className="wheel-drop-item" eventKey="8mm Good">8mm Good</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="7mm Good">7mm Good</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="6mm Good">6mm Good</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="5mm Ok">5mm Ok</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="4mm Ok">4mm Ok</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="3mm Inspect Monthly">3mm Inspect Monthly</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="2mm Won't Last Long">2mm Won't Last Long</Dropdown.Item>
+                <Dropdown.Item className="wheel-drop-item" eventKey="1.66mm Legal Limit">1.66mm Legal Limit</Dropdown.Item>
+              </Dropdown>
             </div>
           </div>
           <div className="vi-content-bot">

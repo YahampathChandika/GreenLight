@@ -256,7 +256,7 @@ function CustomerDetails() {
                   <input type="text" id="milage" {...register("milage")} />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                      <label className="btn btn-secondary">
+                      <label className="btn btn-outline-secondary">
                         Image
                         <input
                           type="file"
@@ -274,7 +274,7 @@ function CustomerDetails() {
                           <button
                             type="button"
                             onClick={() => handleDeleteImage(index, "mileage")}
-                            className="btn btn-danger customer-dlt-btn"
+                            className="btn btn-outline-danger customer-dlt-btn"
                           >
                             Delete
                           </button>
@@ -288,7 +288,7 @@ function CustomerDetails() {
                   <input type="text" id="frame-no" {...register("frame-no")} />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                      <label className="btn btn-secondary">
+                      <label className="btn btn-outline-secondary">
                         Image
                         <input
                           type="file"
@@ -306,7 +306,7 @@ function CustomerDetails() {
                           <button
                             type="button"
                             onClick={() => handleDeleteImage(index, "frameNo")}
-                            className="btn btn-danger customer-dlt-btn"
+                            className="btn btn-outline-danger customer-dlt-btn"
                           >
                             Delete
                           </button>
@@ -320,7 +320,7 @@ function CustomerDetails() {
                   <input type="text" id="cer-reg" {...register("cer-reg")} />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                      <label className="btn btn-secondary">
+                      <label className="btn btn-outline-secondary">
                         Image
                         <input
                           type="file"
@@ -340,7 +340,7 @@ function CustomerDetails() {
                             onClick={() =>
                               handleDeleteImage(index, "registration")
                             }
-                            className="btn btn-danger customer-dlt-btn"
+                            className="btn btn-outline-danger customer-dlt-btn"
                           >
                             Delete
                           </button>
@@ -354,7 +354,7 @@ function CustomerDetails() {
                   <input type="text" id="eng-no" {...register("eng-no")} />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                      <label className="btn btn-secondary">
+                      <label className="btn btn-outline-secondary">
                         Image
                         <input
                           type="file"
@@ -372,7 +372,7 @@ function CustomerDetails() {
                           <button
                             type="button"
                             onClick={() => handleDeleteImage(index, "engine")}
-                            className="btn btn-danger customer-dlt-btn"
+                            className="btn btn-outline-danger customer-dlt-btn"
                           >
                             Delete
                           </button>
@@ -392,7 +392,7 @@ function CustomerDetails() {
                 }}
               >
                 <button
-                  className="btn btn-dark"
+                  className="btn btn-outline-dark"
                   type="submit"
                   style={{ width: "150px" }}
                 >

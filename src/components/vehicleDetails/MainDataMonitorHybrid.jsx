@@ -232,7 +232,7 @@ function MainDataMonitorHybrid() {
                   />
                 </div>
                 <button
-                  className="btn btn-success"
+                  className="btn btn-outline-success"
                   type="submit"
                   style={{ width: "150px", marginTop: "20px" }}
                 >
