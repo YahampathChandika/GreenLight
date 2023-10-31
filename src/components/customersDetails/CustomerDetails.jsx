@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../assets/scss/CustomerDetails.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useForm, Controller } from "react-hook-form";
+import { Dropdown, Radio, RadioGroup } from "rsuite";
 
 function CustomerDetails({ hideButtons }) {
   const [mileageFiles, setMileageFiles] = useState([]);
@@ -12,6 +13,8 @@ function CustomerDetails({ hideButtons }) {
 
   const { register, handleSubmit, control, setValue } = useForm();
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedRadioButton, setSelectedRadioButton] = useState(null);
 
   const onSubmit = (data) => {
     console.log("data", data);
@@ -24,6 +27,13 @@ function CustomerDetails({ hideButtons }) {
     }, 1000); // Update every 1 second
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const savedRatings = localStorage.getItem("OverallResult");
+    if (savedRatings) {
+      setSelectedRadioButton(savedRatings);
+    }
   }, []);
 
   // Get only the date part (YYYY-MM-DD)
@@ -126,11 +136,45 @@ function CustomerDetails({ hideButtons }) {
     }
   };
 
+  const handleRadioSelect = (value) => {
+    setSelectedRadioButton(value);
+    localStorage.setItem("OverallResult", value);
+  };
+
   return (
     <div>
       <div className="details-main">
         <div className="details-main-con">
           <p>Customer Details</p>
+          <Dropdown
+            title={selectedRadioButton || "Overall Result"}
+            className="wheel-drop-dropdown"
+          >
+            <div style={{ width: "250px" }}>
+              <Dropdown.Item className="wheel-drop-item">
+                <RadioGroup
+                  name="radioList"
+                  inline
+                  appearance="picker"
+                  value={selectedRadioButton}
+                  onChange={handleRadioSelect}
+                >
+                  <div
+                    className="color-square red"
+                    onClick={() => handleRadioSelect("red")}
+                  ></div>
+                  <div
+                    className="color-square yellow"
+                    onClick={() => handleRadioSelect("yellow")}
+                  ></div>
+                  <div
+                    className="color-square green"
+                    onClick={() => handleRadioSelect("green")}
+                  ></div>
+                </RadioGroup>
+              </Dropdown.Item>
+            </div>
+          </Dropdown>
           <input
             type="text"
             placeholder="Invoice No."
@@ -226,7 +270,11 @@ function CustomerDetails({ hideButtons }) {
                   </div>
                   <div className="details-input">
                     <label>T belt next replacement </label>
-                    <input type="text" id="milage" {...register("T belt next replacement ")} />
+                    <input
+                      type="text"
+                      id="milage"
+                      {...register("T belt next replacement ")}
+                    />
                   </div>
                 </div>
                 <div className="details-mid-con-right">
@@ -244,7 +292,11 @@ function CustomerDetails({ hideButtons }) {
                   </div>
                   <div className="details-input">
                     <label>Next service</label>
-                    <input type="text" id="fuel" {...register("Next service")} />
+                    <input
+                      type="text"
+                      id="fuel"
+                      {...register("Next service")}
+                    />
                   </div>
                 </div>
               </div>
@@ -253,21 +305,26 @@ function CustomerDetails({ hideButtons }) {
               <div className="details-bot-inputs">
                 <div className="bot-input">
                   <label>Milage</label>
-                  <input type="text" id="milage" {...register("milage")} style={{marginBottom : "20px"}}/>
+                  <input
+                    type="text"
+                    id="milage"
+                    {...register("milage")}
+                    style={{ marginBottom: "20px" }}
+                  />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                    {!hideButtons && ( 
-                      <label className="btn btn-outline-secondary">
-                        Image
-                        <input
-                          type="file"
-                          accept="image/jpeg, image/png, image/gif"
-                          multiple
-                          onChange={(e) => handleFileChange(e, "mileage")}
-                          style={{ display: "none" }}
-                        />
-                      </label>
-                    )}
+                      {!hideButtons && (
+                        <label className="btn btn-outline-secondary">
+                          Image
+                          <input
+                            type="file"
+                            accept="image/jpeg, image/png, image/gif"
+                            multiple
+                            onChange={(e) => handleFileChange(e, "mileage")}
+                            style={{ display: "none" }}
+                          />
+                        </label>
+                      )}
                     </div>
                     <div className="customer-img">
                       {mileageFiles.map((file, index) => (
@@ -291,21 +348,26 @@ function CustomerDetails({ hideButtons }) {
                 </div>
                 <div className="bot-input">
                   <label>Frame No.</label>
-                  <input type="text" id="frame-no" {...register("frame-no")} style={{marginBottom : "20px"}} />
+                  <input
+                    type="text"
+                    id="frame-no"
+                    {...register("frame-no")}
+                    style={{ marginBottom: "20px" }}
+                  />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                    {!hideButtons && ( 
-                      <label className="btn btn-outline-secondary">
-                        Image
-                        <input
-                          type="file"
-                          accept="image/jpeg, image/png, image/gif"
-                          multiple
-                          onChange={(e) => handleFileChange(e, "frameNo")}
-                          style={{ display: "none" }}
-                        />
-                      </label>
-                    )}
+                      {!hideButtons && (
+                        <label className="btn btn-outline-secondary">
+                          Image
+                          <input
+                            type="file"
+                            accept="image/jpeg, image/png, image/gif"
+                            multiple
+                            onChange={(e) => handleFileChange(e, "frameNo")}
+                            style={{ display: "none" }}
+                          />
+                        </label>
+                      )}
                     </div>
                     <div className="customer-img">
                       {frameNoFiles.map((file, index) => (
@@ -329,21 +391,28 @@ function CustomerDetails({ hideButtons }) {
                 </div>
                 <div className="bot-input">
                   <label>Certificate of Reg.</label>
-                  <input type="text" id="cer-reg" {...register("cer-reg")}  style={{marginBottom : "20px"}}/>
+                  <input
+                    type="text"
+                    id="cer-reg"
+                    {...register("cer-reg")}
+                    style={{ marginBottom: "20px" }}
+                  />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                    {!hideButtons && ( 
-                      <label className="btn btn-outline-secondary">
-                        Image
-                        <input
-                          type="file"
-                          accept="image/jpeg, image/png, image/gif"
-                          multiple
-                          onChange={(e) => handleFileChange(e, "registration")}
-                          style={{ display: "none" }}
-                        />
-                      </label>
-                    )}
+                      {!hideButtons && (
+                        <label className="btn btn-outline-secondary">
+                          Image
+                          <input
+                            type="file"
+                            accept="image/jpeg, image/png, image/gif"
+                            multiple
+                            onChange={(e) =>
+                              handleFileChange(e, "registration")
+                            }
+                            style={{ display: "none" }}
+                          />
+                        </label>
+                      )}
                     </div>
                     <div className="customer-img">
                       {registrationFiles.map((file, index) => (
@@ -367,21 +436,26 @@ function CustomerDetails({ hideButtons }) {
                 </div>
                 <div className="bot-input">
                   <label>Engine No. & Model</label>
-                  <input type="text" id="eng-no" {...register("eng-no")} style={{marginBottom : "20px"}}/>
+                  <input
+                    type="text"
+                    id="eng-no"
+                    {...register("eng-no")}
+                    style={{ marginBottom: "20px" }}
+                  />
                   <div className="customer-img-con">
                     <div className="customer-btns">
-                    {!hideButtons && ( 
-                      <label className="btn btn-outline-secondary">
-                        Image
-                        <input
-                          type="file"
-                          accept="image/jpeg, image/png, image/gif"
-                          multiple
-                          onChange={(e) => handleFileChange(e, "engine")}
-                          style={{ display: "none" }}
-                        />
-                      </label>
-                    )}
+                      {!hideButtons && (
+                        <label className="btn btn-outline-secondary">
+                          Image
+                          <input
+                            type="file"
+                            accept="image/jpeg, image/png, image/gif"
+                            multiple
+                            onChange={(e) => handleFileChange(e, "engine")}
+                            style={{ display: "none" }}
+                          />
+                        </label>
+                      )}
                     </div>
                     <div className="customer-img">
                       {engineFiles.map((file, index) => (
@@ -413,14 +487,14 @@ function CustomerDetails({ hideButtons }) {
                   marginTop: "10px",
                 }}
               >
-                {!hideButtons && ( 
-                <button
-                  className="btn btn-outline-dark"
-                  type="submit"
-                  style={{ width: "150px" }}
-                >
-                  Save
-                </button>
+                {!hideButtons && (
+                  <button
+                    className="btn btn-outline-dark"
+                    type="submit"
+                    style={{ width: "150px" }}
+                  >
+                    Save
+                  </button>
                 )}
               </div>
             </div>
