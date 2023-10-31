@@ -76,9 +76,9 @@ function DocumentsRecords() {
     { id: 3, attribute: "Vehicle repair history and maintenance" },
     { id: 4, attribute: "Scheduled" },
     { id: 5, attribute: "Insurance uprate and company" },
-    { id: 6, attribute: "License uprate" },
+    { id: 6, attribute: "License Update" },
     { id: 7, attribute: "Original C.R" },
-    { id: 8, attribute: "Delisher letter" },
+    { id: 8, attribute: " Delishan letter" },
   ];
 
   return (

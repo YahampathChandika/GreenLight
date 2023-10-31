@@ -79,7 +79,7 @@ function WheelArchFrontRHS() {
     { id: 6, attribute: "Tyre pressure" },
     { id: 7, attribute: "Tyre damage" },
     { id: 8, attribute: "Tyre thread depth" },
-    { id: 9, attribute: "Manifacture depth" },
+    { id: 9, attribute: "Manufacture Date" },
     { id: 10, attribute: "Tyre match with correct size" },
     { id: 11, attribute: "Wheel match with correct size" },
     { id: 12, attribute: "Side weare (Uneven weare)" },

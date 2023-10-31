@@ -229,7 +229,7 @@ function RoadTest({ hideButtons }) {
               </div>
               <div className="vi-content-bot-right">
                 <div className="vi-content-bot-input-right">
-                  <label> Dowel clutch even clutch tem</label>
+                  <label> Dual clutch even clutch tem</label>
                   <input
                     type="text"
                     name="even-clutch"

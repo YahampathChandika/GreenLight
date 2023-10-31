@@ -73,12 +73,11 @@ function BootSpace() {
   const data = [
     { id: 1, attribute: "Original spare wheel" },
     { id: 2, attribute: "Under board and carpet" },
-    { id: 3, attribute: "Tool kit and sack" },
+    { id: 3, attribute: "Tool kit and Jack" },
     { id: 4, attribute: "Luggage light" },
     { id: 5, attribute: "Air compressure and tyre repair kit" },
-    { id: 6, attribute: "No damage on spare wheel" },
-    { id: 7, attribute: "Compartment and glue joints" },
-    { id: 8, attribute: "Uphosteries" },
+    { id: 6, attribute: "No damage on spare wheel compartment and glue joints" },
+    { id: 7, attribute: "Uphosteries" },
   ];
 
   return (

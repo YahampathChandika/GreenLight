@@ -79,11 +79,11 @@ function SidebarComp() {
     "Main Data Monitor Hybrid",
     "Warning Indicator Main",
     "Road Test",
+    "Documents Records",
     "Cooling System",
     "Suspension",
     "Starting Delay",
     "Engine Miss Idling",
-    "Documents Records",
   ];
 
   const handleMenuItemClick = (menuItemIndex) => {
@@ -174,6 +174,8 @@ function SidebarComp() {
         return <WarningIndicatorMain />;
       case "Road Test":
         return <RoadTest />;
+      case "Documents Records":
+        return <DocumentsRecords />;
       case "Cooling System":
         return <CoolingSystem />;
       case "Suspension":
@@ -182,8 +184,6 @@ function SidebarComp() {
         return <StartingDelay />;
       case "Engine Miss Idling":
         return <EngineMissIdling />;
-      case "Documents Records":
-        return <DocumentsRecords />;
       default:
         return null;
     }
