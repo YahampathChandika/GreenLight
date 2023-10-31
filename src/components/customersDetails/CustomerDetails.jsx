@@ -146,35 +146,42 @@ function CustomerDetails({ hideButtons }) {
       <div className="details-main">
         <div className="details-main-con">
           <p>Customer Details</p>
-          <Dropdown
+          {/* <Dropdown
             title={selectedRadioButton || "Overall Result"}
             className="wheel-drop-dropdown"
           >
             <div style={{ width: "250px" }}>
-              <Dropdown.Item className="wheel-drop-item">
-                <RadioGroup
-                  name="radioList"
-                  inline
-                  appearance="picker"
-                  value={selectedRadioButton}
-                  onChange={handleRadioSelect}
-                >
-                  <div
-                    className="color-square red"
-                    onClick={() => handleRadioSelect("red")}
-                  ></div>
-                  <div
-                    className="color-square yellow"
-                    onClick={() => handleRadioSelect("yellow")}
-                  ></div>
-                  <div
-                    className="color-square green"
-                    onClick={() => handleRadioSelect("green")}
-                  ></div>
-                </RadioGroup>
-              </Dropdown.Item>
+              <Dropdown.Item className="wheel-drop-item"> */}
+          <RadioGroup
+            name="radioList"
+            inline
+            appearance="picker"
+            value={selectedRadioButton}
+            onChange={handleRadioSelect}
+          >
+            <div
+              className={`color-square red ${
+                selectedRadioButton === "red" ? "checked" : ""
+              }`}
+              onClick={() => handleRadioSelect("red")}
+            ></div>
+            <div
+              className={`color-square yellow ${
+                selectedRadioButton === "yellow" ? "checked" : ""
+              }`}
+              onClick={() => handleRadioSelect("yellow")}
+            ></div>
+            <div
+              className={`color-square green ${
+                selectedRadioButton === "green" ? "checked" : ""
+              }`}
+              onClick={() => handleRadioSelect("green")}
+            ></div>
+          </RadioGroup>
+
+          {/* </Dropdown.Item>
             </div>
-          </Dropdown>
+          </Dropdown> */}
           <input
             type="text"
             placeholder="Invoice No."
@@ -464,9 +471,7 @@ function CustomerDetails({ hideButtons }) {
                           {!hideButtons && ( // Use the ! operator to check if hideButtons is false
                             <button
                               type="button"
-                              onClick={() =>
-                                handleDeleteImage(index, "engine")
-                              }
+                              onClick={() => handleDeleteImage(index, "engine")}
                               className="btn btn-outline-danger customer-dlt-btn"
                             >
                               Delete
