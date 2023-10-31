@@ -110,11 +110,11 @@ const PDF = forwardRef((props, ref) => {
         <MainDataMonitorHybrid hideButtons={true} />
         <WarningIndicatorMain />
         <RoadTest hideButtons={true} />
+        <DocumentsRecords />
         <CoolingSystem />
         <Suspension />
         <StartingDelay />
-        <EngineMissIdling />
-        <DocumentsRecords />
+        <EngineMissIdling />   
       </div>
     </>
   );

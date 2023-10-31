@@ -315,7 +315,7 @@ function CustomerDetails({ hideButtons }) {
                             <button
                               type="button"
                               onClick={() =>
-                                handleDeleteImage(index, "mileage")
+                                handleDeleteImage(index, "frameNo")
                               }
                               className="btn btn-outline-danger customer-dlt-btn"
                             >
@@ -353,7 +353,7 @@ function CustomerDetails({ hideButtons }) {
                             <button
                               type="button"
                               onClick={() =>
-                                handleDeleteImage(index, "mileage")
+                                handleDeleteImage(index, "registration")
                               }
                               className="btn btn-outline-danger customer-dlt-btn"
                             >
@@ -391,7 +391,7 @@ function CustomerDetails({ hideButtons }) {
                             <button
                               type="button"
                               onClick={() =>
-                                handleDeleteImage(index, "mileage")
+                                handleDeleteImage(index, "engine")
                               }
                               className="btn btn-outline-danger customer-dlt-btn"
                             >

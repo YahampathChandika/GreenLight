@@ -89,7 +89,7 @@ function FrontDoorPassengerLHS() {
     { id: 10, attribute: "Handle / Lock" },
     { id: 11, attribute: "Rubber seeling strips" },
     { id: 12, attribute: "Upholstery" },
-    { id: 13, attribute: "Hingers" },
+    { id: 13, attribute: "Hinges" },
     { id: 14, attribute: "Side mirror" },
     { id: 15, attribute: "A pillar" },
   ];
