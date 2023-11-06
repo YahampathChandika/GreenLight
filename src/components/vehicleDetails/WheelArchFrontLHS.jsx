@@ -32,11 +32,6 @@ function WheelArchFrontLHS() {
   const handleRatingChange = (attribute, rating) => {
     const updatedRatings = { ...attributeRatings, [attribute]: rating };
     setAttributeRatings(updatedRatings);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("windShieldData", updatedRatings);
-
-    // Save the updated ratings to localStorage
     localStorage.setItem("WheelArchFrontLHS", JSON.stringify(updatedRatings));
   };
 
@@ -51,9 +46,6 @@ function WheelArchFrontLHS() {
     }
 
     setFiles([...files, ...fileURLs]);
-
-    // Call the updatePdfData function to update the data in the PDF component
-    // updatePdfData("fileURLs", [...files, ...fileURLs]);
   };
 
   // Function to delete a specific image
@@ -88,11 +80,10 @@ function WheelArchFrontLHS() {
     { id: 5, attribute: "Standard rim" },
     { id: 6, attribute: "Tyre pressure" },
     { id: 7, attribute: "Tyre damage" },
-    { id: 8, attribute: "Tyre thread depth" },
-    { id: 9, attribute: "Manufacture Date " },
-    { id: 10, attribute: "Tyre match with correct size" },
-    { id: 11, attribute: "Wheel match with correct size" },
-    { id: 12, attribute: "Side weare (Uneven weare)" },
+    { id: 8, attribute: "Manufacture Date " },
+    { id: 9, attribute: "Tyre match with correct size" },
+    { id: 10, attribute: "Wheel match with correct size" },
+    { id: 11, attribute: "Side weare (Uneven weare)" },
   ];
 
   return (
@@ -189,27 +180,70 @@ function WheelArchFrontLHS() {
                 ))}
                 <tr>
                   <th>13</th>
-                    <td colSpan={1}>
-                      <span style={{fontWeight:'500', paddingLeft:'30px'}}>Tire Tread Depth</span>
-                    </td>
-                    <td colSpan={4} style={{textAlign:'center'}}>
-                      <Dropdown
-                        title={selectedItem || "Tire Tread Depth"}
-                        placement="topStart"
-                        onSelect={handleDropdownSelect}
-                        className="wheel-drop-dropdown"
-                      ><div style={{width:'250px'}}>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="8mm Good">8mm Good</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="7mm Good">7mm Good</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="6mm Good">6mm Good</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="5mm Ok">5mm Ok</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="4mm Ok">4mm Ok</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="3mm Inspect Monthly">3mm Inspect Monthly</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="2mm Won't Last Long">2mm Won't Last Long</Dropdown.Item>
-                          <Dropdown.Item className="wheel-drop-item" eventKey="1.66mm Legal Limit">1.66mm Legal Limit</Dropdown.Item>
-                        </div>
-                      </Dropdown>
-                    </td>
+                  <td colSpan={1}>
+                    <span style={{ fontWeight: "500", paddingLeft: "30px" }}>
+                      Tire Tread Depth
+                    </span>
+                  </td>
+                  <td colSpan={4} style={{ textAlign: "center" }}>
+                    <Dropdown
+                      title={selectedItem || "Tire Tread Depth"}
+                      placement="topStart"
+                      onSelect={handleDropdownSelect}
+                      className="wheel-drop-dropdown"
+                    >
+                      <div style={{ width: "250px" }}>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="8mm Good"
+                        >
+                          8mm Good
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="7mm Good"
+                        >
+                          7mm Good
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="6mm Good"
+                        >
+                          6mm Good
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="5mm Ok"
+                        >
+                          5mm Ok
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="4mm Ok"
+                        >
+                          4mm Ok
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="3mm Inspect Monthly"
+                        >
+                          3mm Inspect Monthly
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="2mm Won't Last Long"
+                        >
+                          2mm Won't Last Long
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="wheel-drop-item"
+                          eventKey="1.66mm Legal Limit"
+                        >
+                          1.66mm Legal Limit
+                        </Dropdown.Item>
+                      </div>
+                    </Dropdown>
+                  </td>
                 </tr>
               </tbody>
             </table>

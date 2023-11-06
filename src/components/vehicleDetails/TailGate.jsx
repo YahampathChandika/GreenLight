@@ -86,7 +86,7 @@ function TailGate() {
     { id: 13, attribute: "Upholstery" },
     { id: 14, attribute: "Gas struts" },
     { id: 15, attribute: "Hinges" },
-    { id: 16, attribute: "Garnish light" },
+    { id: 16, attribute: "Garnish lamp" },
   ];
 
   return (

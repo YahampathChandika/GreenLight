@@ -74,7 +74,7 @@ function Spoiler() {
     { id: 1, attribute: "Elignment" },
     { id: 2, attribute: "No evidence of major damage" },
     { id: 3, attribute: "No re paint" },
-    { id: 4, attribute: "Existing point condition" },
+    { id: 4, attribute: "Existing paint condition" },
     { id: 5, attribute: "No scratches" },
     { id: 6, attribute: "No corrosion" },
     { id: 7, attribute: "Brake light" },

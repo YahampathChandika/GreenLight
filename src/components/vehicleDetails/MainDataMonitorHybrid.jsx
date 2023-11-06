@@ -4,7 +4,7 @@ import "../../assets/scss/VisualInspection.css";
 import "../../assets/scss/MainDateMonittorHybrid.css";
 import { useForm, Controller } from "react-hook-form";
 
-function MainDataMonitorHybrid({hideButtons}) {
+function MainDataMonitorHybrid({ hideButtons }) {
   const { register, handleSubmit, control, setValue } = useForm();
 
   const onSubmit = (data) => {
@@ -100,7 +100,7 @@ function MainDataMonitorHybrid({hideButtons}) {
             <div className="content-bot">
               <div className="vi-content-bot-left">
                 <div className="vi-content-bot-input">
-                  <label> No table cord</label>
+                  <label> No trouble cord</label>
                   <input
                     type="text"
                     name="table-cord"
@@ -231,16 +231,15 @@ function MainDataMonitorHybrid({hideButtons}) {
                     {...register("Full-data-report")}
                   />
                 </div>
-                { !hideButtons && (
+                {!hideButtons && (
                   <button
-                  className="btn btn-outline-success"
-                  type="submit"
-                  style={{ width: "150px", marginTop: "20px" }}
-                >
-                  Save
-                </button>
+                    className="btn btn-outline-success"
+                    type="submit"
+                    style={{ width: "150px", marginTop: "20px" }}
+                  >
+                    Save
+                  </button>
                 )}
-                
               </div>
             </div>
           </form>

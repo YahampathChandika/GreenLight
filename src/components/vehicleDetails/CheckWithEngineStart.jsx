@@ -78,16 +78,24 @@ function CheckWithEngineStart() {
   // Sample data for your table
   const data = [
     { id: 1, attribute: "No under compression" },
-    { id: 2, attribute: "Belt/ Adjuster and Idler wheel (instead of the existing one) " },
-    { id: 3, attribute: "A/C Clutch Alternator clutch and idler wheel (instead of the existing one) " },
+    {
+      id: 2,
+      attribute:
+        "Belt/ Adjuster and Idler wheel (instead of the existing one) ",
+    },
+    {
+      id: 3,
+      attribute:
+        "A/C Clutch Alternator clutch and idler wheel (instead of the existing one) ",
+    },
     { id: 4, attribute: "Water pump bearing or other parts" },
-    { id: 5, attribute: "Idle stablisher" },
+    { id: 5, attribute: "Engine idle stablisher" },
     { id: 6, attribute: "Gasket" },
     { id: 7, attribute: "Alternator / Charging Rate" },
-    { id: 8, attribute: "Sudden accelarate" },
+    { id: 8, attribute: "Sudden accelaration" },
     { id: 9, attribute: "No starting delay" },
     { id: 10, attribute: "Engine mount" },
-    { id: 11, attribute: "Engine accelarates smoothly" },
+    { id: 11, attribute: "Engine accelaration smoothly	" },
   ];
 
   return (

@@ -73,12 +73,11 @@ function DocumentsRecords() {
   const data = [
     { id: 1, attribute: "Owners manual" },
     { id: 2, attribute: "Emission test reports" },
-    { id: 3, attribute: "Vehicle repair history and maintenance" },
-    { id: 4, attribute: "Scheduled" },
-    { id: 5, attribute: "Insurance uprate and company" },
-    { id: 6, attribute: "License Update" },
-    { id: 7, attribute: "Original C.R" },
-    { id: 8, attribute: " Delishan letter" },
+    { id: 3, attribute: "Vehicle repair history and maintenance scheduled" },
+    { id: 4, attribute: "Insurance update and company" },
+    { id: 5, attribute: "License Update" },
+    { id: 6, attribute: "Original C.R" },
+    { id: 7, attribute: " Delishan letter" },
   ];
 
   return (

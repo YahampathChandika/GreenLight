@@ -77,7 +77,7 @@ function UnderCarriageView() {
     { id: 5, attribute: "No break oil leak" },
     { id: 6, attribute: "No C.V boot damage" },
     { id: 7, attribute: "No rack boot damage" },
-    { id: 8, attribute: "No exhouse leak / Cylinder mount damage" },
+    { id: 8, attribute: "No exhouse leak / Silencer mount damage" },
     { id: 9, attribute: "No evidence of chassis damage" },
     { id: 10, attribute: "Engine under guard" },
     { id: 11, attribute: "Break pad and disc" },
