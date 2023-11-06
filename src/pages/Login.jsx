@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import "../assets/scss/Login.css"; // Import your CSS file for styling
 import { useNavigate  } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   // Set default username and password
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLogin = () => {
     // Add your login logic here
@@ -55,11 +61,19 @@ const Login = () => {
         </div>
         <div className="input-container">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button
+            className="password-toggle-button"
+            onClick={togglePasswordVisibility}
+          >
+            <FontAwesomeIcon
+              icon={showPassword ? faEyeSlash : faEye}
+            />
+          </button>
         </div>
         <button className="btn btn-primary login-button" onClick={handleLogin}>
           Log In

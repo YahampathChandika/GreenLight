@@ -3,7 +3,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* background-color: #808080; */
   background-image: url(../images/gg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,11 +11,9 @@
 
 .login-container {
   width: 30%;
-  height: 30% auto;
-  background-color: rgb(160, 125, 90, 0.85);
+  background-color: rgba(160, 125, 90, 0.85);
   padding: 20px;
   font-family: "Montserrat", sans-serif;
-  /* font-family: 'Raleway', sans-serif;  border-radius: 5px; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   border-radius: 5px;
@@ -30,13 +27,14 @@
 }
 
 .input-container {
+  position: relative;
   margin-bottom: 10px;
 }
 
 .input-container input {
   width: 100%;
   padding: 10px;
-  border: 1px solid rgb(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.7);
   border-radius: 5px;
   outline: none;
   color: #414141;
@@ -46,6 +44,16 @@
 .input-container input::placeholder {
   color: black;
   font-weight: 500;
+}
+
+.password-toggle-button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .login-button {
