@@ -312,7 +312,8 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-secondary">
+                        <label className="btn btngit commit -m "Merge changes from charity branch"
+-secondary">
                           Image
                           <input
                             type="file"
@@ -334,7 +335,8 @@ function CustomerDetails({ hideButtons }) {
                               onClick={() =>
                                 handleDeleteImage(index, "mileage")
                               }
-                              className="btn btn-danger customer-dlt-btn"
+                              className="btn btngit commit -m "Merge changes from charity branch"
+-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -355,7 +357,8 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-secondary">
+                        <label className="btn btngit commit -m "Merge changes from charity branch"
+-secondary">
                           Image
                           <input
                             type="file"
@@ -377,7 +380,8 @@ function CustomerDetails({ hideButtons }) {
                               onClick={() =>
                                 handleDeleteImage(index, "frameNo")
                               }
-                              className="btn btn-danger customer-dlt-btn"
+                              className="btn btngit commit -m "Merge changes from charity branch"
+-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -398,7 +402,8 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-secondary">
+                        <label className="btn btngit commit -m "Merge changes from charity branch"
+-secondary">
                           Image
                           <input
                             type="file"
@@ -422,7 +427,8 @@ function CustomerDetails({ hideButtons }) {
                               onClick={() =>
                                 handleDeleteImage(index, "registration")
                               }
-                              className="btn btn-danger customer-dlt-btn"
+                              className="btn btngit commit -m "Merge changes from charity branch"
+-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -443,7 +449,8 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-secondary">
+                        <label className="btn btngit commit -m "Merge changes from charity branch"
+-secondary">
                           Image
                           <input
                             type="file"
@@ -463,7 +470,8 @@ function CustomerDetails({ hideButtons }) {
                             <button
                               type="button"
                               onClick={() => handleDeleteImage(index, "engine")}
-                              className="btn btn-danger customer-dlt-btn"
+                              className="btn btngit commit -m "Merge changes from charity branch"
+-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -485,7 +493,8 @@ function CustomerDetails({ hideButtons }) {
               >
                 {!hideButtons && (
                   <button
-                    className="btn btn-dark"
+                    className="btn btngit commit -m "Merge changes from charity branch"
+-dark"
                     type="submit"
                     style={{ width: "150px" }}
                   >
