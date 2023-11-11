@@ -85,6 +85,7 @@ function WheelArchRearLHS() {
     { id: 9, attribute: "Tyre match with correct size" },
     { id: 10, attribute: "Wheel match with correct size" },
     { id: 11, attribute: "Side weare (Uneven weare)" },
+    { id: 12, attribute: "Tire Tread Depth Quality" },
   ];
 
   return (
@@ -180,7 +181,7 @@ function WheelArchRearLHS() {
                   </tr>
                 ))}
                 <tr>
-                  <th>12</th>
+                  <th>13</th>
                   <td colSpan={1}>
                     <span style={{ fontWeight: "500", paddingLeft: "30px" }}>
                       Tire Tread Depth

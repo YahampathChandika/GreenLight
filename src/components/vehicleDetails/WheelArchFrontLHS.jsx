@@ -84,6 +84,7 @@ function WheelArchFrontLHS() {
     { id: 9, attribute: "Tyre match with correct size" },
     { id: 10, attribute: "Wheel match with correct size" },
     { id: 11, attribute: "Side weare (Uneven weare)" },
+    { id: 12, attribute: "Tire Tread Depth Quality" },
   ];
 
   return (

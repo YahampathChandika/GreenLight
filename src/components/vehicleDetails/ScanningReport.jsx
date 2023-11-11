@@ -91,6 +91,7 @@ function ScanningReport() {
     { id: 14, attribute: "Electric load" },
     { id: 15, attribute: "Engine RPM" },
     { id: 16, attribute: "Fuel injection time" },
+    { id: 17, attribute: "12 V Battery voltage quality" },
   ];
 
   return (
@@ -186,7 +187,7 @@ function ScanningReport() {
                   </tr>
                 ))}
                 <tr>
-                  <th>17</th>
+                  <th>18</th>
                     <td colSpan={1}>
                       <span style={{fontWeight:'500', paddingLeft:'30px'}}>12 V Battery Voltage</span>
                     </td>
