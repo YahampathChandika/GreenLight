@@ -233,7 +233,7 @@ function MainDataMonitorHybrid({ hideButtons }) {
                 </div>
                 {!hideButtons && (
                   <button
-                    className="btn btn-outline-success"
+                    className="btn btn-success"
                     type="submit"
                     style={{ width: "150px", marginTop: "20px" }}
                   >

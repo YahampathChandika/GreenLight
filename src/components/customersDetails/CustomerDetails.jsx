@@ -146,18 +146,13 @@ function CustomerDetails({ hideButtons }) {
       <div className="details-main">
         <div className="details-main-con">
           <p>Customer Details</p>
-          {/* <Dropdown
-            title={selectedRadioButton || "Overall Result"}
-            className="wheel-drop-dropdown"
-          >
-            <div style={{ width: "250px" }}>
-              <Dropdown.Item className="wheel-drop-item"> */}
           <RadioGroup
             name="radioList"
             inline
             appearance="picker"
             value={selectedRadioButton}
             onChange={handleRadioSelect}
+            style={{border: '0.5px solid rgb(114, 114, 114)'}}
           >
             <div
               className={`color-square red ${
@@ -178,10 +173,6 @@ function CustomerDetails({ hideButtons }) {
               onClick={() => handleRadioSelect("green")}
             ></div>
           </RadioGroup>
-
-          {/* </Dropdown.Item>
-            </div>
-          </Dropdown> */}
           <input
             type="text"
             placeholder="Invoice No."
@@ -321,7 +312,7 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-outline-secondary">
+                        <label className="btn btn-secondary">
                           Image
                           <input
                             type="file"
@@ -343,7 +334,7 @@ function CustomerDetails({ hideButtons }) {
                               onClick={() =>
                                 handleDeleteImage(index, "mileage")
                               }
-                              className="btn btn-outline-danger customer-dlt-btn"
+                              className="btn btn-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -364,7 +355,7 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-outline-secondary">
+                        <label className="btn btn-secondary">
                           Image
                           <input
                             type="file"
@@ -386,7 +377,7 @@ function CustomerDetails({ hideButtons }) {
                               onClick={() =>
                                 handleDeleteImage(index, "frameNo")
                               }
-                              className="btn btn-outline-danger customer-dlt-btn"
+                              className="btn btn-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -407,7 +398,7 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-outline-secondary">
+                        <label className="btn btn-secondary">
                           Image
                           <input
                             type="file"
@@ -431,7 +422,7 @@ function CustomerDetails({ hideButtons }) {
                               onClick={() =>
                                 handleDeleteImage(index, "registration")
                               }
-                              className="btn btn-outline-danger customer-dlt-btn"
+                              className="btn btn-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -452,7 +443,7 @@ function CustomerDetails({ hideButtons }) {
                   <div className="customer-img-con">
                     <div className="customer-btns">
                       {!hideButtons && (
-                        <label className="btn btn-outline-secondary">
+                        <label className="btn btn-secondary">
                           Image
                           <input
                             type="file"
@@ -472,7 +463,7 @@ function CustomerDetails({ hideButtons }) {
                             <button
                               type="button"
                               onClick={() => handleDeleteImage(index, "engine")}
-                              className="btn btn-outline-danger customer-dlt-btn"
+                              className="btn btn-danger customer-dlt-btn"
                             >
                               Delete
                             </button>
@@ -494,7 +485,7 @@ function CustomerDetails({ hideButtons }) {
               >
                 {!hideButtons && (
                   <button
-                    className="btn btn-outline-dark"
+                    className="btn btn-dark"
                     type="submit"
                     style={{ width: "150px" }}
                   >

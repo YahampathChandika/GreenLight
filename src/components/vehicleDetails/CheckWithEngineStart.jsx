@@ -89,13 +89,13 @@ function CheckWithEngineStart() {
         "A/C Clutch Alternator clutch and idler wheel (instead of the existing one) ",
     },
     { id: 4, attribute: "Water pump bearing or other parts" },
-    { id: 5, attribute: "Engine idle stablisher" },
+    { id: 5, attribute: "Engine idle stabilizer" },
     { id: 6, attribute: "Gasket" },
     { id: 7, attribute: "Alternator / Charging Rate" },
-    { id: 8, attribute: "Sudden accelaration" },
+    { id: 8, attribute: "Sudden acceleration" },
     { id: 9, attribute: "No starting delay" },
     { id: 10, attribute: "Engine mount" },
-    { id: 11, attribute: "Engine accelaration smoothly	" },
+    { id: 11, attribute: "Engine acceleration smoothly	" },
   ];
 
   return (

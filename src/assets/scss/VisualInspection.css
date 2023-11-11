@@ -133,7 +133,6 @@ label {
 
 /* Colors for different rating options */
 .rating-color.good {
-  
   background-color: rgb(0, 128, 0);
 }
 
@@ -207,7 +206,8 @@ input[type="radio"]:checked + .rating-color.rating-color.rating-color.na {
   background-color: rgb(128, 128, 128);
 }
 
-.rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn {
+.rs-dropdown-toggle,
+.rs-dropdown-toggle.rs-btn {
   display: inline-block;
   width: 250px;
   padding-right: 32px;
