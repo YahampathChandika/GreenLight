@@ -55,13 +55,18 @@ function WheelArchFrontLHS() {
     setFiles(updatedFiles);
   };
 
-  // Sample data for your table
   const clearAttributeRating = (attribute) => {
     // Clear the rating for the specified attribute
     const updatedRatings = { ...attributeRatings };
-    delete updatedRatings[attribute];
+    if (attribute === "WheelArchFrontLHSTire") {
+      // Handle the specific case for "WheelArchFrontLHSTire"
+      setSelectedItem(null); // or set it to any default value
+      localStorage.removeItem("WheelArchFrontLHSTire");
+    } else {
+      delete updatedRatings[attribute];
+      localStorage.setItem("WheelArchFrontLHS", JSON.stringify(updatedRatings));
+    }
     setAttributeRatings(updatedRatings);
-    localStorage.setItem("WheelArchFrontLHS", JSON.stringify(updatedRatings));
   };
 
   // Function to handle dropdown option selection and save it to local storage
@@ -180,7 +185,13 @@ function WheelArchFrontLHS() {
                   </tr>
                 ))}
                 <tr>
-                  <th>13</th>
+                  <th
+                    onClick={() =>
+                      clearAttributeRating("WheelArchFrontLHSTire")
+                    }
+                  >
+                    13
+                  </th>
                   <td colSpan={1}>
                     <span style={{ fontWeight: "500", paddingLeft: "30px" }}>
                       Tire Tread Depth

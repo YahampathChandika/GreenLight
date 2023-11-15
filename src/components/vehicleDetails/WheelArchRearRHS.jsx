@@ -58,13 +58,18 @@ function WheelArchRearRHS() {
     setFiles(updatedFiles);
   };
 
-  // Sample data for your table
   const clearAttributeRating = (attribute) => {
     // Clear the rating for the specified attribute
     const updatedRatings = { ...attributeRatings };
-    delete updatedRatings[attribute];
+    if (attribute === "WheelArchRearRHSTire") {
+      // Handle the specific case for "WheelArchRearRHSTire"
+      setSelectedItem(null); // or set it to any default value
+      localStorage.removeItem("WheelArchRearRHSTire");
+    } else {
+      delete updatedRatings[attribute];
+      localStorage.setItem("WheelArchRearRHS", JSON.stringify(updatedRatings));
+    }
     setAttributeRatings(updatedRatings);
-    localStorage.setItem("WheelArchRearRHS", JSON.stringify(updatedRatings));
   };
 
   const handleDropdownSelect = (value) => {
@@ -81,7 +86,7 @@ function WheelArchRearRHS() {
     { id: 5, attribute: "Standard rim" },
     { id: 6, attribute: "Tyre pressure" },
     { id: 7, attribute: "Tyre damage" },
-    { id: 8, attribute: "Manufacture depth" },
+    { id: 8, attribute: "Manufacture date" },
     { id: 9, attribute: "Tyre match with correct size" },
     { id: 10, attribute: "Wheel match with correct size" },
     { id: 11, attribute: "Side weare (Uneven weare)" },
@@ -181,7 +186,11 @@ function WheelArchRearRHS() {
                   </tr>
                 ))}
                 <tr>
-                  <th>13</th>
+                  <th
+                    onClick={() => clearAttributeRating("WheelArchRearRHSTire")}
+                  >
+                    13
+                  </th>
                   <td colSpan={1}>
                     <span style={{ fontWeight: "500", paddingLeft: "30px" }}>
                       Tire Tread Depth
